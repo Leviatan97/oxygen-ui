@@ -1,0 +1,43 @@
+/* Mixin para centrado flex */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mixin para botones */
+@mixin button-base {
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: none;
+  transition: var(--transition);
+}
+
+/* Mixin para hover */
+@mixin hover-brighten($brightness: 1.1) {
+  &:hover {
+    filter: brightness($brightness);
+  }
+}
+
+/* Mixin para aplicar un estado (success, danger, etc) */
+@mixin severity-variant($color) {
+  background-color: $color;
+  color: #fff;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+}
+
+/* Mixin para sombras reutilizables */
+@mixin shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+@mixin shadow-md {
+  box-shadow: var(--shadow-md);
+}

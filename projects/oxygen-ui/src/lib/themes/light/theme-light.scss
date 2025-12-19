@@ -1,0 +1,38 @@
+/* Importa el tema base */
+@import '../base/theme-base.scss';
+@use '../../styles/main';
+
+/* Tema claro */
+:root {
+  /* Colores principales */
+  --primary: #0066ff;
+  --primary-hover: #0052cc;
+  --primary-contrast: #ffffff;
+
+  /* Colores de estados */
+  --success: #28a745;
+  --warning: #f1c40f;
+  --danger: #e74c3c;
+  --info: #3498db;
+
+  /* Superficies */
+  --surface: #ffffff;
+  --surface-alt: #f3f4f6;
+  --surface-border: #d1d5db;
+
+  /* Texto */
+  --text-color: #1f2937;
+  --text-muted: #6b7280;
+
+  /* Neutros */
+  --neutral-100: #f3f4f6;
+  --neutral-200: #e5e7eb;
+  --neutral-300: #d1d5db;
+
+  /* Tipografía */
+  --font-family-base: 'Manrope', system-ui, sans-serif;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.10);
+}

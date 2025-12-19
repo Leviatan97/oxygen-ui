@@ -1,0 +1,30 @@
+/* Cargar la fuente variable Manrope */
+@font-face {
+  font-family: 'Manrope';
+  src: url('./fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback estáticos */
+@font-face {
+  font-family: 'Manrope';
+  src: url('./fonts/static/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('./fonts/static/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Variable global para usar la fuente */
+:root {
+  --font-primary: 'Manrope', sans-serif;
+}

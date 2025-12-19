@@ -1,0 +1,35 @@
+:root {
+  /* Colores principales */
+  --primary: #0066ff;
+  --primary-hover: #0052cc;
+  --secondary: #6c757d;
+
+  /* Colores de estado */
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --info: #0dcaf0;
+
+  /* Tipografía */
+  --font-primary: 'Manrope', sans-serif;
+  --font-size-base: 14px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 600;
+
+  /* Bordes y sombras */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 3px 8px rgba(0,0,0,0.15);
+
+  /* Espaciados */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 20px;
+
+  /* Animaciones */
+  --transition: 150ms ease-in-out;
+}

@@ -1,0 +1,31 @@
+/* Importar variables y mixins */
+@use './variables';
+@use './mixins';
+
+/* Reset liviano */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text-color, #333);
+
+  /* Opcional: estilos globales base */
+  line-height: 1.4;
+  font-size: var(--font-size-base);
+  margin: 0;
+}
+
+/* Clases utilitarias */
+.oxygen-ui-shadow-sm {
+  @include mixins.shadow-sm;
+}
+
+.oxygen-ui-shadow-md {
+  @include mixins.shadow-md;
+}
+
+.oxygen-ui-flex-center {
+  @include mixins.flex-center;
+}
