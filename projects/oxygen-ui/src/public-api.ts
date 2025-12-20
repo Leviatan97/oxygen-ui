@@ -4,3 +4,4 @@
 
 export * from './lib/services/oxygen-ui.service';
 export * from './lib/components/sample/sample.component';
+export * from './lib/components/button/button.component';

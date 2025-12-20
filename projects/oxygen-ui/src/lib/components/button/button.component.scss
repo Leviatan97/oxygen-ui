@@ -1,0 +1,87 @@
+:host {
+  display: inline-block;
+}
+
+.oxy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // Sizes
+  &--sm {
+    padding: 4px 12px;
+    font-size: 0.875rem;
+    height: 32px;
+  }
+
+  &--md {
+    padding: 8px 16px;
+    font-size: 1rem;
+    height: 40px;
+  }
+
+  &--lg {
+    padding: 12px 24px;
+    font-size: 1.125rem;
+    height: 48px;
+  }
+
+  // Variants
+  &--primary {
+    background-color: var(--oxy-primary, #1976d2);
+    color: var(--oxy-on-primary, #ffffff);
+    &:hover:not(:disabled) {
+      background-color: var(--oxy-primary-dark, #1565c0);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--oxy-secondary, #9c27b0);
+    color: var(--oxy-on-secondary, #ffffff);
+    &:hover:not(:disabled) {
+      background-color: var(--oxy-secondary-dark, #7b1fa2);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border-color: var(--oxy-primary, #1976d2);
+    color: var(--oxy-primary, #1976d2);
+    &:hover:not(:disabled) {
+      background-color: rgba(25, 118, 210, 0.04);
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: var(--oxy-primary, #1976d2);
+    &:hover:not(:disabled) {
+      background-color: rgba(25, 118, 210, 0.08);
+    }
+  }
+
+  &--danger {
+    background-color: var(--oxy-error, #d32f2f);
+    color: #ffffff;
+    &:hover:not(:disabled) {
+      background-color: var(--oxy-error-dark, #c62828);
+    }
+  }
+}
