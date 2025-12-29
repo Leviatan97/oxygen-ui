@@ -1,14 +1,23 @@
 :root {
   /* Colores principales */
-  --primary: #0066ff;
-  --primary-hover: #0052cc;
-  --secondary: #6c757d;
+  --oxy-primary: #0066ff;
+  --oxy-primary-hover: #0052cc;
+  /* Color secundario */
+  --oxy-secondary: #6c757d;
+  --oxy-secondary-hover: #5c636a;
 
   /* Colores de estado */
-  --success: #28a745;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --info: #0dcaf0;
+  --oxy-success: #28a745;
+  --oxy-success-hover: #218838;
+
+  --oxy-warning: #ffc107;
+  --oxy-warning-hover: #e0a800;
+
+  --oxy-danger: #dc3545;
+  --oxy-danger-hover: #c82333;
+
+  --oxy-info: #0dcaf0;
+  --oxy-info-hover: #0bb5d6;
 
   /* Tipografía */
   --font-primary: 'Manrope', sans-serif;
