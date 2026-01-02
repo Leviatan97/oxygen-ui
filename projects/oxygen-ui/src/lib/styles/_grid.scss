@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'sass:math';
+@use './breakpoints' as b;
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+
+.ox-row {
+  --ox-gutter-x: #{$grid-gutter-width};
+  --ox-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--ox-gutter-y) * -1);
+  margin-right: calc(var(--ox-gutter-x) * -0.5);
+  margin-left: calc(var(--ox-gutter-x) * -0.5);
+
+  & > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--ox-gutter-x) * 0.5);
+    padding-left: calc(var(--ox-gutter-x) * 0.5);
+    margin-top: var(--ox-gutter-y);
+  }
+}
+
+.ox-col {
+  flex: 1 0 0%;
+}
+
+@each $name, $value in b.$breakpoints {
+  @include b.up($name) {
+    .ox-col-#{$name} {
+      flex: 1 0 0%;
+    }
+
+    @for $i from 1 through $grid-columns {
+      .ox-col-#{$name}-#{$i} {
+        flex: 0 0 auto;
+        width: math.percentage(math.div($i, $grid-columns));
+      }
+    }
+  }
+}

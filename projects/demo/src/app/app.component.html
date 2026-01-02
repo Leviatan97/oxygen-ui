@@ -1,96 +1,407 @@
-<div style="text-align: center">
-  <h1>Oxygen UI Demo</h1>
-  <ox-sample></ox-sample>
-  <ox-button label="Click me"></ox-button>
-  <ox-button label="Click me" variant="secondary"></ox-button>
-  <ox-button label="Click me" variant="danger"></ox-button>
-  <ox-button label="Click me" variant="success"></ox-button>
-  <ox-button label="Click me" variant="warning"></ox-button>
-  <ox-button label="Click me" variant="info"></ox-button>
-  <ox-button label="Click me" variant="outline-primary"></ox-button>
-  <ox-button label="Click me" variant="outline-secondary"></ox-button>
-  <ox-button label="Click me" variant="outline-danger"></ox-button>
-  <ox-button label="Click me" variant="outline-success"></ox-button>
-  <ox-button label="Click me" variant="outline-warning"></ox-button>
-  <ox-button label="Click me" variant="outline-info"></ox-button>
-  <ox-button label="Click me" variant="ghost-primary"></ox-button>
-  <ox-button label="Click me" variant="ghost-secondary"></ox-button>
-  <ox-button label="Click me" variant="ghost-danger"></ox-button>
-  <ox-button label="Click me" variant="ghost-success"></ox-button>
-  <ox-button label="Click me" variant="ghost-warning"></ox-button>
-  <ox-button label="Click me" variant="ghost-info"></ox-button>
+<div class="ox-container ox-mt-4">
+  <div class="ox-text-center">
+    <h1>Oxygen UI Demo</h1>
+    <ox-sample></ox-sample>
+    
+    <div class="ox-mt-4">
+      <h3>Button Variants</h3>
+      <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
+        <ox-button label="Primary"></ox-button>
+        <ox-button label="Secondary" variant="secondary"></ox-button>
+        <ox-button label="Danger" variant="danger"></ox-button>
+        <ox-button label="Success" variant="success"></ox-button>
+        <ox-button label="Warning" variant="warning"></ox-button>
+        <ox-button label="Info" variant="info"></ox-button>
+      </div>
+    </div>
 
-  <ox-button label="Click me" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="secondary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="danger" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="success" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="warning" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="info" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-primary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-secondary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-danger" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-success" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-warning" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-info" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-primary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-secondary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-danger" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-success" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-warning" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-info" [disabled]="true"></ox-button>
+    <div class="ox-mt-4">
+      <h3>Outline & Ghost</h3>
+      <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
+        <ox-button label="Outline Primary" variant="outline-primary"></ox-button>
+        <ox-button label="Ghost Primary" variant="ghost-primary"></ox-button>
+      </div>
+    </div>
 
-  <ox-button label="Click me" borderRadius="15px"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="secondary"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="danger"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="success"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="warning"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="info"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-primary"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-secondary"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-danger"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-success"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-warning"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="outline-info"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-primary"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-secondary"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-danger"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-success"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-warning"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="ghost-info"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="secondary" [disabled]="true"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="danger" [disabled]="true"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="success" [disabled]="true"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="warning" [disabled]="true"></ox-button>
-  <ox-button label="Click me" borderRadius="15px" variant="info" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-primary" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-secondary" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-danger" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-success" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-warning" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="outline-info" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-primary" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-secondary" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-danger" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-success" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-warning" borderRadius="15px" [disabled]="true"></ox-button>
-  <ox-button label="Click me" variant="ghost-info" borderRadius="15px" [disabled]="true"></ox-button>
+    <div class="ox-mt-5 ox-border-top ox-pt-4">
+      <h3>Container Types</h3>
+      <div class="ox-mb-4">
+        <p>Standard Container (ox-container):</p>
+        <div class="ox-container ox-bg-primary ox-border ox-border-primary ox-border-dashed ox-p-4 ox-text-white">
+          I'm a standard container. My max-width changes with the viewport.
+        </div>
+      </div>
 
-  <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
-    <ox-button label="Shadow SM" boxShadow="sm"></ox-button>
-    <ox-button label="Shadow MD" boxShadow="md"></ox-button>
-    <ox-button label="Shadow none" boxShadow="none"></ox-button>
-  </div>
+      <div class="ox-mb-4">
+        <p>Fluid Container (ox-container-fluid):</p>
+        <div class="ox-container-fluid ox-bg-danger ox-border ox-border-danger ox-border-dashed ox-p-4 ox-text-white">
+          I'm a fluid container. I'm always 100% wide.
+        </div>
+      </div>
 
-  <div style="margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem;">
-    <h3>Attribute Selector Support (button[oxy-button])</h3>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <button oxy-button>Primary Attribute</button>
-      <button oxy-button variant="secondary">Secondary Attribute</button>
-      <button oxy-button variant="outline-danger">Outline Danger</button>
-      <button oxy-button variant="ghost-success" size="lg">Ghost Success LG</button>
-      <button oxy-button [disabled]="true">Disabled Attribute</button>
+      <div class="ox-mb-4">
+        <p>Responsive Container (ox-container-md):</p>
+        <div class="ox-container-md ox-bg-success ox-border ox-border-success ox-border-dashed ox-p-4 ox-text-white">
+          I'm fluid until MD (768px), then I become a fixed-width container.
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4">
+      <h3>Refactored Button System (Token-based)</h3>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Solid Variants:</p>
+        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+          <button ox-button variant="primary">Primary</button>
+          <button ox-button variant="secondary">Secondary</button>
+          <button ox-button variant="success">Success</button>
+          <button ox-button variant="danger">Danger</button>
+          <button ox-button variant="warning">Warning</button>
+          <button ox-button variant="info">Info</button>
+        </div>
+      </div>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Outline Variants:</p>
+        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+          <button ox-button variant="outline-primary">Outline Primary</button>
+          <button ox-button variant="outline-secondary">Outline Secondary</button>
+          <button ox-button variant="outline-success">Outline Success</button>
+        </div>
+      </div>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Ghost Variants:</p>
+        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+          <button ox-button variant="ghost-primary">Ghost Primary</button>
+          <button ox-button variant="ghost-warning">Ghost Warning</button>
+          <button ox-button variant="ghost-info">Ghost Info</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4">
+      <h3>Grid System (ox-row & ox-col)</h3>
+      
+      <p class="ox-mb-2">Auto-adjusting columns:</p>
+      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+      </div>
+
+      <p class="ox-mb-2">12-column layout (sm-4, sm-8):</p>
+      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col-sm-4 ox-p-3 ox-bg-warning ox-border ox-border-warning">sm-4 (33.3%)</div>
+        <div class="ox-col-sm-8 ox-p-3 ox-bg-info ox-border ox-border-info">sm-8 (66.6%)</div>
+      </div>
+
+      <p class="ox-mb-2">Mixed sizes (xs-12, md-4):</p>
+      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3">100% on XS, 33% on MD</div>
+        <div class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3">100% on XS, 33% on MD</div>
+        <div class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3">100% on XS, 33% on MD</div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4">
+      <h3>Gutter Utilities (ox-g-*, ox-gx-*, ox-gy-*)</h3>
+      
+      <p class="ox-mb-2">No Gutter (ox-g-0):</p>
+      <div class="ox-row ox-g-0 ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 1</div>
+        <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 2</div>
+      </div>
+
+      <p class="ox-mb-2">Large Gutter (ox-g-5):</p>
+      <div class="ox-row ox-g-5 ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 1</div></div>
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 2</div></div>
+      </div>
+
+      <p class="ox-mb-2">Custom Horizontal & Vertical (ox-gx-2 ox-gy-4):</p>
+      <div class="ox-row ox-gx-2 ox-gy-4 ox-mb-4 ox-bg-light ox-border">
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 1</div></div>
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 2</div></div>
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 3</div></div>
+        <div class="ox-col-6"><div class="ox-bg-light ox-border ox-p-3">Col 4</div></div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Flexbox Utilities (ox-d-flex, etc.)</h3>
+      
+      <p class="ox-mb-2">Justify Content Center & Align Items Center:</p>
+      <div class="ox-d-flex ox-justify-content-center ox-align-items-center ox-mb-4 ox-bg-light ox-border ox-h-100px">
+        <div class="ox-p-3 ox-rounded ox-bg-primary ox-text-white">Centered Item</div>
+      </div>
+
+      <p class="ox-mb-2">Flex Direction (Column on mobile, Row on md+):</p>
+      <div class="ox-d-flex ox-flex-column ox-flex-md-row ox-justify-content-between ox-mb-4 ox-bg-light ox-border ox-p-2">
+        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 1</div>
+        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 2</div>
+        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 3</div>
+      </div>
+
+      <p class="ox-mb-2">Flex Grow:</p>
+      <div class="ox-d-flex ox-mb-4 ox-bg-light ox-border ox-p-2">
+        <div class="ox-flex-grow-1 ox-border ox-border-success ox-bg-success ox-p-3 ox-m-1">I grow (ox-flex-grow-1)</div>
+        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Normal</div>
+      </div>
+    </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Border Utilities (ox-border-*)</h3>
+      
+      <p class="ox-mb-2">Different Sides & Sizes:</p>
+      <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
+        <div class="ox-p-3 ox-border-3 ox-border-primary ox-border-solid">Solid Primary</div>
+        <div class="ox-p-3 ox-border-3 ox-border-danger ox-border-dashed">Dashed Danger</div>
+        <div class="ox-p-3 ox-border-3 ox-border-success ox-border-dotted">Dotted Success</div>
+        <div class="ox-p-3 ox-border-3 ox-border-warning ox-border-double">Double Warning</div>
+      </div>
+    </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Text Color Utilities (ox-text-*)</h3>
+      
+      <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
+        <span class="ox-text-primary">Primary Text</span>
+        <span class="ox-text-secondary">Secondary Text</span>
+        <span class="ox-text-success">Success Text</span>
+        <span class="ox-text-warning">Warning Text</span>
+        <span class="ox-text-danger">Danger Text</span>
+        <span class="ox-text-info">Info Text</span>
+        <span class="ox-text-muted">Muted Text</span>
+      </div>
+    </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Radius & Shadow Utilities (ox-rounded-*, ox-shadow-*)</h3>
+      
+      <div class="ox-d-flex ox-gap-4 ox-flex-wrap ox-justify-content-center ox-p-4">
+        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-sm ox-shadow-sm">Rounded SM & Shadow SM</div>
+        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-md ox-shadow-md">Rounded MD & Shadow MD</div>
+        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-lg ox-shadow-md">Rounded LG & Shadow MD</div>
+        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-circle ox-d-flex ox-align-items-center ox-justify-content-center ox-w-120px ox-h-120px">Circle</div>
+        <div class="ox-p-2 ox-px-4 ox-bg-light ox-border ox-rounded-pill">Pill Shape</div>
+      </div>
+    </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Display Utilities (ox-d-*)</h3>
+      
+      <div class="ox-mb-3">
+        <p>Responsive Display (Block on mobile, Inline-Block on MD+):</p>
+        <div class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2">Item 1</div>
+        <div class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2">Item 2</div>
+      </div>
+
+      <div class="ox-mb-3">
+        <p>Hide on small screens (ox-d-none ox-d-lg-block):</p>
+        <div class="ox-d-none ox-d-lg-block ox-bg-light ox-border ox-p-3 ox-text-success">
+          I'm only visible on LG (992px) and above!
+        </div>
+      </div>
+    </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Float Utilities (ox-float-*)</h3>
+      
+      <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
+        <div class="ox-float-start ox-p-3 ox-bg-primary ox-rounded">Floated Start</div>
+        <div class="ox-float-end ox-p-3 ox-bg-danger ox-rounded">Floated End</div>
+      </div>
+      <p class="ox-mt-2 ox-text-muted">Uses .ox-clearfix to contain the floats.</p>
+
+      <div class="ox-mt-3">
+        <p>Responsive Float (End on mobile, Start on MD+):</p>
+        <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
+          <div class="ox-float-end ox-float-md-start ox-p-3 ox-bg-success ox-rounded">Responsive Float</div>
+        </div>
+      </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Typography: Headings & Subtitles (Fluid Scaling)</h3>
+      <p class="ox-p-sm ox-mb-3 ox-text-muted">These elements automatically scale their size between mobile (576px) and desktop (1200px) viewports.</p>
+      <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
+        <h1 class="ox-h1 ox-mb-1">H1: Heading Level 1</h1>
+        <h2 class="ox-h2 ox-mb-1">H2: Heading Level 2</h2>
+        <h3 class="ox-h3 ox-mb-3">H3: Heading Level 3</h3>
+        
+        <p class="ox-subtitle1 ox-mb-1">Subtitle 1: Large & Medium Weight</p>
+        <p class="ox-subtitle2 ox-mb-1">Subtitle 2: Medium & Medium Weight</p>
+        <p class="ox-subtitle3 ox-mb-0">Subtitle 3: Base & Medium Weight</p>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Typography: Paragraphs & Weights</h3>
+      <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
+        <p class="ox-p ox-mb-3">
+          I'm a standard paragraph (.ox-p). My line-height is 1.6 to ensure great readability. 
+          Everything in Oxygen UI is designed for consistency.
+        </p>
+        <p class="ox-p-sm ox-mb-4 ox-text-muted">
+          I'm a small paragraph (.ox-p-sm). Used for metadata, captions, or less important info.
+        </p>
+
+        <div class="ox-d-flex ox-gap-3 ox-flex-wrap">
+          <span class="ox-fw-light">Light (300)</span>
+          <span class="ox-fw-normal">Normal (400)</span>
+          <span class="ox-fw-medium">Medium (500)</span>
+          <span class="ox-fw-semibold">Semibold (600)</span>
+          <span class="ox-fw-bold">Bold (700)</span>
+        </div>
+
+        <div class="ox-mt-3">
+          <span class="ox-text-italic">Italic Text</span> | 
+          <span class="ox-text-decoration-underline">Underlined Text</span> | 
+          <span class="ox-text-transform-uppercase">uppercase text</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Vertical Alignment Utilities (ox-align-*)</h3>
+      <div class="ox-bg-light ox-p-4 ox-rounded">
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-baseline">Baseline</div>
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-top">Top</div>
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-middle">Middle</div>
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-bottom">Bottom</div>
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-text-top">Text-Top</div>
+        <div class="ox-border ox-p-2 ox-d-inline-block ox-align-text-bottom">Text-Bottom</div>
+        <span class="ox-ms-3">Reference Text</span>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Positioning Utilities (ox-position-*)</h3>
+      <div class="ox-row ox-g-3">
+        <div class="ox-col-md-4">
+          <p class="ox-mb-2">Absolute Centering:</p>
+          <div class="ox-position-relative ox-bg-light ox-border ox-h-150px">
+            <div class="ox-position-absolute ox-top-50 ox-left-50 ox-translate-middle ox-p-3 ox-bg-primary ox-text-white ox-rounded">
+              I'm centered!
+            </div>
+          </div>
+          <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-left-50</p>
+        </div>
+        <div class="ox-col-md-4">
+          <p class="ox-mb-2">Corner Pins (Pixel + Alias):</p>
+          <div class="ox-position-relative ox-bg-light ox-border ox-h-150px">
+            <div class="ox-position-absolute ox-top-10px ox-left-10px ox-p-2 ox-bg-danger ox-text-white ox-rounded-sm ox-fs-xs">10px 10px</div>
+            <div class="ox-position-absolute ox-top-0 ox-right-0 ox-p-2 ox-bg-success ox-text-white ox-rounded-sm ox-fs-xs">Top Right</div>
+          </div>
+          <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-left-10px and .ox-right-0</p>
+        </div>
+        <div class="ox-col-md-4">
+          <p class="ox-mb-2">Full Inset (inset-x/y):</p>
+          <div class="ox-position-relative ox-bg-light ox-border ox-h-150px ox-p-4">
+            <div class="ox-position-absolute ox-inset-x-10px ox-top-10px ox-bg-info ox-text-white ox-p-2 ox-rounded-sm ox-text-center">
+              Inset X 10px
+            </div>
+          </div>
+          <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-inset-x-10px</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Z-Index & Opacity Utilities</h3>
+      <div class="ox-row ox-g-3">
+        <div class="ox-col-md-6">
+          <p class="ox-mb-2">Overlapping (Z-Index):</p>
+          <div class="ox-position-relative ox-h-100px">
+            <div class="ox-position-absolute ox-top-0 ox-start-0 ox-w-50 ox-h-50 ox-bg-primary ox-z-20 ox-p-2 ox-text-white ox-rounded">Z-20</div>
+            <div class="ox-position-absolute ox-top-10px ox-start-10px ox-w-50 ox-h-50 ox-bg-danger ox-z-10 ox-p-2 ox-text-white ox-rounded">Z-10</div>
+          </div>
+        </div>
+        <div class="ox-col-md-6">
+          <p class="ox-mb-2">Opacity Levels:</p>
+          <div class="ox-d-flex ox-gap-2">
+            <div class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-100 ox-rounded">100%</div>
+            <div class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-75 ox-rounded">75%</div>
+            <div class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-50 ox-rounded">50%</div>
+            <div class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-25 ox-rounded">25%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Object Fit Utilities (ox-object-*)</h3>
+      <div class="ox-row ox-g-3">
+        <div class="ox-col-md-6">
+          <p class="ox-mb-2">Object Cover (1x1 ratio):</p>
+          <img src="https://picsum.photos/400/300" class="ox-w-100 ox-h-150px ox-object-cover ox-rounded ox-border" alt="Cover">
+        </div>
+        <div class="ox-col-md-6">
+          <p class="ox-mb-2">Object Contain (1x1 ratio):</p>
+          <img src="https://picsum.photos/400/300" class="ox-w-100 ox-h-150px ox-object-contain ox-rounded ox-border ox-bg-light" alt="Contain">
+        </div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Sizing Utilities (ox-w-*, ox-h-*)</h3>
+      
+      <div class="ox-mb-3">
+        <p>Width Percentages (5% - 100%):</p>
+        <div class="ox-w-5 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded ox-fs-xs">5%</div>
+        <div class="ox-w-10 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded">10%</div>
+        <div class="ox-w-25 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded">w-25</div>
+        <div class="ox-w-50 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded">w-50</div>
+        <div class="ox-w-75 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded">w-75</div>
+        <div class="ox-w-100 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded">w-100</div>
+      </div>
+
+      <div class="ox-mb-3">
+        <p>Fixed Height with Width Percentages:</p>
+        <div class="ox-d-flex ox-gap-2 ox-h-100px">
+          <div class="ox-h-100 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded">h-100 w-25</div>
+          <div class="ox-h-75 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded">h-75 w-25</div>
+          <div class="ox-h-50 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded">h-50 w-25</div>
+          <div class="ox-h-25 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded">h-25 w-25</div>
+        </div>
+      </div>
+
+      <div class="ox-mb-3">
+        <p>Viewport Units & Auto:</p>
+        <div class="ox-w-auto ox-bg-info ox-text-white ox-p-2 ox-mb-1 ox-rounded ox-d-inline-block">w-auto (inline-block)</div>
+      </div>
+    </div>
+
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>General Spacing Utilities (ox-m*, ox-p*, ox-gap*)</h3>
+      
+      <div class="ox-mb-3">
+        <p class="ox-mb-2">Standard Scale (0-5):</p>
+        <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
+          <div class="ox-bg-primary ox-text-white ox-m-1 ox-p-1 ox-d-inline-block">m-1 p-1</div>
+          <div class="ox-bg-primary ox-text-white ox-m-3 ox-p-3 ox-d-inline-block">m-3 p-3</div>
+          <div class="ox-bg-primary ox-text-white ox-m-5 ox-p-5 ox-d-inline-block">m-5 p-5</div>
+        </div>
+      </div>
+
+      <div class="ox-mb-3">
+        <p class="ox-mb-2">Granular Pixel Scale (e.g., 10px, 32px):</p>
+        <div class="ox-bg-light ox-p-4 ox-border ox-rounded ox-d-flex ox-flex-wrap ox-gap-16px">
+          <div class="ox-bg-danger ox-text-white ox-p-10px ox-rounded">p-10px</div>
+          <div class="ox-bg-danger ox-text-white ox-p-24px ox-rounded">p-24px</div>
+          <div class="ox-bg-danger ox-text-white ox-p-48px ox-rounded">p-48px</div>
+        </div>
+        <p class="ox-p-sm ox-mt-2 ox-text-muted">Flex container above uses .ox-gap-16px</p>
+      </div>
+
+      <div class="ox-mb-3">
+        <p class="ox-mb-2">Directional Aliases (l, r):</p>
+        <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
+          <div class="ox-bg-info ox-text-white ox-ml-5 ox-pl-4">ml-5 pl-4 (Left)</div>
+          <div class="ox-bg-warning ox-text-dark ox-mr-5 ox-pr-4">mr-5 pr-4 (Right)</div>
+        </div>
+      </div>
+
+      <div class="ox-mb-3">
+        <p class="ox-mb-2">Responsive Spacing (Padding 10px on mobile, 48px on MD+):</p>
+        <div class="ox-bg-success ox-text-white ox-p-10px ox-p-md-48px ox-rounded ox-text-center">
+          Watch my padding change on different screens!
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 <router-outlet />

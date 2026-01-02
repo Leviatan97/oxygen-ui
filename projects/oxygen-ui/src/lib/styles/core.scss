@@ -1,5 +1,6 @@
 /* Importar variables y mixins */
 @use './variables';
+@use './breakpoints';
 @use './mixins';
 
 /* Reset liviano */
@@ -29,3 +30,23 @@ body {
 .oxygen-ui-flex-center {
   @include mixins.flex-center;
 }
+
+/* Responsive utilities */
+.ox-hide-up-md {
+  @include breakpoints.up('md') {
+    display: none !important;
+  }
+}
+
+.ox-show-only-sm {
+  display: none !important;
+  @include breakpoints.only('sm') {
+    display: block !important;
+  }
+}
+
+/* Spacing utilities */
+.mt-4 { margin-top: 1.5rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.p-4 { padding: 1.5rem !important; }
+

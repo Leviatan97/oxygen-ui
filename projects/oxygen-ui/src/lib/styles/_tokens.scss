@@ -1,0 +1,78 @@
+// Design Tokens
+// This file contains only variables and maps. It produces no CSS output.
+
+// Breakpoints
+$breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Colors
+$text-colors: (
+  'primary': var(--oxy-primary),
+  'secondary': var(--oxy-secondary),
+  'success': var(--oxy-success),
+  'warning': var(--oxy-warning),
+  'danger': var(--oxy-danger),
+  'info': var(--oxy-info),
+  'white': #ffffff,
+  'black': #000000,
+  'muted': #6c757d
+);
+
+// Typography
+$font-sizes: (
+  'xs': 0.75rem,
+  'sm': 0.875rem,
+  'base': 1rem,
+  'lg': 1.125rem,
+  'xl': 1.25rem,
+  '2xl': 1.5rem,
+  '3xl': 1.875rem,
+  '4xl': 2.25rem,
+  '5xl': 3rem
+);
+
+$font-weights: (
+  'light': 300,
+  'normal': var(--font-weight-normal, 400),
+  'medium': 500,
+  'semibold': 600,
+  'bold': var(--font-weight-bold, 700)
+);
+
+// Spacing
+$spacings: (
+  '0': 0,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 1rem,
+  '4': 1.5rem,
+  '5': 3rem,
+  'auto': auto
+);
+
+$pixel-spacings: (2, 4, 8, 10, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 100);
+
+// Sizing
+$percentages: (5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100);
+
+// Effects
+$radii: (
+  'sm': var(--radius-sm),
+  'md': var(--radius-md),
+  'lg': var(--radius-lg),
+  'circle': 50%,
+  'pill': 50rem,
+  'none': 0
+);
+
+$shadows: (
+  'sm': var(--shadow-sm),
+  'md': var(--shadow-md),
+  'none': none
+);

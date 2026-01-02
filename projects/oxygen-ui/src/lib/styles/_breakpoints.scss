@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use 'sass:list';
+
+// Standard breakpoints
+$breakpoints: (
+  'xs': 0,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+) !default;
+
+// Mixin for mobile-first (min-width)
+@mixin up($name) {
+  $min: map.get($breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint name: #{$name}.";
+  }
+}
+
+// Mixin for desktop-first (max-width)
+@mixin down($name) {
+  $max: map.get($breakpoints, $name);
+  @if $max and $max > 0 {
+    @media (max-width: ($max - 0.02px)) {
+      @content;
+    }
+  } @else if $max == 0 {
+    // xs is 0, so down(xs) doesn't make much sense in a typical setup, 
+    // but we can just skip or handle if needed.
+    @warn "No max-width for 'xs' (0px).";
+  } @else {
+    @warn "Invalid breakpoint name: #{$name}.";
+  }
+}
+
+// Mixin for range (between two breakpoints)
+@mixin only($name) {
+  $min: map.get($breakpoints, $name);
+  $keys: map.keys($breakpoints);
+  $index: list.index($keys, $name);
+  
+  @if $index < list.length($keys) {
+    $next-key: list.nth($keys, $index + 1);
+    $max: map.get($breakpoints, $next-key);
+    
+    @media (min-width: $min) and (max-width: ($max - 0.02px)) {
+      @content;
+    }
+  } @else {
+    // If it's the last breakpoint (xxl), it just acts like up(xxl)
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+}

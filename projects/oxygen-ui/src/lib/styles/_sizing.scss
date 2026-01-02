@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use './tokens' as t;
+@use './breakpoints' as b;
+
+@mixin generate-sizing($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  @each $pct in t.$percentages {
+    .ox-w#{$prefix}-#{$pct} { width: $pct * 1% !important; }
+    .ox-h#{$prefix}-#{$pct} { height: $pct * 1% !important; }
+  }
+
+  .ox-w#{$prefix}-auto { width: auto !important; }
+  .ox-h#{$prefix}-auto { height: auto !important; }
+
+  .ox-vw#{$prefix}-100 { width: 100vw !important; }
+  .ox-vh#{$prefix}-100 { height: 100vh !important; }
+
+  .ox-mw#{$prefix}-100 { max-width: 100% !important; }
+  .ox-mh#{$prefix}-100 { max-height: 100% !important; }
+  
+  .ox-min-vw#{$prefix}-100 { min-width: 100vw !important; }
+  .ox-min-vh#{$prefix}-100 { min-height: 100vh !important; }
+
+  // Fixed sizes
+  @each $sz in t.$pixel-spacings {
+    .ox-w#{$prefix}-#{$sz}px { width: #{$sz}px !important; }
+    .ox-h#{$prefix}-#{$sz}px { height: #{$sz}px !important; }
+  }
+}
+
+// Base
+@include generate-sizing();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-sizing($name);
+    }
+  }
+}

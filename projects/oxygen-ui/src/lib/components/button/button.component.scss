@@ -1,11 +1,15 @@
-button.oxy-buttonTab, .oxy-button {
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/tokens' as t;
+
+.oxy-button {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: map.get(t.$spacings, '2');
   font-family: inherit;
-  font-weight: 500;
-  border-radius: 4px;
+  font-weight: map.get(t.$font-weights, 'medium');
+  border-radius: map.get(t.$radii, 'sm');
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
@@ -22,186 +26,66 @@ button.oxy-buttonTab, .oxy-button {
 
   // Sizes
   &.oxy-button--sm {
-    padding: 4px 12px;
-    font-size: 0.875rem;
+    padding: calc(map.get(t.$spacings, '1') / 2) map.get(t.$spacings, '3');
+    font-size: map.get(t.$font-sizes, 'sm');
     height: 32px;
   }
 
   &.oxy-button--md {
-    padding: 8px 16px;
-    font-size: 1rem;
+    padding: map.get(t.$spacings, '2') map.get(t.$spacings, '4');
+    font-size: map.get(t.$font-sizes, 'base');
     height: 40px;
   }
 
   &.oxy-button--lg {
-    padding: 12px 24px;
-    font-size: 1.125rem;
+    padding: map.get(t.$spacings, '3') map.get(t.$spacings, '5');
+    font-size: map.get(t.$font-sizes, 'lg');
     height: 48px;
   }
 
-  // Variants
-  &.oxy-button--primary {
-    background-color: var(--oxy-primary) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-primary-hover) !important;
-    }
-  }
+  // Dynamic Variants (Solid, Outline, Ghost)
+  @each $name, $color in t.$text-colors {
+    @if $name != 'white' and $name != 'black' and $name != 'muted' {
+      // Solid
+      &.oxy-button--#{$name} {
+        background-color: $color !important;
+        color: #ffffff !important;
+        &:hover:not(.oxy-button--disabled) {
+          filter: brightness(0.9) !important;
+        }
+      }
 
-  &.oxy-button--outline-primary {
-    background-color: transparent !important;
-    border-color: var(--oxy-primary) !important;
-    color: var(--oxy-primary) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(0, 102, 255, 0.2) !important;
-    }
-  }
+      // Outline
+      &.oxy-button--outline-#{$name} {
+        background-color: transparent !important;
+        border-color: $color !important;
+        color: $color !important;
+        &:hover:not(.oxy-button--disabled) {
+          background-color: rgba($color, 0.1) !important;
+        }
+      }
 
-  &.oxy-button--ghost-primary {
-    background-color: transparent !important;
-    color: var(--oxy-primary) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(0, 102, 255, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--secondary {
-    background-color: var(--oxy-secondary) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-secondary-hover) !important;
-    }
-  }
-
-  &.oxy-button--outline-secondary {
-    background-color: transparent !important;
-    border-color: var(--oxy-secondary) !important;
-    color: var(--oxy-secondary) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(108, 117, 125, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--ghost-secondary {
-    background-color: transparent !important;
-    color: var(--oxy-secondary) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(108, 117, 125, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--danger {
-    background-color: var(--oxy-danger) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-danger-hover) !important;
-    }
-  }
-
-  &.oxy-button--outline-danger {
-    background-color: transparent !important;
-    border-color: var(--oxy-danger) !important;
-    color: var(--oxy-danger) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(220, 53, 69, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--ghost-danger {
-    background-color: transparent !important;
-    color: var(--oxy-danger, #d32f2f) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(220, 53, 69, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--success {
-    background-color: var(--oxy-success) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-success-hover) !important;
-    }
-  }
-
-  &.oxy-button--outline-success {
-    background-color: transparent !important;
-    border-color: var(--oxy-success) !important;
-    color: var(--oxy-success) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(40, 167, 69, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--ghost-success {
-    background-color: transparent !important;
-    color: var(--oxy-success) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(40, 167, 69, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--warning {
-    background-color: var(--oxy-warning) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-warning-hover) !important;
-    }
-  }
-
-  &.oxy-button--outline-warning {
-    background-color: transparent !important;
-    border-color: var(--oxy-warning) !important;
-    color: var(--oxy-warning) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(255, 193, 7, 0.4) !important;
-    }
-  }
-
-  &.oxy-button--ghost-warning {
-    background-color: transparent !important;
-    color: var(--oxy-warning) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(255, 193, 7, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--info {
-    background-color: var(--oxy-info) !important;
-    color: #ffffff !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: var(--oxy-info-hover) !important;
-    }
-  }
-
-  &.oxy-button--outline-info {
-    background-color: transparent !important;
-    border-color: var(--oxy-info) !important;
-    color: var(--oxy-info) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(13, 175, 222, 0.2) !important;
-    }
-  }
-
-  &.oxy-button--ghost-info {
-    background-color: transparent !important;
-    color: var(--oxy-info) !important;
-    &:hover:not(.oxy-button--disabled) {
-      background-color: rgba(13, 175, 222, 0.2) !important;
+      // Ghost
+      &.oxy-button--ghost-#{$name} {
+        background-color: transparent !important;
+        color: $color !important;
+        &:hover:not(.oxy-button--disabled) {
+          background-color: rgba($color, 0.1) !important;
+        }
+      }
     }
   }
 
   // Shadows
-  &.oxy-button--shadow-sm {
-    box-shadow: var(--shadow-sm) !important;
-  }
-
-  &.oxy-button--shadow-md {
-    box-shadow: var(--shadow-md) !important;
+  @each $name, $value in t.$shadows {
+    &.oxy-button--shadow-#{$name} {
+      box-shadow: #{$value} !important;
+    }
   }
 }
 
-// Fallback for :host when used as ox-button component
 :host {
   display: inline-flex;
 }
+
 

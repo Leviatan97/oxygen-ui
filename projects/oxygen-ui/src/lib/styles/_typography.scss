@@ -1,0 +1,101 @@
+@use 'sass:map';
+@use 'sass:math';
+@use './tokens' as t;
+@use './breakpoints' as b;
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function fluid($min-size, $max-size, $min-breakpoint: 576px, $max-breakpoint: 1200px) {
+  $min-size-val: strip-unit($min-size);
+  $max-size-val: strip-unit($max-size);
+  $min-breakpoint-val: math.div(strip-unit($min-breakpoint), 16);
+  $max-breakpoint-val: math.div(strip-unit($max-breakpoint), 16);
+
+  $slope: math.div(($max-size-val - $min-size-val), ($max-breakpoint-val - $min-breakpoint-val));
+  $intercept: $min-size-val - $slope * $min-breakpoint-val;
+
+  @return clamp(#{$min-size}, calc(#{$intercept}rem + #{$slope * 100}vw), #{$max-size});
+}
+
+@mixin generate-typography($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  // Font Sizes
+  @each $name, $size in t.$font-sizes {
+    .ox-fs#{$prefix}-#{$name} { font-size: #{$size} !important; }
+  }
+
+  // Headings (Fluid)
+  .ox-h1#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, '4xl'), fluid(1.75rem, 3rem)) !important;
+    font-weight: map.get(t.$font-weights, 'bold') !important;
+    line-height: 1.2 !important;
+  }
+  .ox-h2#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, '3xl'), fluid(1.5rem, 2.25rem)) !important;
+    font-weight: map.get(t.$font-weights, 'semibold') !important;
+    line-height: 1.3 !important;
+  }
+  .ox-h3#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, '2xl'), fluid(1.25rem, 1.875rem)) !important;
+    font-weight: map.get(t.$font-weights, 'semibold') !important;
+    line-height: 1.4 !important;
+  }
+
+  // Subtitles (Fluid-ish)
+  .ox-subtitle1#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, 'xl'), fluid(1.125rem, 1.25rem)) !important;
+    font-weight: map.get(t.$font-weights, 'medium') !important;
+    line-height: 1.5 !important;
+  }
+  .ox-subtitle2#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, 'lg'), fluid(1.0625rem, 1.125rem)) !important;
+    font-weight: map.get(t.$font-weights, 'medium') !important;
+    line-height: 1.5 !important;
+  }
+  .ox-subtitle3#{$prefix} {
+    font-size: map.get(t.$font-sizes, 'base') !important;
+    font-weight: map.get(t.$font-weights, 'medium') !important;
+    line-height: 1.5 !important;
+  }
+
+  // Paragraphs
+  .ox-p#{$prefix} {
+    font-size: if($breakpoint, map.get(t.$font-sizes, 'base'), fluid(0.9375rem, 1rem)) !important;
+    font-weight: map.get(t.$font-weights, 'normal') !important;
+    line-height: 1.6 !important;
+  }
+  .ox-p-sm#{$prefix} {
+    font-size: map.get(t.$font-sizes, 'sm') !important;
+    font-weight: map.get(t.$font-weights, 'normal') !important;
+    line-height: 1.6 !important;
+  }
+
+  // Font Weights
+  @each $name, $weight in t.$font-weights {
+    .ox-fw#{$prefix}-#{$name} { font-weight: #{$weight} !important; }
+  }
+
+  // Text Alignment
+  .ox-text#{$prefix}-italic { font-style: italic !important; }
+  .ox-text#{$prefix}-normal { font-style: normal !important; }
+  .ox-text-decoration-none#{$prefix} { text-decoration: none !important; }
+  .ox-text-decoration-underline#{$prefix} { text-decoration: underline !important; }
+  .ox-text-transform-uppercase#{$prefix} { text-transform: uppercase !important; }
+  .ox-text-transform-lowercase#{$prefix} { text-transform: lowercase !important; }
+  .ox-text-transform-capitalize#{$prefix} { text-transform: capitalize !important; }
+}
+
+// Base
+@include generate-typography();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-typography($name);
+    }
+  }
+}

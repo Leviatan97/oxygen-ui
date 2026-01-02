@@ -1,0 +1,33 @@
+@use 'sass:math';
+@use './breakpoints' as b;
+
+$vertical-alignments: (
+  'baseline': baseline,
+  'top': top,
+  'middle': middle,
+  'bottom': bottom,
+  'text-top': text-top,
+  'text-bottom': text-bottom
+);
+
+@mixin generate-vertical-align($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  @each $name, $value in $vertical-alignments {
+    .ox-align#{$prefix}-#{$name} {
+      vertical-align: $value !important;
+    }
+  }
+}
+
+// Base
+@include generate-vertical-align();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-vertical-align($name);
+    }
+  }
+}

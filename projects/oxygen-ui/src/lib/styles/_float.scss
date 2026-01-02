@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use './breakpoints' as b;
+
+@mixin generate-float($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  .ox-float#{$prefix}-start { float: left !important; }
+  .ox-float#{$prefix}-end { float: right !important; }
+  .ox-float#{$prefix}-none { float: none !important; }
+
+  // Clearfix utility for the parent
+  .ox-clearfix#{$prefix}::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Base
+@include generate-float();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-float($name);
+    }
+  }
+}

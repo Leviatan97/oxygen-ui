@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use './breakpoints' as b;
+
+@mixin generate-utils($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  // Text alignment
+  .ox-text#{$prefix}-start { text-align: left !important; }
+  .ox-text#{$prefix}-center { text-align: center !important; }
+  .ox-text#{$prefix}-end { text-align: right !important; }
+
+}
+
+// Base
+@include generate-utils();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-utils($name);
+    }
+  }
+}
+
+// Border utilities
+$border-widths: (
+  '0': 0,
+  '1': 1px,
+  '2': 2px,
+  '3': 3px,
+  '4': 4px,
+  '5': 5px
+);
+$border-color: #dee2e6 !default;
+
+.ox-border { border: 1px solid $border-color !important; }
+.ox-border-top { border-top: 1px solid $border-color !important; }
+.ox-border-bottom { border-bottom: 1px solid $border-color !important; }
+.ox-border-left { border-left: 1px solid $border-color !important; }
+.ox-border-right { border-right: 1px solid $border-color !important; }
+
+@each $key, $val in $border-widths {
+  .ox-border-#{$key} { border-width: $val !important; border-style: solid; border-color: $border-color; }
+  .ox-border-top-#{$key} { border-top-width: $val !important; border-top-style: solid; border-top-color: $border-color; }
+  .ox-border-bottom-#{$key} { border-bottom-width: $val !important; border-bottom-style: solid; border-bottom-color: $border-color; }
+  .ox-border-left-#{$key} { border-left-width: $val !important; border-left-style: solid; border-left-color: $border-color; }
+  .ox-border-right-#{$key} { border-right-width: $val !important; border-right-style: solid; border-right-color: $border-color; }
+}
+
+// Border styles
+$border-styles: (
+  'solid': solid,
+  'dashed': dashed,
+  'dotted': dotted,
+  'double': double,
+  'none': none
+);
+
+@each $name, $val in $border-styles {
+  .ox-border-#{$name} { border-style: #{$val} !important; }
+}
+
+.ox-bg-light { background-color: #f8f9fa !important; }

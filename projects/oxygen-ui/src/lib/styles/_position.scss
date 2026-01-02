@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use './tokens' as t;
+@use './breakpoints' as b;
+
+@mixin generate-position($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  // Position types
+  .ox-position#{$prefix}-static   { position: static !important; }
+  .ox-position#{$prefix}-relative { position: relative !important; }
+  .ox-position#{$prefix}-absolute { position: absolute !important; }
+  .ox-position#{$prefix}-fixed    { position: fixed !important; }
+  .ox-position#{$prefix}-sticky   { position: sticky !important; }
+
+  // Coordinates
+  $coordinates: (0: 0, 50: 50%, 100: 100%);
+  @each $name, $val in $coordinates {
+    .ox-top#{$prefix}-#{$name}    { top: $val !important; }
+    .ox-bottom#{$prefix}-#{$name} { bottom: $val !important; }
+    .ox-start#{$prefix}-#{$name}, .ox-left#{$prefix}-#{$name}  { left: $val !important; }
+    .ox-end#{$prefix}-#{$name}, .ox-right#{$prefix}-#{$name}    { right: $val !important; }
+  }
+
+  // Pixel-based coordinates
+  @each $px in t.$pixel-spacings {
+    $val: #{$px}px;
+    .ox-top#{$prefix}-#{$px}px    { top: $val !important; }
+    .ox-bottom#{$prefix}-#{$px}px { bottom: $val !important; }
+    .ox-start#{$prefix}-#{$px}px, .ox-left#{$prefix}-#{$px}px  { left: $val !important; }
+    .ox-end#{$prefix}-#{$px}px, .ox-right#{$prefix}-#{$px}px    { right: $val !important; }
+  }
+
+  // Inset pairs (sus pares)
+  .ox-inset-x#{$prefix}-0 { left: 0 !important; right: 0 !important; }
+  .ox-inset-y#{$prefix}-0 { top: 0 !important; bottom: 0 !important; }
+  @each $px in t.$pixel-spacings {
+    $val: #{$px}px;
+    .ox-inset-x#{$prefix}-#{$px}px { left: $val !important; right: $val !important; }
+    .ox-inset-y#{$prefix}-#{$px}px { top: $val !important; bottom: $val !important; }
+  }
+
+  // Centering helpers
+  .ox-translate-middle#{$prefix} {
+    transform: translate(-50%, -50%) !important;
+  }
+  .ox-translate-middle-x#{$prefix} {
+    transform: translateX(-50%) !important;
+  }
+  .ox-translate-middle-y#{$prefix} {
+    transform: translateY(-50%) !important;
+  }
+}
+
+// Base
+@include generate-position();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-position($name);
+    }
+  }
+}

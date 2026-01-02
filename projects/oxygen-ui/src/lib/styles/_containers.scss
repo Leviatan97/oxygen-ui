@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use './breakpoints';
+
+$container-padding: 15px !default;
+
+// Max widths for each breakpoint
+$container-max-widths: (
+  'sm': 540px,
+  'md': 720px,
+  'lg': 960px,
+  'xl': 1140px,
+  'xxl': 1320px
+) !default;
+
+// Base container styles
+%container-base {
+  width: 100%;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Fixed-width container (fluid until the respective breakpoint)
+.ox-container {
+  @extend %container-base;
+
+  @each $name, $width in $container-max-widths {
+    @include breakpoints.up($name) {
+      max-width: $width;
+    }
+  }
+}
+
+// Fluid container (always 100% width)
+.ox-container-fluid {
+  @extend %container-base;
+}
+
+// Responsive containers (fluid until specified breakpoint, then fixed)
+// Example: .ox-container-md is 100% wide until 'md' breakpoint
+@each $name, $width in $container-max-widths {
+  .ox-container-#{$name} {
+    @extend %container-base;
+
+    $apply-max-width: false;
+
+    @each $bp-name, $bp-width in $container-max-widths {
+      @if $name == $bp-name {
+        $apply-max-width: true;
+      }
+
+      @if $apply-max-width {
+        @include breakpoints.up($bp-name) {
+          max-width: $bp-width;
+        }
+      }
+    }
+  }
+}

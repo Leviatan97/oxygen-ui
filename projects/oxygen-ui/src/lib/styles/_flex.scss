@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use './breakpoints' as b;
+
+$flex-properties: (
+  'flex-direction': (
+    'row': row,
+    'column': column,
+    'row-reverse': row-reverse,
+    'column-reverse': column-reverse
+  ),
+  'flex-wrap': (
+    'wrap': wrap,
+    'nowrap': nowrap,
+    'wrap-reverse': wrap-reverse
+  ),
+  'justify-content': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around,
+    'evenly': space-evenly
+  ),
+  'align-items': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'baseline': baseline,
+    'stretch': stretch
+  ),
+  'align-content': (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around,
+    'stretch': stretch
+  ),
+  'flex-grow': (
+    '0': 0,
+    '1': 1
+  ),
+  'flex-shrink': (
+    '0': 0,
+    '1': 1
+  )
+);
+
+// Helper to generate utilities
+@mixin generate-flex-utils($breakpoint: null) {
+  $prefix-base: if($breakpoint, '-#{$breakpoint}', '');
+  
+  @each $prop, $values in $flex-properties {
+    @each $key, $val in $values {
+      $class-name: '';
+      
+      @if $prop == 'flex-direction' {
+        $class-name: 'ox-flex#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key}';
+      } @else if $prop == 'flex-wrap' {
+        $class-name: 'ox-flex#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key}';
+      } @else if $prop == 'justify-content' {
+        $class-name: 'ox-justify-content#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key}';
+      } @else if $prop == 'align-items' {
+        $class-name: 'ox-align-items#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key}';
+      } @else if $prop == 'align-content' {
+        $class-name: 'ox-align-content#{if($breakpoint, "-#{$breakpoint}", "")}-#{$key}';
+      } @else if $prop == 'flex-grow' {
+        $class-name: 'ox-flex#{if($breakpoint, "-#{$breakpoint}", "")}-grow-#{$key}';
+      } @else if $prop == 'flex-shrink' {
+        $class-name: 'ox-flex#{if($breakpoint, "-#{$breakpoint}", "")}-shrink-#{$key}';
+      }
+
+      .#{$class-name} {
+        #{$prop}: #{$val} !important;
+      }
+    }
+  }
+
+  // Flex fill
+  .ox-flex#{if($breakpoint, "-#{$breakpoint}", "")}-fill {
+    flex: 1 1 auto !important;
+  }
+}
+
+// Base utilities
+@include generate-flex-utils();
+
+// Responsive utilities
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-flex-utils($name);
+    }
+  }
+}

@@ -15,32 +15,7 @@ export interface TypesButton {
   styleUrl: './button.component.scss',
   encapsulation: ViewEncapsulation.None,
   host: {
-    '[class.oxy-button]': 'true',
-    '[class.oxy-button--primary]': 'variant() === "primary"',
-    '[class.oxy-button--secondary]': 'variant() === "secondary"',
-    '[class.oxy-button--success]': 'variant() === "success"',
-    '[class.oxy-button--danger]': 'variant() === "danger"',
-    '[class.oxy-button--warning]': 'variant() === "warning"',
-    '[class.oxy-button--info]': 'variant() === "info"',
-    '[class.oxy-button--outline-primary]': 'variant() === "outline-primary"',
-    '[class.oxy-button--outline-secondary]': 'variant() === "outline-secondary"',
-    '[class.oxy-button--outline-success]': 'variant() === "outline-success"',
-    '[class.oxy-button--outline-danger]': 'variant() === "outline-danger"',
-    '[class.oxy-button--outline-warning]': 'variant() === "outline-warning"',
-    '[class.oxy-button--outline-info]': 'variant() === "outline-info"',
-    '[class.oxy-button--ghost-primary]': 'variant() === "ghost-primary"',
-    '[class.oxy-button--ghost-secondary]': 'variant() === "ghost-secondary"',
-    '[class.oxy-button--ghost-success]': 'variant() === "ghost-success"',
-    '[class.oxy-button--ghost-danger]': 'variant() === "ghost-danger"',
-    '[class.oxy-button--ghost-warning]': 'variant() === "ghost-warning"',
-    '[class.oxy-button--ghost-info]': 'variant() === "ghost-info"',
-    '[class.oxy-button--sm]': 'size() === "sm"',
-    '[class.oxy-button--md]': 'size() === "md"',
-    '[class.oxy-button--lg]': 'size() === "lg"',
-    '[class.oxy-button--shadow-sm]': 'boxShadow() === "sm"',
-    '[class.oxy-button--shadow-md]': 'boxShadow() === "md"',
-    '[class.oxy-button--shadow-none]': 'boxShadow() === "none"',
-    '[class.oxy-button--disabled]': 'disabled()',
+    '[class]': 'hostClasses()',
     '[attr.disabled]': 'disabled() ? "" : null',
     '[attr.aria-disabled]': 'disabled()',
     '[attr.aria-label]': 'ariaLabel() || null',
@@ -56,7 +31,7 @@ export class ButtonComponent {
   label = input<string>();
   variant = input<InputVariant>('primary');
   size = input<'sm' | 'md' | 'lg'>('sm');
-  boxShadow = input<'sm' | 'md' | 'none'>('sm');
+  boxShadow = input<'sm' | 'md' | 'none'>('none');
   disabled = input<boolean>(false);
   borderRadius = input<string>();
 

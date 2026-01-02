@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use './breakpoints' as b;
+
+$gutters: (
+  '0': 0,
+  '1': 0.25rem,
+  '2': 0.5rem,
+  '3': 1rem,
+  '4': 1.5rem,
+  '5': 3rem
+);
+
+@mixin generate-gutters($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  @each $key, $val in $gutters {
+    .ox-g#{$prefix}-#{$key},
+    .ox-gx#{$prefix}-#{$key} {
+      --ox-gutter-x: #{$val};
+    }
+
+    .ox-g#{$prefix}-#{$key},
+    .ox-gy#{$prefix}-#{$key} {
+      --ox-gutter-y: #{$val};
+    }
+  }
+}
+
+// Base
+@include generate-gutters();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-gutters($name);
+    }
+  }
+}

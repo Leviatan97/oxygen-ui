@@ -1,0 +1,87 @@
+@use 'sass:math';
+@use 'sass:map';
+@use './tokens' as t;
+@use './breakpoints' as b;
+
+@mixin generate-spacing($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  // Standard Scale (0-5 + auto)
+  @each $key, $val in t.$spacings {
+    .ox-m#{$prefix}-#{$key} { margin: $val !important; }
+    .ox-mt#{$prefix}-#{$key} { margin-top: $val !important; }
+    .ox-mb#{$prefix}-#{$key} { margin-bottom: $val !important; }
+    .ox-ms#{$prefix}-#{$key}, .ox-ml#{$prefix}-#{$key} { margin-left: $val !important; }
+    .ox-me#{$prefix}-#{$key}, .ox-mr#{$prefix}-#{$key} { margin-right: $val !important; }
+    .ox-mx#{$prefix}-#{$key} { 
+      margin-left: $val !important;
+      margin-right: $val !important;
+    }
+    .ox-my#{$prefix}-#{$key} { 
+      margin-top: $val !important;
+      margin-bottom: $val !important;
+    }
+
+    @if $key != 'auto' {
+      .ox-p#{$prefix}-#{$key} { padding: $val !important; }
+      .ox-pt#{$prefix}-#{$key} { padding-top: $val !important; }
+      .ox-pb#{$prefix}-#{$key} { padding-bottom: $val !important; }
+      .ox-ps#{$prefix}-#{$key}, .ox-pl#{$prefix}-#{$key} { padding-left: $val !important; }
+      .ox-pe#{$prefix}-#{$key}, .ox-pr#{$prefix}-#{$key} { padding-right: $val !important; }
+      .ox-px#{$prefix}-#{$key} { 
+        padding-left: $val !important;
+        padding-right: $val !important;
+      }
+      .ox-py#{$prefix}-#{$key} { 
+        padding-top: $val !important;
+        padding-bottom: $val !important;
+      }
+      .ox-gap#{$prefix}-#{$key} { gap: $val !important; }
+    }
+  }
+
+  // Pixel Scale (e.g. 10px)
+  @each $px in t.$pixel-spacings {
+    $val: #{$px}px;
+    .ox-m#{$prefix}-#{$px}px { margin: $val !important; }
+    .ox-mt#{$prefix}-#{$px}px { margin-top: $val !important; }
+    .ox-mb#{$prefix}-#{$px}px { margin-bottom: $val !important; }
+    .ox-ms#{$prefix}-#{$px}px, .ox-ml#{$prefix}-#{$px}px { margin-left: $val !important; }
+    .ox-me#{$prefix}-#{$px}px, .ox-mr#{$prefix}-#{$px}px { margin-right: $val !important; }
+    .ox-mx#{$prefix}-#{$px}px { 
+      margin-left: $val !important;
+      margin-right: $val !important;
+    }
+    .ox-my#{$prefix}-#{$px}px { 
+      margin-top: $val !important;
+      margin-bottom: $val !important;
+    }
+
+    .ox-p#{$prefix}-#{$px}px { padding: $val !important; }
+    .ox-pt#{$prefix}-#{$px}px { padding-top: $val !important; }
+    .ox-pb#{$prefix}-#{$px}px { padding-bottom: $val !important; }
+    .ox-ps#{$prefix}-#{$px}px, .ox-pl#{$prefix}-#{$px}px { padding-left: $val !important; }
+    .ox-pe#{$prefix}-#{$px}px, .ox-pr#{$prefix}-#{$px}px { padding-right: $val !important; }
+    .ox-px#{$prefix}-#{$px}px { 
+      padding-left: $val !important;
+      padding-right: $val !important;
+    }
+    .ox-py#{$prefix}-#{$px}px { 
+      padding-top: $val !important;
+      padding-bottom: $val !important;
+    }
+    .ox-gap#{$prefix}-#{$px}px { gap: $val !important; }
+  }
+}
+
+// Base
+@include generate-spacing();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-spacing($name);
+    }
+  }
+}

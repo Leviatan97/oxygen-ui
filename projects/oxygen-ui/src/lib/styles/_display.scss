@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use './breakpoints' as b;
+
+$display-values: (
+  'none': none,
+  'inline': inline,
+  'inline-block': inline-block,
+  'block': block,
+  'grid': grid,
+  'inline-grid': inline-grid,
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'table': table,
+  'table-row': table-row,
+  'table-cell': table-cell
+);
+
+@mixin generate-display($breakpoint: null) {
+  $prefix: if($breakpoint, '-#{$breakpoint}', '');
+
+  @each $key, $val in $display-values {
+    .ox-d#{$prefix}-#{$key} {
+      display: $val !important;
+    }
+  }
+}
+
+// Base
+@include generate-display();
+
+// Responsive
+@each $name, $value in b.$breakpoints {
+  @if $name != 'xs' {
+    @include b.up($name) {
+      @include generate-display($name);
+    }
+  }
+}
