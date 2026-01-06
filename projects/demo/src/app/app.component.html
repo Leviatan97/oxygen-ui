@@ -400,6 +400,87 @@
           Watch my padding change on different screens!
         </div>
       </div>
+    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+      <h3>Accordion Component</h3>
+      
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Single Selection (default):</p>
+        <ox-accordion>
+          <ox-accordion-item title="What is Oxygen UI?">
+            Oxygen UI is a modern, high-performance UI library for Angular applications, focusing on clean design and developer experience.
+          </ox-accordion-item>
+          <ox-accordion-item title="Is it responsive?">
+            Yes, all components are built with responsiveness in mind, utilizing a utility-first CSS approach.
+          </ox-accordion-item>
+          <ox-accordion-item title="Can I customize the themes?">
+            Absolutely! Oxygen UI supports custom theming through CSS variables and a powerful utility framework.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Multiple Selection (multi="true"):</p>
+        <ox-accordion [multi]="true">
+          <ox-accordion-item title="Feature: Animations">
+            Smooth animations using CSS transitions for a premium feel.
+          </ox-accordion-item>
+          <ox-accordion-item title="Feature: Accessibility">
+            Built with ARIA support and keyboard navigation in mind.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Custom Border Radius (borderRadius="20px"):</p>
+        <ox-accordion borderRadius="20px">
+          <ox-accordion-item title="Customized Look">
+            You can easily change the border-radius to match your brand's style.
+          </ox-accordion-item>
+          <ox-accordion-item title="Another Item">
+            The border radius is applied to the main container.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Medium Shadow (boxShadow="md"):</p>
+        <ox-accordion boxShadow="md">
+          <ox-accordion-item title="I have a bigger shadow">
+            The shadow level can be adjusted.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Small Shadow (boxShadow="sm"):</p>
+        <ox-accordion boxShadow="sm">
+          <ox-accordion-item title="I have a smaller shadow">
+            The shadow level can be adjusted.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Accordion Item Color Variants (Solid, Outline, Ghost):</p>
+        <ox-accordion boxShadow="sm">
+          <ox-accordion-item title="Solid Primary" color="primary">
+            Solid background with white text.
+          </ox-accordion-item>
+          <ox-accordion-item title="Outline Success" color="outline-success">
+            Outline border with success color.
+          </ox-accordion-item>
+          <ox-accordion-item title="Ghost Danger" color="ghost-danger">
+            Transparent background with danger color text (like a ghost button).
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">No Shadow (boxShadow="none"):</p>
+        <ox-accordion boxShadow="none">
+          <ox-accordion-item title="I have no shadow">
+            Flat design is also possible.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
     </div>
   </div>
 </div>

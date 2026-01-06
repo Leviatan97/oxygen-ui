@@ -1,0 +1,26 @@
+<div class="ox-accordion-item" [class.ox-accordion-item--expanded]="expanded()">
+  <div role="heading" [attr.aria-level]="headingLevel()" class="ox-accordion-item__header-wrapper">
+    <button type="button" 
+            [id]="headerId()"
+            [class]="headerClasses()" 
+            (click)="toggle()" 
+            [attr.aria-expanded]="expanded()"
+            [attr.aria-controls]="panelId()">
+      <span class="ox-accordion-item__title">{{ title() }}</span>
+      <span class="ox-accordion-item__icon" [class.ox-accordion-item__icon--rotated]="expanded()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div [id]="panelId()"
+       class="ox-accordion-item__content" 
+       role="region"
+       [attr.aria-labelledby]="headerId()"
+       [style.max-height]="expanded() ? '1000px' : '0'">
+    <div class="ox-accordion-item__content-inner">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

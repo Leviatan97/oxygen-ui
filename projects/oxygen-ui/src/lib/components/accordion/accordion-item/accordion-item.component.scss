@@ -1,0 +1,110 @@
+@use 'sass:map';
+@use '../../../styles/tokens' as t;
+
+.ox-accordion-item {
+  background-color: var(--ox-bg-secondary, #ffffff);
+  transition: all 0.3s ease;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ox-text-primary, #333);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--ox-hover-bg, rgba(0, 0, 0, 0.05));
+    }
+
+    // Color and Variant variants
+    @each $name, $color in t.$text-colors {
+      @if $name != 'white' and $name != 'black' and $name != 'muted' {
+        
+        // Solid
+        &--#{$name} {
+          background-color: $color !important;
+          color: #ffffff !important;
+          &:hover {
+            filter: brightness(0.9) !important;
+          }
+        }
+
+        // Outline
+        &--outline-#{$name} {
+          background-color: transparent !important;
+          border-bottom: 2px solid $color !important; // Special look for accordion
+          color: $color !important;
+          &:hover {
+            background-color: color-mix(in srgb, #{$color}, transparent 90%) !important;
+          }
+        }
+
+        // Ghost
+        &--ghost-#{$name} {
+          background-color: transparent !important;
+          color: $color !important;
+          &:hover {
+            background-color: color-mix(in srgb, #{$color}, transparent 90%) !important;
+          }
+        }
+      }
+    }
+  }
+
+  &__title {
+    flex: 1;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: inherit;
+
+    &--rotated {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__content-inner {
+    padding: 1rem 1.5rem;
+    color: var(--ox-text-secondary, #666);
+    line-height: 1.5;
+  }
+
+  &--expanded {
+    .ox-accordion-item__header {
+      // Default expanded border if not a solid color
+      &:not([class*="--primary"]):not([class*="--secondary"]):not([class*="--success"]):not([class*="--danger"]):not([class*="--warning"]):not([class*="--info"]) {
+        border-bottom: 1px solid var(--ox-border-color, #e0e0e0);
+      }
+      
+      // If it's a solid variant, we might want a darker bottom border or none
+    }
+  }
+}
+
+// Add border-top to all items except the first one
+:host:not(:first-child) {
+  .ox-accordion-item {
+    border-top: 1px solid var(--ox-border-color, #e0e0e0);
+  }
+}
