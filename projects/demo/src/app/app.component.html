@@ -443,32 +443,32 @@
       </div>
 
       <div class="ox-mb-4">
-        <p class="ox-mb-2">Medium Shadow (boxShadow="md"):</p>
-        <ox-accordion boxShadow="md">
-          <ox-accordion-item title="I have a bigger shadow">
-            The shadow level can be adjusted.
+        <p class="ox-mb-2">Medium Shadow on All Items (boxShadow="md"):</p>
+        <ox-accordion>
+          <ox-accordion-item title="Item with shadow" boxShadow="md">
+            Each item can have its own shadow settings.
+          </ox-accordion-item>
+          <ox-accordion-item title="Another item with shadow" boxShadow="md">
+            This works in contiguous mode too.
           </ox-accordion-item>
         </ox-accordion>
       </div>
       <div class="ox-mb-4">
         <p class="ox-mb-2">Small Shadow (boxShadow="sm"):</p>
-        <ox-accordion boxShadow="sm">
-          <ox-accordion-item title="I have a smaller shadow">
+        <ox-accordion>
+          <ox-accordion-item title="I have a smaller shadow" boxShadow="sm">
             The shadow level can be adjusted.
           </ox-accordion-item>
         </ox-accordion>
       </div>
       <div class="ox-mb-4">
-        <p class="ox-mb-2">Accordion Item Color Variants (Solid, Outline, Ghost):</p>
-        <ox-accordion boxShadow="sm">
-          <ox-accordion-item title="Solid Primary" color="primary">
-            Solid background with white text.
+        <p class="ox-mb-2">Mixed Shadows & Colors (Only visible with [bordered]="false"):</p>
+        <ox-accordion [bordered]="false">
+          <ox-accordion-item title="Solid Primary + Shadow" color="primary" boxShadow="md">
+            I have a shadow because the parent has no border.
           </ox-accordion-item>
-          <ox-accordion-item title="Outline Success" color="outline-success">
-            Outline border with success color.
-          </ox-accordion-item>
-          <ox-accordion-item title="Ghost Danger" color="ghost-danger">
-            Transparent background with danger color text (like a ghost button).
+          <ox-accordion-item title="Outline Success (No Shadow)" color="outline-success">
+            I don't have a shadow.
           </ox-accordion-item>
         </ox-accordion>
       </div>
@@ -481,8 +481,76 @@
           </ox-accordion-item>
         </ox-accordion>
       </div>
-    </div>
-  </div>
-</div>
 
-<router-outlet />
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Card Style with Individual Shadows ([bordered]="false"):</p>
+        <ox-accordion [bordered]="false">
+          <ox-accordion-item title="Card with Shadow 1" boxShadow="md">
+            Now items have both borders and shadows.
+          </ox-accordion-item>
+          <ox-accordion-item title="Card with Shadow 2" boxShadow="sm">
+            This creates a very modern, separated look with different shadows per card.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Disabled Item ([disabled]="true"):</p>
+        <ox-accordion>
+          <ox-accordion-item title="I am disabled" [disabled]="true">
+            You cannot open me.
+          </ox-accordion-item>
+          <ox-accordion-item title="I am active">
+            I work as usual.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Controlled Accordion (Programmatic Control):</p>
+        
+        <div class="ox-flex ox-flex-column ox-gap-4 ox-mb-4">
+          <!-- External Controls Examples -->
+          <div class="ox-flex ox-gap-2 ox-align-center">
+            <span class="ox-text-sm ox-mr-2">By ID:</span>
+            <ox-button (click)="controlledActiveId.set('item1')" variant="outline-primary" size="sm">Open 1</ox-button>
+            <ox-button (click)="controlledActiveId.set('item2')" variant="outline-primary" size="sm">Open 2</ox-button>
+            <ox-button (click)="controlledActiveId.set(null)" variant="outline-danger" size="sm">Close All</ox-button>
+          </div>
+
+          <div class="ox-flex ox-gap-2 ox-align-center">
+            <span class="ox-text-sm ox-mr-2">By Step:</span>
+            <ox-button (click)="prevItem()" variant="ghost-primary" size="sm">← Prev</ox-button>
+            <ox-button (click)="controlledActiveId.set('item1')" variant="primary" size="sm">1</ox-button>
+            <ox-button (click)="controlledActiveId.set('item2')" variant="primary" size="sm">2</ox-button>
+            <ox-button (click)="nextItem()" variant="ghost-primary" size="sm">Next →</ox-button>
+          </div>
+        </div>
+        <ox-accordion [(activeId)]="controlledActiveId">
+          <ox-accordion-item itemId="item1" title="Controlled Item 1">
+            I am controlled by external buttons.
+          </ox-accordion-item>
+          <ox-accordion-item itemId="item2" title="Controlled Item 2">
+            My state is reflected in the parent's signal.
+          </ox-accordion-item>
+        </ox-accordion>
+        <p class="ox-mt-2 ox-text-sm">Current Active ID: {{ controlledActiveId() }}</p>
+      </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Custom Template Header:</p>
+        <ox-accordion>
+          <ox-accordion-item>
+            <ng-template oxAccordionHeader>
+              <div class="ox-flex ox-align-center ox-gap-2">
+                <span class="ox-text-primary">★</span>
+                <span style="font-weight: bold; color: #4f46e5;">Premium Feature</span>
+                <span class="ox-badge ox-badge--success" style="font-size: 10px; padding: 2px 6px; border-radius: 10px; background: #dcfce7; color: #166534; border: 1px solid #bbfcce;">NEW</span>
+              </div>
+            </ng-template>
+            This item uses a custom template for the header, allowing badges, icons, and custom styling.
+          </ox-accordion-item>
+          <ox-accordion-item title="Regular Header">
+            This one uses the standard 'title' input.
+          </ox-accordion-item>
+        </ox-accordion>
+      </div>

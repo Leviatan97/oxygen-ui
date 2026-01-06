@@ -1,9 +1,14 @@
 @use 'sass:map';
 @use '../../../styles/tokens' as t;
 
+:host {
+  display: block;
+}
+
 .ox-accordion-item {
   background-color: var(--ox-bg-secondary, #ffffff);
   transition: all 0.3s ease;
+  border-bottom: 1px solid var(--ox-border-color, #e0e0e0);
 
   &__header {
     width: 100%;
@@ -21,6 +26,12 @@
     transition: all 0.2s ease;
 
     &:hover {
+      background-color: var(--ox-hover-bg, rgba(0, 0, 0, 0.05));
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ox-primary-color, #4f46e5);
+      outline-offset: -2px;
       background-color: var(--ox-hover-bg, rgba(0, 0, 0, 0.05));
     }
 
@@ -96,15 +107,48 @@
       &:not([class*="--primary"]):not([class*="--secondary"]):not([class*="--success"]):not([class*="--danger"]):not([class*="--warning"]):not([class*="--info"]) {
         border-bottom: 1px solid var(--ox-border-color, #e0e0e0);
       }
-      
-      // If it's a solid variant, we might want a darker bottom border or none
+    }
+  }
+
+  &__header--disabled {
+    cursor: not-allowed !important;
+    filter: grayscale(1) !important;
+    opacity: 0.8;
+    
+    &:hover {
+      background-color: transparent !important;
     }
   }
 }
 
-// Add border-top to all items except the first one
-:host:not(:first-child) {
+// Reset divider for the last item in contiguous mode
+:host(:last-child) .ox-accordion-item {
+  border-bottom-width: 0;
+}
+
+// Border radius for contiguous mode (corners)
+:host(:first-child) .ox-accordion-item {
+  border-top-left-radius: var(--ox-accordion-border-radius, 8px);
+  border-top-right-radius: var(--ox-accordion-border-radius, 8px);
+}
+
+:host(:last-child) .ox-accordion-item {
+  border-bottom-left-radius: var(--ox-accordion-border-radius, 8px);
+  border-bottom-right-radius: var(--ox-accordion-border-radius, 8px);
+}
+
+// Card style overrides
+:host-context(.ox-accordion--no-border) {
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .ox-accordion-item {
-    border-top: 1px solid var(--ox-border-color, #e0e0e0);
+    border: 1px solid var(--ox-border-color, #e0e0e0);
+    border-radius: var(--ox-accordion-border-radius, 8px);
+    box-shadow: var(--ox-accordion-item-shadow, none);
+    overflow: hidden;
   }
 }

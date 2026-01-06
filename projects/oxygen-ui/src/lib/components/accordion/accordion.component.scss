@@ -3,22 +3,13 @@
 :host {
   display: block;
   width: 100%;
-  border: 1px solid var(--ox-border-color, #e0e0e0);
-  border-radius: var(--ox-border-radius, 8px);
-  overflow: hidden;
-  box-shadow: none; // Default to none
-  transition: box-shadow 0.2s ease;
+  border: var(--ox-accordion-border-width, 1px) solid var(--ox-border-color, #e0e0e0);
+  border-radius: var(--ox-accordion-border-radius, 8px);
+  overflow: visible; // Allow item shadows to be visible
+  transition: all 0.2s ease;
 
-  // Shadow variants matching classes generated in accordion.component.ts
-  @each $name, $value in t.$shadows {
-    @if $value != none {
-      &.ox-accordion--shadow-#{$name} {
-        box-shadow: #{$value} !important;
-      }
-    }
-  }
-
-  &.ox-accordion--shadow-none {
+  &.ox-accordion--no-border {
+    border-width: 0 !important;
     box-shadow: none !important;
   }
 }
