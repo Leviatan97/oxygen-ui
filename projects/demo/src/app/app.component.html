@@ -860,6 +860,134 @@
                 This panel has a medium box shadow.
               </div>
             </ox-panel>
+
+            <!-- Scrollable Vertical -->
+            <ox-panel header="Vertical Scroll" [scrollable]="true" scrollHeight="150px">
+              <div class="ox-p-2">
+                <p>Content line 1</p>
+                <p>Content line 2</p>
+                <p>Content line 3</p>
+                <p>Content line 4</p>
+                <p>Content line 5</p>
+                <p>Content line 6</p>
+                <p>Content line 7</p>
+                <p>Content line 8</p>
+                <p>Content line 9</p>
+                <p>Content line 10</p>
+              </div>
+            </ox-panel>
+
+            <!-- Scrollable Horizontal -->
+            <ox-panel header="Horizontal Scroll" [scrollable]="true" scrollDirection="x" scrollWidth="200px">
+              <div class="ox-p-2" style="width: 500px; white-space: nowrap;">
+                This content is very wide and should trigger a horizontal scrollbar because the width exceeds the scrollWidth.
+              </div>
+            </ox-panel>
+
+            <!-- Scrollable Both -->
+            <ox-panel header="Both Scroll" [scrollable]="true" scrollDirection="both" scrollHeight="150px" scrollWidth="200px">
+              <div class="ox-p-2" style="width: 500px; height: 300px;">
+                 Wide and tall content to trigger both scrollbars.
+                 <br>
+                 ...
+              </div>
+            </ox-panel>
+          </div>
+        </section>
+
+        <!-- STEPPER DEMO -->
+        <section class="ox-mb-16">
+          <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">Stepper</h2>
+          
+          <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Horizontal Stepper (Linear)</h3>
+            <ox-stepper #stepper1>
+              <ox-step label="Personal Info">
+                <div class="ox-flex ox-flex-col ox-gap-4">
+                  <p>Step 1: Enter your details</p>
+                  <div class="ox-flex ox-gap-2">
+                    <label>Name:</label>
+                    <input class="ox-border ox-p-1 ox-rounded" placeholder="First Name">
+                  </div>
+                  <div class="ox-flex ox-justify-end ox-mt-2">
+                     <ox-button (click)="stepper1.next()" variant="primary">Next</ox-button>
+                  </div>
+                </div>
+              </ox-step>
+              <ox-step label="Address">
+                <div class="ox-flex ox-flex-col ox-gap-4">
+                  <p>Step 2: Enter your address</p>
+                  <div class="ox-flex ox-gap-2">
+                    <label>City:</label>
+                    <input class="ox-border ox-p-1 ox-rounded" placeholder="City">
+                  </div>
+                  <div class="ox-flex ox-justify-between ox-mt-2">
+                     <ox-button (click)="stepper1.previous()" variant="secondary">Back</ox-button>
+                     <ox-button (click)="stepper1.next()" variant="primary">Next</ox-button>
+                  </div>
+                </div>
+              </ox-step>
+              <ox-step label="Review" [completed]="true">
+                <div class="ox-flex ox-flex-col ox-gap-4">
+                  <p>Step 3: Review and Submit</p>
+                  <p class="ox-text-secondary">Summary of your data...</p>
+                  <div class="ox-flex ox-justify-between ox-mt-2">
+                     <ox-button (click)="stepper1.previous()" variant="secondary">Back</ox-button>
+                     <ox-button (click)="stepper1.reset()" variant="success">Submit & Reset</ox-button>
+                  </div>
+                </div>
+              </ox-step>
+            </ox-stepper>
+          </div>
+
+          <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+             <h3 class="ox-text-lg ox-font-bold ox-mb-4">Vertical Stepper</h3>
+             <ox-stepper orientation="vertical" [headerNavigation]="false" #stepper2>
+               <ox-step label="Account Setup">
+                 <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                   <p class="ox-text-sm ox-text-secondary">Create your account credentials.</p>
+                   <div class="ox-flex ox-flex-col ox-gap-2">
+                     <label class="ox-text-sm ox-font-medium">Username</label>
+                     <input class="ox-border ox-p-2 ox-rounded ox-text-sm" placeholder="johndoe">
+                   </div>
+                   <div class="ox-flex ox-justify-end ox-mt-2">
+                     <ox-button (click)="stepper2.next()" variant="primary" size="sm">Continue</ox-button>
+                   </div>
+                 </div>
+               </ox-step>
+               <ox-step label="Personal Details" [optional]="true">
+                 <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                   <p class="ox-text-sm ox-text-secondary">Tell us about yourself.</p>
+                   <div class="ox-flex ox-gap-4">
+                      <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
+                        <label class="ox-text-sm ox-font-medium">First Name</label>
+                        <input class="ox-border ox-p-2 ox-rounded ox-text-sm" placeholder="John">
+                      </div>
+                      <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
+                        <label class="ox-text-sm ox-font-medium">Last Name</label>
+                        <input class="ox-border ox-p-2 ox-rounded ox-text-sm" placeholder="Doe">
+                      </div>
+                   </div>
+                   <div class="ox-flex ox-justify-between ox-mt-2">
+                     <ox-button (click)="stepper2.previous()" variant="secondary" size="sm">Back</ox-button>
+                     <ox-button (click)="stepper2.next()" variant="primary" size="sm">Next</ox-button>
+                   </div>
+                 </div>
+               </ox-step>
+               <ox-step label="Confirmation">
+                 <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                   <div class="ox-bg-gray-50 ox-p-4 ox-rounded ox-border">
+                      <h4 class="ox-font-bold ox-mb-2">Summary</h4>
+                      <p class="ox-text-sm">Username: johndoe</p>
+                      <p class="ox-text-sm">Name: John Doe</p>
+                   </div>
+                   <div class="ox-flex ox-justify-between ox-mt-2">
+                     <ox-button (click)="stepper2.previous()" variant="secondary" size="sm">Back</ox-button>
+                     <ox-button (click)="stepper2.reset()" variant="success" size="sm">Confirm & Reset</ox-button>
+                   </div>
+                 </div>
+               </ox-step>
+             </ox-stepper>
           </div>
         </section>
       </div>

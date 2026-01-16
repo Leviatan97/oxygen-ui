@@ -1,0 +1,177 @@
+:host {
+  display: block;
+  font-family: var(--ox-font-family, inherit);
+}
+
+.ox-stepper__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.ox-stepper__step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  user-select: none;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+
+  &--active {
+    opacity: 1;
+    .ox-stepper__icon {
+      background-color: var(--ox-primary-color, #007bff);
+      color: white;
+      border-color: var(--ox-primary-color, #007bff);
+      transform: scale(1.1);
+    }
+    .ox-stepper__label {
+        font-weight: 600;
+        color: var(--ox-text-primary, #111);
+    }
+  }
+
+  &--completed {
+    opacity: 1;
+     .ox-stepper__icon {
+      background-color: var(--ox-success-color, #28a745);
+      border-color: var(--ox-success-color, #28a745);
+      color: white;
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  &--non-interactive {
+    cursor: default;
+    // Headers are not interactive.
+  }
+  
+  &:hover:not(&--disabled) {
+    opacity: 1;
+  }
+}
+
+.ox-stepper__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid var(--ox-border-color, #ccc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ox-text-secondary, #666);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ox-stepper__label-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ox-stepper__label {
+  font-size: 1rem;
+  color: var(--ox-text-secondary, #666);
+}
+
+.ox-stepper__optional {
+    font-size: 0.75rem;
+    color: var(--ox-text-muted, #999);
+}
+
+.ox-stepper__line {
+  flex: 1;
+  height: 2px;
+  background-color: var(--ox-border-color, #e0e0e0);
+  margin: 0 1rem;
+  min-width: 20px;
+}
+
+.ox-stepper__content {
+  padding: 1rem;
+  min-height: 100px;
+  border: 1px solid var(--ox-border-color, #eee);
+  border-radius: var(--ox-border-radius, 8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.ox-stepper__step-content {
+  /* Ensure content takes full width/height during animation if needed */
+  width: 100%;
+}
+
+// Horizontal specific
+:host(.ox-stepper--horizontal) {
+  .ox-stepper__step-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Vertical specific layout
+.ox-stepper__vertical-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ox-stepper__item {
+  position: relative;
+}
+
+.ox-stepper__content-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease-out, opacity 300ms ease-out, padding 300ms ease;
+  overflow: hidden;
+  margin-left: calc(0.5rem + 7px);
+  opacity: 0;
+  visibility: hidden; // Hide when closed to prevent focus/interaction
+
+  &--expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.ox-stepper__vertical-content {
+  min-height: 0; // Required for grid transition to work
+  display: flex;
+  position: relative;
+}
+
+.ox-stepper__vertical-line {
+  width: 2px;
+  background-color: var(--ox-border-color, #e0e0e0);
+  margin-right: 1.5rem; // Space between line and content
+  flex-shrink: 0;
+  min-height: 1rem;
+}
+
+.ox-stepper__inner-content {
+  padding-bottom: 1.5rem;
+  flex: 1;
+}
+
+// Override previous vertical styles if needed or ensure clean slate
+:host(.ox-stepper--vertical) {
+  .ox-stepper__step-header {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 0; // Remove bottom margin as content is now interleaved
+      padding: 0.5rem 0;
+  }
+}

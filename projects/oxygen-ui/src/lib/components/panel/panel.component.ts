@@ -34,6 +34,10 @@ export class PanelComponent {
   iconTemplate = input<TemplateRef<any>>(); // Custom toggle icon
   borderStyle = input<'solid' | 'dashed' | 'dotted' | 'double'>('solid');
   boxShadow = input<'sm' | 'md' | 'lg' | 'none'>('none');
+  scrollable = input<boolean>(false);
+  scrollDirection = input<'x' | 'y' | 'both'>('y');
+  scrollHeight = input<string>('300px');
+  scrollWidth = input<string>('100%');
   
   collapsed = signal<boolean>(false);
 

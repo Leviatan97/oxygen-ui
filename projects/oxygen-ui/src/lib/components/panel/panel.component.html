@@ -38,7 +38,11 @@
   <div class="ox-panel__wrapper" 
        [id]="contentId()"
        [class.ox-panel__wrapper--collapsed]="collapsed()">
-    <div class="ox-panel__content">
+    <div class="ox-panel__content"
+         [style.max-height]="scrollable() && (scrollDirection() === 'y' || scrollDirection() === 'both') ? scrollHeight() : null"
+         [style.max-width]="scrollable() && (scrollDirection() === 'x' || scrollDirection() === 'both') ? scrollWidth() : null"
+         [style.overflow-y]="scrollable() && (scrollDirection() === 'y' || scrollDirection() === 'both') ? 'auto' : null"
+         [style.overflow-x]="scrollable() && (scrollDirection() === 'x' || scrollDirection() === 'both') ? 'auto' : null">
       <ng-content></ng-content>
     </div>
   </div>

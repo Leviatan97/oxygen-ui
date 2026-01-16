@@ -1,0 +1,95 @@
+@if (orientation() === 'vertical') {
+  <div class="ox-stepper__vertical-container">
+    @for (step of steps(); track step; let i = $index) {
+      <div class="ox-stepper__item">
+        <!-- Header -->
+        <div class="ox-stepper__step-header" 
+             [class.ox-stepper__step-header--active]="i === selectedIndex()"
+             [class.ox-stepper__step-header--completed]="(i < selectedIndex()) || step.completed()"
+             [class.ox-stepper__step-header--disabled]="linear() && i > selectedIndex()"
+             [class.ox-stepper__step-header--non-interactive]="!headerNavigation()"
+             (click)="onStepClick(i)"
+             role="tab">
+             
+          <div class="ox-stepper__icon">
+            @if (step.completed() && i < selectedIndex()) {
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            } @else {
+                {{ i + 1 }}
+            }
+          </div>
+          
+          <div class="ox-stepper__label-container">
+              <div class="ox-stepper__label">{{ step.label() }}</div>
+              @if (step.optional()) {
+                 <div class="ox-stepper__optional">Optional</div>
+              }
+          </div>
+        </div>
+
+        <!-- Content (Interleaved) -->
+        <div class="ox-stepper__content-wrapper" 
+             [class.ox-stepper__content-wrapper--expanded]="i === selectedIndex()">
+             <div class="ox-stepper__vertical-content">
+               @if (i < steps().length - 1) {
+                  <div class="ox-stepper__vertical-line"></div>
+               }
+               <div class="ox-stepper__inner-content">
+                 <ng-container *ngTemplateOutlet="step.content"></ng-container>
+               </div>
+             </div>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <!-- Horizontal Header -->
+  <div class="ox-stepper__header">
+    @for (step of steps(); track step; let i = $index) {
+      <div class="ox-stepper__step-header" 
+           [class.ox-stepper__step-header--active]="i === selectedIndex()"
+           [class.ox-stepper__step-header--completed]="(i < selectedIndex()) || step.completed()"
+           [class.ox-stepper__step-header--disabled]="linear() && i > selectedIndex()"
+           [class.ox-stepper__step-header--non-interactive]="!headerNavigation()"
+           (click)="onStepClick(i)"
+           role="tab"
+           [attr.aria-selected]="i === selectedIndex()">
+           
+        <div class="ox-stepper__icon">
+          @if (step.completed() && i < selectedIndex()) {
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+          } @else {
+              {{ i + 1 }}
+          }
+        </div>
+        
+        <div class="ox-stepper__label-container">
+            <div class="ox-stepper__label">{{ step.label() }}</div>
+            @if (step.optional()) {
+               <div class="ox-stepper__optional">Optional</div>
+            }
+        </div>
+
+      </div>
+      
+      @if (i < steps().length - 1) {
+        <div class="ox-stepper__line"></div>
+      }
+    }
+  </div>
+
+  <!-- Horizontal Content -->
+  <div class="ox-stepper__content" role="tabpanel">
+    @for (step of steps(); track step; let i = $index) {
+      @if (i === selectedIndex()) {
+        <div [@stepAnimation] class="ox-stepper__step-content">
+          <ng-container *ngTemplateOutlet="step.content"></ng-container>
+        </div>
+      }
+    }
+  </div>
+}

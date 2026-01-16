@@ -12,3 +12,5 @@ export * from './lib/components/card/card.component';
 export * from './lib/components/divider/divider.component';
 export * from './lib/components/fieldset/fieldset.component';
 export * from './lib/components/panel/panel.component';
+export * from './lib/components/stepper/stepper.component';
+export * from './lib/components/stepper/step.component';

@@ -19,7 +19,7 @@ import {
   FieldsetComponent 
 } from 'oxygen-ui';
 
-import { PanelComponent } from 'oxygen-ui';
+import { PanelComponent, StepperComponent, StepComponent } from 'oxygen-ui';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +41,9 @@ import { PanelComponent } from 'oxygen-ui';
     OxCardBackFooterDirective,
     DividerComponent,
     FieldsetComponent,
-    PanelComponent
+    PanelComponent,
+    StepperComponent,
+    StepComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
