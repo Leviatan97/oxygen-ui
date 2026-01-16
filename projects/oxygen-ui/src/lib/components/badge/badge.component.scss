@@ -1,0 +1,89 @@
+@use '../../styles/tokens' as t;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-weight: 600;
+  border-radius: 4px;
+  line-height: 1;
+  transition: all 0.2s ease;
+
+  &.ox-badge--overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    z-index: 10;
+    border: 2px solid #ffffff; 
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+}
+
+// Sizes
+:host(.ox-badge--sm) {
+  font-size: 10px;
+  padding: 2px 4px;
+  min-width: 16px;
+  height: 16px;
+}
+
+:host(.ox-badge--md) {
+  font-size: 12px;
+  padding: 2px 6px;
+  min-width: 20px;
+  height: 20px;
+}
+
+:host(.ox-badge--lg) {
+  font-size: 14px;
+  padding: 4px 8px;
+  min-width: 24px;
+  height: 24px;
+}
+
+// Variations
+:host(.ox-badge--pill) {
+  border-radius: 100px;
+}
+
+:host(.ox-badge--dot) {
+  padding: 0;
+  min-width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  
+  &.ox-badge--sm { width: 6px; height: 6px; min-width: 6px; }
+  &.ox-badge--md { width: 8px; height: 8px; min-width: 8px; }
+  &.ox-badge--lg { width: 10px; height: 10px; min-width: 10px; }
+}
+
+// Severity Mixin
+@mixin badge-severity($color, $bg) {
+  &.ox-badge--filled {
+    background-color: var(--oxy-#{$color}, $bg);
+    color: white;
+    border: 1px solid transparent;
+  }
+  
+  &.ox-badge--outlined {
+    background-color: transparent;
+    color: var(--oxy-#{$color}, $bg);
+    border: 1px solid var(--oxy-#{$color}, $bg);
+  }
+  
+  &.ox-badge--flat {
+    background-color: color-mix(in srgb, var(--oxy-#{$color}, $bg), transparent 85%);
+    color: var(--oxy-#{$color}, $bg);
+    border: 1px solid transparent;
+  }
+}
+
+// Apply Severities
+@each $name, $value in t.$text-colors {
+  :host(.ox-badge--#{$name}) {
+    @include badge-severity($name, $value);
+  }
+}

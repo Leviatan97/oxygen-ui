@@ -17,6 +17,7 @@
   white-space: nowrap;
   user-select: none;
   text-decoration: none;
+  position: relative; // Added for badge overlay support
 
   &.oxy-button--disabled {
     cursor: not-allowed !important;
@@ -84,8 +85,6 @@
   }
 }
 
-:host {
-  display: inline-flex;
-}
+// End of button styles
 
 

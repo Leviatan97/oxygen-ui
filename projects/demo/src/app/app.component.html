@@ -1,1867 +1,2216 @@
 <div class="ox-container ox-mt-4">
   <div class="ox-text-center">
     <h1>Oxygen UI Demo</h1>
-    <ox-sample></ox-sample>
 
-    <div class="ox-mt-4">
-      <h3>Button Variants</h3>
-      <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
-        <ox-button label="Primary"></ox-button>
-        <ox-button label="Secondary" variant="secondary"></ox-button>
-        <ox-button label="Danger" variant="danger"></ox-button>
-        <ox-button label="Success" variant="success"></ox-button>
-        <ox-button label="Warning" variant="warning"></ox-button>
-        <ox-button label="Info" variant="info"></ox-button>
-      </div>
-    </div>
+    <div class="ox-mt-5 ox-mb-5">
+      <!-- ALERT DEMO -->
+      <section class="ox-mb-16">
+        <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">Alerts</h2>
 
-    <div class="ox-mt-4">
-      <h3>Outline & Ghost</h3>
-      <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
-        <ox-button
-          label="Outline Primary"
-          variant="outline-primary"
-        ></ox-button>
-        <ox-button label="Ghost Primary" variant="ghost-primary"></ox-button>
-      </div>
-    </div>
+        <div class="ox-flex ox-flex-column ox-gap-4">
+          <ox-alert type="success" title="Success Alert">
+            This is a success alert with a title.
+          </ox-alert>
 
-    <div class="ox-mt-5 ox-border-top ox-pt-4">
-      <h3>Container Types</h3>
-      <div class="ox-mb-4">
-        <p>Standard Container (ox-container):</p>
+          <ox-alert type="info" variant="flat" [closable]="true">
+            This is a flat info alert that you can close.
+          </ox-alert>
+
+          <ox-alert type="warning" variant="outlined">
+            This is an outlined warning alert.
+          </ox-alert>
+
+          <ox-alert type="danger" variant="glass" title="Critical Error">
+            This is a glassmorphism style danger alert.
+          </ox-alert>
+        </div>
+
+        <!-- Glassmorphism Showcase -->
         <div
-          class="ox-container ox-bg-primary ox-border ox-border-primary ox-border-dashed ox-p-4 ox-text-white"
+          class="ox-mt-4 ox-p-5 ox-rounded-lg"
+          style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
         >
-          I'm a standard container. My max-width changes with the viewport.
-        </div>
-      </div>
-
-      <div class="ox-mb-4">
-        <p>Fluid Container (ox-container-fluid):</p>
-        <div
-          class="ox-container-fluid ox-bg-danger ox-border ox-border-danger ox-border-dashed ox-p-4 ox-text-white"
-        >
-          I'm a fluid container. I'm always 100% wide.
-        </div>
-      </div>
-
-      <div class="ox-mb-4">
-        <p>Responsive Container (ox-container-md):</p>
-        <div
-          class="ox-container-md ox-bg-success ox-border ox-border-success ox-border-dashed ox-p-4 ox-text-white"
-        >
-          I'm fluid until MD (768px), then I become a fixed-width container.
-        </div>
-      </div>
-    </div>
-
-    <div class="ox-mt-5 ox-border-top ox-pt-4">
-      <h3>Refactored Button System (Token-based)</h3>
-      <div class="ox-mb-4">
-        <p class="ox-mb-2">Solid Variants:</p>
-        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
-          <button ox-button variant="primary">Primary</button>
-          <button ox-button variant="secondary">Secondary</button>
-          <button ox-button variant="success">Success</button>
-          <button ox-button variant="danger">Danger</button>
-          <button ox-button variant="warning">Warning</button>
-          <button ox-button variant="info">Info</button>
-        </div>
-      </div>
-      <div class="ox-mb-4">
-        <p class="ox-mb-2">Outline Variants:</p>
-        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
-          <button ox-button variant="outline-primary">Outline Primary</button>
-          <button ox-button variant="outline-secondary">
-            Outline Secondary
-          </button>
-          <button ox-button variant="outline-success">Outline Success</button>
-        </div>
-      </div>
-      <div class="ox-mb-4">
-        <p class="ox-mb-2">Ghost Variants:</p>
-        <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
-          <button ox-button variant="ghost-primary">Ghost Primary</button>
-          <button ox-button variant="ghost-warning">Ghost Warning</button>
-          <button ox-button variant="ghost-info">Ghost Info</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="ox-mt-5 ox-border-top ox-pt-4">
-      <h3>Grid System (ox-row & ox-col)</h3>
-
-      <p class="ox-mb-2">Auto-adjusting columns:</p>
-      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
-        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
-        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
-        <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
-      </div>
-
-      <p class="ox-mb-2">12-column layout (sm-4, sm-8):</p>
-      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
-        <div
-          class="ox-col-sm-4 ox-p-3 ox-bg-warning ox-border ox-border-warning"
-        >
-          sm-4 (33.3%)
-        </div>
-        <div class="ox-col-sm-8 ox-p-3 ox-bg-info ox-border ox-border-info">
-          sm-8 (66.6%)
-        </div>
-      </div>
-
-      <p class="ox-mb-2">Mixed sizes (xs-12, md-4):</p>
-      <div class="ox-row ox-mb-4 ox-bg-light ox-border">
-        <div
-          class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
-        >
-          100% on XS, 33% on MD
-        </div>
-        <div
-          class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
-        >
-          100% on XS, 33% on MD
-        </div>
-        <div
-          class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
-        >
-          100% on XS, 33% on MD
-        </div>
-      </div>
-    </div>
-
-    <div class="ox-mt-5 ox-border-top ox-pt-4">
-      <h3>Gutter Utilities (ox-g-*, ox-gx-*, ox-gy-*)</h3>
-
-      <p class="ox-mb-2">No Gutter (ox-g-0):</p>
-      <div class="ox-row ox-g-0 ox-mb-4 ox-bg-light ox-border">
-        <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 1</div>
-        <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 2</div>
-      </div>
-
-      <p class="ox-mb-2">Large Gutter (ox-g-5):</p>
-      <div class="ox-row ox-g-5 ox-mb-4 ox-bg-light ox-border">
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 1</div>
-        </div>
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 2</div>
-        </div>
-      </div>
-
-      <p class="ox-mb-2">Custom Horizontal & Vertical (ox-gx-2 ox-gy-4):</p>
-      <div class="ox-row ox-gx-2 ox-gy-4 ox-mb-4 ox-bg-light ox-border">
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 1</div>
-        </div>
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 2</div>
-        </div>
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 3</div>
-        </div>
-        <div class="ox-col-6">
-          <div class="ox-bg-light ox-border ox-p-3">Col 4</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Flexbox Utilities (ox-d-flex, etc.)</h3>
-
-      <p class="ox-mb-2">Justify Content Center & Align Items Center:</p>
-      <div
-        class="ox-d-flex ox-justify-content-center ox-align-items-center ox-mb-4 ox-bg-light ox-border ox-h-100px"
-      >
-        <div class="ox-p-3 ox-rounded ox-bg-primary ox-text-white">
-          Centered Item
-        </div>
-      </div>
-
-      <p class="ox-mb-2">Flex Direction (Column on mobile, Row on md+):</p>
-      <div
-        class="ox-d-flex ox-flex-column ox-flex-md-row ox-justify-content-between ox-mb-4 ox-bg-light ox-border ox-p-2"
-      >
-        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 1</div>
-        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 2</div>
-        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 3</div>
-      </div>
-
-      <p class="ox-mb-2">Flex Grow:</p>
-      <div class="ox-d-flex ox-mb-4 ox-bg-light ox-border ox-p-2">
-        <div
-          class="ox-flex-grow-1 ox-border ox-border-success ox-bg-success ox-p-3 ox-m-1"
-        >
-          I grow (ox-flex-grow-1)
-        </div>
-        <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Normal</div>
-      </div>
-    </div>
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Border Utilities (ox-border-*)</h3>
-
-      <p class="ox-mb-2">Different Sides & Sizes:</p>
-      <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
-        <div class="ox-p-3 ox-border-3 ox-border-primary ox-border-solid">
-          Solid Primary
-        </div>
-        <div class="ox-p-3 ox-border-3 ox-border-danger ox-border-dashed">
-          Dashed Danger
-        </div>
-        <div class="ox-p-3 ox-border-3 ox-border-success ox-border-dotted">
-          Dotted Success
-        </div>
-        <div class="ox-p-3 ox-border-3 ox-border-warning ox-border-double">
-          Double Warning
-        </div>
-      </div>
-    </div>
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Text Color Utilities (ox-text-*)</h3>
-
-      <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
-        <span class="ox-text-primary">Primary Text</span>
-        <span class="ox-text-secondary">Secondary Text</span>
-        <span class="ox-text-success">Success Text</span>
-        <span class="ox-text-warning">Warning Text</span>
-        <span class="ox-text-danger">Danger Text</span>
-        <span class="ox-text-info">Info Text</span>
-        <span class="ox-text-muted">Muted Text</span>
-      </div>
-    </div>
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Radius & Shadow Utilities (ox-rounded-*, ox-shadow-*)</h3>
-
-      <div
-        class="ox-d-flex ox-gap-4 ox-flex-wrap ox-justify-content-center ox-p-4"
-      >
-        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-sm ox-shadow-sm">
-          Rounded SM & Shadow SM
-        </div>
-        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-md ox-shadow-md">
-          Rounded MD & Shadow MD
-        </div>
-        <div class="ox-p-4 ox-bg-light ox-border ox-rounded-lg ox-shadow-md">
-          Rounded LG & Shadow MD
-        </div>
-        <div
-          class="ox-p-4 ox-bg-light ox-border ox-rounded-circle ox-d-flex ox-align-items-center ox-justify-content-center ox-w-120px ox-h-120px"
-        >
-          Circle
-        </div>
-        <div class="ox-p-2 ox-px-4 ox-bg-light ox-border ox-rounded-pill">
-          Pill Shape
-        </div>
-      </div>
-    </div>
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Display Utilities (ox-d-*)</h3>
-
-      <div class="ox-mb-3">
-        <p>Responsive Display (Block on mobile, Inline-Block on MD+):</p>
-        <div
-          class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2"
-        >
-          Item 1
-        </div>
-        <div
-          class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2"
-        >
-          Item 2
-        </div>
-      </div>
-
-      <div class="ox-mb-3">
-        <p>Hide on small screens (ox-d-none ox-d-lg-block):</p>
-        <div
-          class="ox-d-none ox-d-lg-block ox-bg-light ox-border ox-p-3 ox-text-success"
-        >
-          I'm only visible on LG (992px) and above!
-        </div>
-      </div>
-    </div>
-    <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-      <h3>Float Utilities (ox-float-*)</h3>
-
-      <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
-        <div class="ox-float-start ox-p-3 ox-bg-primary ox-rounded">
-          Floated Start
-        </div>
-        <div class="ox-float-end ox-p-3 ox-bg-danger ox-rounded">
-          Floated End
-        </div>
-      </div>
-      <p class="ox-mt-2 ox-text-muted">
-        Uses .ox-clearfix to contain the floats.
-      </p>
-
-      <div class="ox-mt-3">
-        <p>Responsive Float (End on mobile, Start on MD+):</p>
-        <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
-          <div
-            class="ox-float-end ox-float-md-start ox-p-3 ox-bg-success ox-rounded"
+          <h4 class="ox-text-white ox-mb-3">Glassmorphism in Action</h4>
+          <ox-alert variant="glass" type="info" title="Glass Info">
+            This alert looks amazing on dynamic backgrounds.
+          </ox-alert>
+          <ox-alert
+            variant="glass"
+            type="warning"
+            title="Glass Warning"
+            [closable]="true"
           >
-            Responsive Float
-          </div>
+            The translucent effect adapts to the background.
+          </ox-alert>
         </div>
-      </div>
-      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Typography: Headings & Subtitles (Fluid Scaling)</h3>
-        <p class="ox-p-sm ox-mb-3 ox-text-muted">
-          These elements automatically scale their size between mobile (576px)
-          and desktop (1200px) viewports.
-        </p>
-        <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
-          <h1 class="ox-h1 ox-mb-1">H1: Heading Level 1</h1>
-          <h2 class="ox-h2 ox-mb-1">H2: Heading Level 2</h2>
-          <h3 class="ox-h3 ox-mb-3">H3: Heading Level 3</h3>
+      </section>
 
-          <p class="ox-subtitle1 ox-mb-1">Subtitle 1: Large & Medium Weight</p>
-          <p class="ox-subtitle2 ox-mb-1">Subtitle 2: Medium & Medium Weight</p>
-          <p class="ox-subtitle3 ox-mb-0">Subtitle 3: Base & Medium Weight</p>
-        </div>
-      </div>
+      <!-- BADGE DEMO -->
+      <section class="ox-mb-16">
+        <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">Badges</h2>
 
-      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Typography: Paragraphs & Weights</h3>
-        <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
-          <p class="ox-p ox-mb-3">
-            I'm a standard paragraph (.ox-p). My line-height is 1.6 to ensure
-            great readability. Everything in Oxygen UI is designed for
-            consistency.
-          </p>
-          <p class="ox-p-sm ox-mb-4 ox-text-muted">
-            I'm a small paragraph (.ox-p-sm). Used for metadata, captions, or
-            less important info.
-          </p>
-
-          <div class="ox-d-flex ox-gap-3 ox-flex-wrap">
-            <span class="ox-fw-light">Light (300)</span>
-            <span class="ox-fw-normal">Normal (400)</span>
-            <span class="ox-fw-medium">Medium (500)</span>
-            <span class="ox-fw-semibold">Semibold (600)</span>
-            <span class="ox-fw-bold">Bold (700)</span>
+        <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+          <!-- Basic Severities -->
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Severities</h3>
+            <div class="ox-flex ox-flex-wrap ox-gap-2">
+              <ox-badge value="Primary" severity="primary"></ox-badge>
+              <ox-badge value="Secondary" severity="secondary"></ox-badge>
+              <ox-badge value="Success" severity="success"></ox-badge>
+              <ox-badge value="Warning" severity="warning"></ox-badge>
+              <ox-badge value="Danger" severity="danger"></ox-badge>
+              <ox-badge value="Info" severity="info"></ox-badge>
+            </div>
           </div>
 
-          <div class="ox-mt-3">
-            <span class="ox-text-italic">Italic Text</span> |
-            <span class="ox-text-decoration-underline">Underlined Text</span> |
-            <span class="ox-text-transform-uppercase">uppercase text</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Vertical Alignment Utilities (ox-align-*)</h3>
-        <div class="ox-bg-light ox-p-4 ox-rounded">
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-baseline">
-            Baseline
-          </div>
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-top">Top</div>
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-middle">
-            Middle
-          </div>
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-bottom">
-            Bottom
-          </div>
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-text-top">
-            Text-Top
-          </div>
-          <div class="ox-border ox-p-2 ox-d-inline-block ox-align-text-bottom">
-            Text-Bottom
-          </div>
-          <span class="ox-ms-3">Reference Text</span>
-        </div>
-      </div>
-
-      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Positioning Utilities (ox-position-*)</h3>
-        <div class="ox-row ox-g-3">
-          <div class="ox-col-md-4">
-            <p class="ox-mb-2">Absolute Centering:</p>
-            <div class="ox-position-relative ox-bg-light ox-border ox-h-150px">
-              <div
-                class="ox-position-absolute ox-top-50 ox-left-50 ox-translate-middle ox-p-3 ox-bg-primary ox-text-white ox-rounded"
-              >
-                I'm centered!
+          <!-- Variants -->
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Variants</h3>
+            <div class="ox-flex ox-flex-wrap ox-gap-4 ox-align-center">
+              <div class="ox-flex ox-flex-column ox-gap-2">
+                <span class="ox-text-xs ox-text-secondary">Filled</span>
+                <ox-badge
+                  value="New"
+                  severity="success"
+                  variant="filled"
+                ></ox-badge>
+              </div>
+              <div class="ox-flex ox-flex-column ox-gap-2">
+                <span class="ox-text-xs ox-text-secondary">Flat</span>
+                <ox-badge
+                  value="Featured"
+                  severity="primary"
+                  variant="flat"
+                ></ox-badge>
+              </div>
+              <div class="ox-flex ox-flex-column ox-gap-2">
+                <span class="ox-text-xs ox-text-secondary">Outlined</span>
+                <ox-badge
+                  value="Beta"
+                  severity="warning"
+                  variant="outlined"
+                ></ox-badge>
               </div>
             </div>
-            <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-left-50</p>
           </div>
-          <div class="ox-col-md-4">
-            <p class="ox-mb-2">Corner Pins (Pixel + Alias):</p>
-            <div class="ox-position-relative ox-bg-light ox-border ox-h-150px">
-              <div
-                class="ox-position-absolute ox-top-10px ox-left-10px ox-p-2 ox-bg-danger ox-text-white ox-rounded-sm ox-fs-xs"
-              >
-                10px 10px
+
+          <!-- Sizes & Shapes -->
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Sizes & Shapes</h3>
+            <div class="ox-flex ox-flex-wrap ox-gap-4 ox-align-center">
+              <ox-badge value="Small" size="sm"></ox-badge>
+              <ox-badge value="Medium" size="md"></ox-badge>
+              <ox-badge value="Large" size="lg"></ox-badge>
+              <ox-badge
+                value="Pill Style"
+                [pill]="true"
+                severity="info"
+              ></ox-badge>
+            </div>
+          </div>
+
+          <!-- Dot Mode -->
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Dot Indicators</h3>
+            <div class="ox-flex ox-gap-6">
+              <div class="ox-relative">
+                <button ox-button variant="outline-primary">
+                  Notifications
+                </button>
+                <ox-badge
+                  [dot]="true"
+                  severity="danger"
+                  class="ox-absolute"
+                  style="top: -6px; right: -6px"
+                ></ox-badge>
               </div>
-              <div
-                class="ox-position-absolute ox-top-0 ox-right-0 ox-p-2 ox-bg-success ox-text-white ox-rounded-sm ox-fs-xs"
-              >
-                Top Right
+              <div class="ox-relative">
+                <span class="ox-font-bold">Messages</span>
+                <ox-badge
+                  [dot]="true"
+                  severity="success"
+                  class="ox-absolute"
+                  style="top: -2px; right: -10px"
+                ></ox-badge>
+              </div>
+              <div class="ox-flex ox-align-center ox-gap-2">
+                <ox-badge [dot]="true" severity="warning" size="lg"></ox-badge>
+                <span>System Busy</span>
               </div>
             </div>
-            <p class="ox-p-sm ox-mt-1 ox-text-muted">
-              Uses .ox-left-10px and .ox-right-0
+          </div>
+
+          <!-- Overlay Mode -->
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Overlay Mode</h3>
+            <div class="ox-flex ox-gap-8 ox-align-center">
+              <div class="ox-position-relative ox-d-inline-flex">
+                <button ox-button variant="primary">Inbox</button>
+                <ox-badge
+                  value="99+"
+                  severity="danger"
+                  [overlay]="true"
+                  [pill]="true"
+                  size="sm"
+                ></ox-badge>
+              </div>
+
+              <div class="ox-position-relative ox-d-inline-flex">
+                <div
+                  class="ox-w-40px ox-h-40px ox-bg-secondary ox-rounded ox-d-flex ox-align-items-center ox-justify-content-center ox-text-white"
+                >
+                  <i class="ox-icon">M</i>
+                </div>
+                <ox-badge
+                  [dot]="true"
+                  severity="success"
+                  [overlay]="true"
+                  size="md"
+                ></ox-badge>
+              </div>
+
+              <div class="ox-position-relative ox-d-inline-flex">
+                <ox-button variant="outline-secondary" label="Cart"></ox-button>
+                <ox-badge
+                  value="3"
+                  severity="warning"
+                  [overlay]="true"
+                  variant="filled"
+                  size="sm"
+                ></ox-badge>
+              </div>
+            </div>
+            <p class="ox-text-xs ox-text-muted ox-mt-4">
+              Requires parent with <code>ox-position-relative</code> and ideally
+              <code>ox-d-inline-flex</code>.
             </p>
           </div>
-          <div class="ox-col-md-4">
-            <p class="ox-mb-2">Full Inset (inset-x/y):</p>
-            <div
-              class="ox-position-relative ox-bg-light ox-border ox-h-150px ox-p-4"
-            >
-              <div
-                class="ox-position-absolute ox-inset-x-10px ox-top-10px ox-bg-info ox-text-white ox-p-2 ox-rounded-sm ox-text-center"
-              >
-                Inset X 10px
-              </div>
-            </div>
-            <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-inset-x-10px</p>
+        </div>
+      </section>
+
+      <ox-sample></ox-sample>
+
+      <div class="ox-mt-4">
+        <h3>Button Variants</h3>
+        <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
+          <ox-button label="Primary"></ox-button>
+          <ox-button label="Secondary" variant="secondary"></ox-button>
+          <ox-button label="Danger" variant="danger"></ox-button>
+          <ox-button label="Success" variant="success"></ox-button>
+          <ox-button label="Warning" variant="warning"></ox-button>
+          <ox-button label="Info" variant="info"></ox-button>
+        </div>
+      </div>
+
+      <div class="ox-mt-4">
+        <h3>Outline & Ghost</h3>
+        <div class="ox-d-flex ox-gap-2 ox-flex-wrap ox-justify-content-center">
+          <ox-button
+            label="Outline Primary"
+            variant="outline-primary"
+          ></ox-button>
+          <ox-button label="Ghost Primary" variant="ghost-primary"></ox-button>
+        </div>
+      </div>
+
+      <div class="ox-mt-5 ox-border-top ox-pt-4">
+        <h3>Container Types</h3>
+        <div class="ox-mb-4">
+          <p>Standard Container (ox-container):</p>
+          <div
+            class="ox-container ox-bg-primary ox-border ox-border-primary ox-border-dashed ox-p-4 ox-text-white"
+          >
+            I'm a standard container. My max-width changes with the viewport.
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p>Fluid Container (ox-container-fluid):</p>
+          <div
+            class="ox-container-fluid ox-bg-danger ox-border ox-border-danger ox-border-dashed ox-p-4 ox-text-white"
+          >
+            I'm a fluid container. I'm always 100% wide.
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p>Responsive Container (ox-container-md):</p>
+          <div
+            class="ox-container-md ox-bg-success ox-border ox-border-success ox-border-dashed ox-p-4 ox-text-white"
+          >
+            I'm fluid until MD (768px), then I become a fixed-width container.
+          </div>
+        </div>
+      </div>
+
+      <div class="ox-mt-5 ox-border-top ox-pt-4">
+        <h3>Refactored Button System (Token-based)</h3>
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Solid Variants:</p>
+          <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+            <button ox-button variant="primary">Primary</button>
+            <button ox-button variant="secondary">Secondary</button>
+            <button ox-button variant="success">Success</button>
+            <button ox-button variant="danger">Danger</button>
+            <button ox-button variant="warning">Warning</button>
+            <button ox-button variant="info">Info</button>
+          </div>
+        </div>
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Outline Variants:</p>
+          <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+            <button ox-button variant="outline-primary">Outline Primary</button>
+            <button ox-button variant="outline-secondary">
+              Outline Secondary
+            </button>
+            <button ox-button variant="outline-success">Outline Success</button>
+          </div>
+        </div>
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Ghost Variants:</p>
+          <div class="ox-d-flex ox-gap-2 ox-flex-wrap">
+            <button ox-button variant="ghost-primary">Ghost Primary</button>
+            <button ox-button variant="ghost-warning">Ghost Warning</button>
+            <button ox-button variant="ghost-info">Ghost Info</button>
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Buttons with Badges:</p>
+          <div class="ox-d-flex ox-gap-6 ox-flex-wrap">
+            <button
+              ox-button
+              variant="primary"
+              label="Notifications"
+              [badge]="5"
+            ></button>
+            <button
+              ox-button
+              variant="outline-secondary"
+              label="Cart"
+              [badge]="3"
+              badgeSeverity="warning"
+            ></button>
+            <button
+              ox-button
+              variant="success"
+              label="Available"
+              [badge]="'Online'"
+              badgeSeverity="success"
+              [badgeOverlay]="false"
+            ></button>
+            <button
+              ox-button
+              variant="danger"
+              label="Critical"
+              [badge]="'!'"
+              [badgeOverlay]="true"
+            ></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ox-mt-5 ox-border-top ox-pt-4">
+        <h2 class="ox-text-2xl ox-font-bold ox-mb-4">Breadcrumb</h2>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Default Breadcrumb:</p>
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <ox-breadcrumb [items]="breadcrumbItems"></ox-breadcrumb>
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Custom Separator and Icons:</p>
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <ox-breadcrumb
+              [items]="customBreadcrumbItems"
+              separator=">"
+            ></ox-breadcrumb>
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">With Home Icon:</p>
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <ox-breadcrumb
+              [items]="breadcrumbItems"
+              homeIcon="ox-icon-home"
+            ></ox-breadcrumb>
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Colors (Severity):</p>
+          <div
+            class="ox-d-flex ox-flex-column ox-gap-3 ox-p-4 ox-bg-surface ox-border ox-rounded"
+          >
+            <ox-breadcrumb
+              [items]="breadcrumbItems"
+              severity="success"
+            ></ox-breadcrumb>
+            <ox-breadcrumb
+              [items]="breadcrumbItems"
+              severity="danger"
+            ></ox-breadcrumb>
+            <ox-breadcrumb
+              [items]="breadcrumbItems"
+              severity="warning"
+            ></ox-breadcrumb>
+            <ox-breadcrumb
+              [items]="breadcrumbItems"
+              severity="info"
+            ></ox-breadcrumb>
+          </div>
+        </div>
+
+        <div class="ox-mb-4">
+          <p class="ox-mb-2">Custom Template (with Badges):</p>
+          <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+            <ox-breadcrumb [items]="breadcrumbItems">
+              <ng-template oxBreadcrumbItem let-item="item" let-last="last">
+                <div class="ox-d-flex ox-align-items-center ox-gap-2">
+                  <ox-badge
+                    [value]="item.label"
+                    [severity]="last ? 'primary' : 'secondary'"
+                    [pill]="true"
+                  ></ox-badge>
+                </div>
+              </ng-template>
+            </ox-breadcrumb>
+          </div>
+        </div>
+      </div>
+
+      <div class="ox-mt-5 ox-border-top ox-pt-4">
+        <h3>Grid System (ox-row & ox-col)</h3>
+
+        <p class="ox-mb-2">Auto-adjusting columns:</p>
+        <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+          <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+          <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+          <div class="ox-col ox-bg-light ox-border ox-p-3">Col</div>
+        </div>
+
+        <p class="ox-mb-2">12-column layout (sm-4, sm-8):</p>
+        <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+          <div
+            class="ox-col-sm-4 ox-p-3 ox-bg-warning ox-border ox-border-warning"
+          >
+            sm-4 (33.3%)
+          </div>
+          <div class="ox-col-sm-8 ox-p-3 ox-bg-info ox-border ox-border-info">
+            sm-8 (66.6%)
+          </div>
+        </div>
+
+        <p class="ox-mb-2">Mixed sizes (xs-12, md-4):</p>
+        <div class="ox-row ox-mb-4 ox-bg-light ox-border">
+          <div
+            class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
+          >
+            100% on XS, 33% on MD
+          </div>
+          <div
+            class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
+          >
+            100% on XS, 33% on MD
+          </div>
+          <div
+            class="ox-col-xs-12 ox-col-md-4 ox-border ox-border-success ox-bg-success ox-p-3"
+          >
+            100% on XS, 33% on MD
+          </div>
+        </div>
+      </div>
+
+      <div class="ox-mt-5 ox-border-top ox-pt-4">
+        <h3>Gutter Utilities (ox-g-*, ox-gx-*, ox-gy-*)</h3>
+
+        <p class="ox-mb-2">No Gutter (ox-g-0):</p>
+        <div class="ox-row ox-g-0 ox-mb-4 ox-bg-light ox-border">
+          <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 1</div>
+          <div class="ox-col-6 ox-bg-light ox-border ox-p-3">Col 2</div>
+        </div>
+
+        <p class="ox-mb-2">Large Gutter (ox-g-5):</p>
+        <div class="ox-row ox-g-5 ox-mb-4 ox-bg-light ox-border">
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 1</div>
+          </div>
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 2</div>
+          </div>
+        </div>
+
+        <p class="ox-mb-2">Custom Horizontal & Vertical (ox-gx-2 ox-gy-4):</p>
+        <div class="ox-row ox-gx-2 ox-gy-4 ox-mb-4 ox-bg-light ox-border">
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 1</div>
+          </div>
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 2</div>
+          </div>
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 3</div>
+          </div>
+          <div class="ox-col-6">
+            <div class="ox-bg-light ox-border ox-p-3">Col 4</div>
           </div>
         </div>
       </div>
 
       <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Z-Index & Opacity Utilities</h3>
-        <div class="ox-row ox-g-3">
-          <div class="ox-col-md-6">
-            <p class="ox-mb-2">Overlapping (Z-Index):</p>
-            <div class="ox-position-relative ox-h-100px">
-              <div
-                class="ox-position-absolute ox-top-0 ox-start-0 ox-w-50 ox-h-50 ox-bg-primary ox-z-20 ox-p-2 ox-text-white ox-rounded"
-              >
-                Z-20
-              </div>
-              <div
-                class="ox-position-absolute ox-top-10px ox-start-10px ox-w-50 ox-h-50 ox-bg-danger ox-z-10 ox-p-2 ox-text-white ox-rounded"
-              >
-                Z-10
-              </div>
-            </div>
+        <h3>Flexbox Utilities (ox-d-flex, etc.)</h3>
+
+        <p class="ox-mb-2">Justify Content Center & Align Items Center:</p>
+        <div
+          class="ox-d-flex ox-justify-content-center ox-align-items-center ox-mb-4 ox-bg-light ox-border ox-h-100px"
+        >
+          <div class="ox-p-3 ox-rounded ox-bg-primary ox-text-white">
+            Centered Item
           </div>
-          <div class="ox-col-md-6">
-            <p class="ox-mb-2">Opacity Levels:</p>
-            <div class="ox-d-flex ox-gap-2">
-              <div
-                class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-100 ox-rounded"
-              >
-                100%
-              </div>
-              <div
-                class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-75 ox-rounded"
-              >
-                75%
-              </div>
-              <div
-                class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-50 ox-rounded"
-              >
-                50%
-              </div>
-              <div
-                class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-25 ox-rounded"
-              >
-                25%
-              </div>
-            </div>
+        </div>
+
+        <p class="ox-mb-2">Flex Direction (Column on mobile, Row on md+):</p>
+        <div
+          class="ox-d-flex ox-flex-column ox-flex-md-row ox-justify-content-between ox-mb-4 ox-bg-light ox-border ox-p-2"
+        >
+          <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 1</div>
+          <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 2</div>
+          <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Item 3</div>
+        </div>
+
+        <p class="ox-mb-2">Flex Grow:</p>
+        <div class="ox-d-flex ox-mb-4 ox-bg-light ox-border ox-p-2">
+          <div
+            class="ox-flex-grow-1 ox-border ox-border-success ox-bg-success ox-p-3 ox-m-1"
+          >
+            I grow (ox-flex-grow-1)
+          </div>
+          <div class="ox-bg-light ox-border ox-p-3 ox-m-1">Normal</div>
+        </div>
+      </div>
+      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+        <h3>Border Utilities (ox-border-*)</h3>
+
+        <p class="ox-mb-2">Different Sides & Sizes:</p>
+        <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
+          <div class="ox-p-3 ox-border-3 ox-border-primary ox-border-solid">
+            Solid Primary
+          </div>
+          <div class="ox-p-3 ox-border-3 ox-border-danger ox-border-dashed">
+            Dashed Danger
+          </div>
+          <div class="ox-p-3 ox-border-3 ox-border-success ox-border-dotted">
+            Dotted Success
+          </div>
+          <div class="ox-p-3 ox-border-3 ox-border-warning ox-border-double">
+            Double Warning
           </div>
         </div>
       </div>
-
       <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Object Fit Utilities (ox-object-*)</h3>
-        <div class="ox-row ox-g-3">
-          <div class="ox-col-md-6">
-            <p class="ox-mb-2">Object Cover (1x1 ratio):</p>
-            <img
-              src="https://picsum.photos/400/300"
-              class="ox-w-100 ox-h-150px ox-object-cover ox-rounded ox-border"
-              alt="Cover"
-            />
+        <h3>Text Color Utilities (ox-text-*)</h3>
+
+        <div class="ox-d-flex ox-gap-3 ox-flex-wrap ox-justify-content-center">
+          <span class="ox-text-primary">Primary Text</span>
+          <span class="ox-text-secondary">Secondary Text</span>
+          <span class="ox-text-success">Success Text</span>
+          <span class="ox-text-warning">Warning Text</span>
+          <span class="ox-text-danger">Danger Text</span>
+          <span class="ox-text-info">Info Text</span>
+          <span class="ox-text-muted">Muted Text</span>
+        </div>
+      </div>
+      <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+        <h3>Radius & Shadow Utilities (ox-rounded-*, ox-shadow-*)</h3>
+
+        <div
+          class="ox-d-flex ox-gap-4 ox-flex-wrap ox-justify-content-center ox-p-4"
+        >
+          <div class="ox-p-4 ox-bg-light ox-border ox-rounded-sm ox-shadow-sm">
+            Rounded SM & Shadow SM
           </div>
-          <div class="ox-col-md-6">
-            <p class="ox-mb-2">Object Contain (1x1 ratio):</p>
-            <img
-              src="https://picsum.photos/400/300"
-              class="ox-w-100 ox-h-150px ox-object-contain ox-rounded ox-border ox-bg-light"
-              alt="Contain"
-            />
+          <div class="ox-p-4 ox-bg-light ox-border ox-rounded-md ox-shadow-md">
+            Rounded MD & Shadow MD
+          </div>
+          <div class="ox-p-4 ox-bg-light ox-border ox-rounded-lg ox-shadow-md">
+            Rounded LG & Shadow MD
+          </div>
+          <div
+            class="ox-p-4 ox-bg-light ox-border ox-rounded-circle ox-d-flex ox-align-items-center ox-justify-content-center ox-w-120px ox-h-120px"
+          >
+            Circle
+          </div>
+          <div class="ox-p-2 ox-px-4 ox-bg-light ox-border ox-rounded-pill">
+            Pill Shape
           </div>
         </div>
       </div>
-
       <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>Sizing Utilities (ox-w-*, ox-h-*)</h3>
+        <h3>Display Utilities (ox-d-*)</h3>
 
         <div class="ox-mb-3">
-          <p>Width Percentages (5% - 100%):</p>
+          <p>Responsive Display (Block on mobile, Inline-Block on MD+):</p>
           <div
-            class="ox-w-5 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded ox-fs-xs"
+            class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2"
           >
-            5%
+            Item 1
           </div>
           <div
-            class="ox-w-10 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded"
+            class="ox-d-block ox-d-md-inline-block ox-bg-light ox-border ox-p-3 ox-mb-2"
           >
-            10%
-          </div>
-          <div
-            class="ox-w-25 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
-          >
-            w-25
-          </div>
-          <div
-            class="ox-w-50 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
-          >
-            w-50
-          </div>
-          <div
-            class="ox-w-75 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
-          >
-            w-75
-          </div>
-          <div
-            class="ox-w-100 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
-          >
-            w-100
+            Item 2
           </div>
         </div>
 
         <div class="ox-mb-3">
-          <p>Fixed Height with Width Percentages:</p>
-          <div class="ox-d-flex ox-gap-2 ox-h-100px">
-            <div
-              class="ox-h-100 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
-            >
-              h-100 w-25
-            </div>
-            <div
-              class="ox-h-75 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
-            >
-              h-75 w-25
-            </div>
-            <div
-              class="ox-h-50 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
-            >
-              h-50 w-25
-            </div>
-            <div
-              class="ox-h-25 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
-            >
-              h-25 w-25
-            </div>
-          </div>
-        </div>
-
-        <div class="ox-mb-3">
-          <p>Viewport Units & Auto:</p>
+          <p>Hide on small screens (ox-d-none ox-d-lg-block):</p>
           <div
-            class="ox-w-auto ox-bg-info ox-text-white ox-p-2 ox-mb-1 ox-rounded ox-d-inline-block"
+            class="ox-d-none ox-d-lg-block ox-bg-light ox-border ox-p-3 ox-text-success"
           >
-            w-auto (inline-block)
+            I'm only visible on LG (992px) and above!
           </div>
         </div>
       </div>
-
       <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-        <h3>General Spacing Utilities (ox-m*, ox-p*, ox-gap*)</h3>
+        <h3>Float Utilities (ox-float-*)</h3>
 
-        <div class="ox-mb-3">
-          <p class="ox-mb-2">Standard Scale (0-5):</p>
-          <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
-            <div
-              class="ox-bg-primary ox-text-white ox-m-1 ox-p-1 ox-d-inline-block"
-            >
-              m-1 p-1
-            </div>
-            <div
-              class="ox-bg-primary ox-text-white ox-m-3 ox-p-3 ox-d-inline-block"
-            >
-              m-3 p-3
-            </div>
-            <div
-              class="ox-bg-primary ox-text-white ox-m-5 ox-p-5 ox-d-inline-block"
-            >
-              m-5 p-5
-            </div>
+        <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
+          <div class="ox-float-start ox-p-3 ox-bg-primary ox-rounded">
+            Floated Start
+          </div>
+          <div class="ox-float-end ox-p-3 ox-bg-danger ox-rounded">
+            Floated End
           </div>
         </div>
+        <p class="ox-mt-2 ox-text-muted">
+          Uses .ox-clearfix to contain the floats.
+        </p>
 
-        <div class="ox-mb-3">
-          <p class="ox-mb-2">Granular Pixel Scale (e.g., 10px, 32px):</p>
-          <div
-            class="ox-bg-light ox-p-4 ox-border ox-rounded ox-d-flex ox-flex-wrap ox-gap-16px"
-          >
-            <div class="ox-bg-danger ox-text-white ox-p-10px ox-rounded">
-              p-10px
+        <div class="ox-mt-3">
+          <p>Responsive Float (End on mobile, Start on MD+):</p>
+          <div class="ox-clearfix ox-bg-light ox-border ox-p-3">
+            <div
+              class="ox-float-end ox-float-md-start ox-p-3 ox-bg-success ox-rounded"
+            >
+              Responsive Float
             </div>
-            <div class="ox-bg-danger ox-text-white ox-p-24px ox-rounded">
-              p-24px
-            </div>
-            <div class="ox-bg-danger ox-text-white ox-p-48px ox-rounded">
-              p-48px
-            </div>
-          </div>
-          <p class="ox-p-sm ox-mt-2 ox-text-muted">
-            Flex container above uses .ox-gap-16px
-          </p>
-        </div>
-
-        <div class="ox-mb-3">
-          <p class="ox-mb-2">Directional Aliases (l, r):</p>
-          <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
-            <div class="ox-bg-info ox-text-white ox-ml-5 ox-pl-4">
-              ml-5 pl-4 (Left)
-            </div>
-            <div class="ox-bg-warning ox-text-dark ox-mr-5 ox-pr-4">
-              mr-5 pr-4 (Right)
-            </div>
-          </div>
-        </div>
-
-        <div class="ox-mb-3">
-          <p class="ox-mb-2">
-            Responsive Spacing (Padding 10px on mobile, 48px on MD+):
-          </p>
-          <div
-            class="ox-bg-success ox-text-white ox-p-10px ox-p-md-48px ox-rounded ox-text-center"
-          >
-            Watch my padding change on different screens!
           </div>
         </div>
         <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
-          <h3>Accordion Component</h3>
+          <h3>Typography: Headings & Subtitles (Fluid Scaling)</h3>
+          <p class="ox-p-sm ox-mb-3 ox-text-muted">
+            These elements automatically scale their size between mobile (576px)
+            and desktop (1200px) viewports.
+          </p>
+          <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
+            <h1 class="ox-h1 ox-mb-1">H1: Heading Level 1</h1>
+            <h2 class="ox-h2 ox-mb-1">H2: Heading Level 2</h2>
+            <h3 class="ox-h3 ox-mb-3">H3: Heading Level 3</h3>
 
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Single Selection (default):</p>
-            <ox-accordion>
-              <ox-accordion-item title="What is Oxygen UI?">
-                Oxygen UI is a modern, high-performance UI library for Angular
-                applications, focusing on clean design and developer experience.
-              </ox-accordion-item>
-              <ox-accordion-item title="Is it responsive?">
-                Yes, all components are built with responsiveness in mind,
-                utilizing a utility-first CSS approach.
-              </ox-accordion-item>
-              <ox-accordion-item title="Can I customize the themes?">
-                Absolutely! Oxygen UI supports custom theming through CSS
-                variables and a powerful utility framework.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Multiple Selection (multi="true"):</p>
-            <ox-accordion [multi]="true">
-              <ox-accordion-item title="Feature: Animations">
-                Smooth animations using CSS transitions for a premium feel.
-              </ox-accordion-item>
-              <ox-accordion-item title="Feature: Accessibility">
-                Built with ARIA support and keyboard navigation in mind.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Custom Border Radius (borderRadius="20px"):</p>
-            <ox-accordion borderRadius="20px">
-              <ox-accordion-item title="Customized Look">
-                You can easily change the border-radius to match your brand's
-                style.
-              </ox-accordion-item>
-              <ox-accordion-item title="Another Item">
-                The border radius is applied to the main container.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Medium Shadow on All Items (boxShadow="md"):</p>
-            <ox-accordion>
-              <ox-accordion-item title="Item with shadow" boxShadow="md">
-                Each item can have its own shadow settings.
-              </ox-accordion-item>
-              <ox-accordion-item
-                title="Another item with shadow"
-                boxShadow="md"
-              >
-                This works in contiguous mode too.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Small Shadow (boxShadow="sm"):</p>
-            <ox-accordion>
-              <ox-accordion-item title="I have a smaller shadow" boxShadow="sm">
-                The shadow level can be adjusted.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">
-              Mixed Shadows & Colors (Only visible with [bordered]="false"):
+            <p class="ox-subtitle1 ox-mb-1">
+              Subtitle 1: Large & Medium Weight
             </p>
-            <ox-accordion [bordered]="false">
-              <ox-accordion-item
-                title="Solid Primary + Shadow"
-                color="primary"
-                boxShadow="md"
-              >
-                I have a shadow because the parent has no border.
-              </ox-accordion-item>
-              <ox-accordion-item
-                title="Outline Success (No Shadow)"
-                color="outline-success"
-              >
-                I don't have a shadow.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">No Shadow (boxShadow="none"):</p>
-            <ox-accordion boxShadow="none">
-              <ox-accordion-item title="I have no shadow">
-                Flat design is also possible.
-              </ox-accordion-item>
-            </ox-accordion>
-          </div>
-
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">
-              Card Style with Individual Shadows ([bordered]="false"):
+            <p class="ox-subtitle2 ox-mb-1">
+              Subtitle 2: Medium & Medium Weight
             </p>
-            <ox-accordion [bordered]="false">
-              <ox-accordion-item title="Card with Shadow 1" boxShadow="md">
-                Now items have both borders and shadows.
-              </ox-accordion-item>
-              <ox-accordion-item title="Card with Shadow 2" boxShadow="sm">
-                This creates a very modern, separated look with different
-                shadows per card.
-              </ox-accordion-item>
-            </ox-accordion>
+            <p class="ox-subtitle3 ox-mb-0">Subtitle 3: Base & Medium Weight</p>
           </div>
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Disabled Item ([disabled]="true"):</p>
-            <ox-accordion>
-              <ox-accordion-item title="I am disabled" [disabled]="true">
-                You cannot open me.
-              </ox-accordion-item>
-              <ox-accordion-item title="I am active">
-                I work as usual.
-              </ox-accordion-item>
-            </ox-accordion>
+        </div>
+
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Typography: Paragraphs & Weights</h3>
+          <div class="ox-text-start ox-bg-light ox-p-4 ox-rounded">
+            <p class="ox-p ox-mb-3">
+              I'm a standard paragraph (.ox-p). My line-height is 1.6 to ensure
+              great readability. Everything in Oxygen UI is designed for
+              consistency.
+            </p>
+            <p class="ox-p-sm ox-mb-4 ox-text-muted">
+              I'm a small paragraph (.ox-p-sm). Used for metadata, captions, or
+              less important info.
+            </p>
+
+            <div class="ox-d-flex ox-gap-3 ox-flex-wrap">
+              <span class="ox-fw-light">Light (300)</span>
+              <span class="ox-fw-normal">Normal (400)</span>
+              <span class="ox-fw-medium">Medium (500)</span>
+              <span class="ox-fw-semibold">Semibold (600)</span>
+              <span class="ox-fw-bold">Bold (700)</span>
+            </div>
+
+            <div class="ox-mt-3">
+              <span class="ox-text-italic">Italic Text</span> |
+              <span class="ox-text-decoration-underline">Underlined Text</span>
+              |
+              <span class="ox-text-transform-uppercase">uppercase text</span>
+            </div>
           </div>
+        </div>
 
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Controlled Accordion (Programmatic Control):</p>
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Vertical Alignment Utilities (ox-align-*)</h3>
+          <div class="ox-bg-light ox-p-4 ox-rounded">
+            <div class="ox-border ox-p-2 ox-d-inline-block ox-align-baseline">
+              Baseline
+            </div>
+            <div class="ox-border ox-p-2 ox-d-inline-block ox-align-top">
+              Top
+            </div>
+            <div class="ox-border ox-p-2 ox-d-inline-block ox-align-middle">
+              Middle
+            </div>
+            <div class="ox-border ox-p-2 ox-d-inline-block ox-align-bottom">
+              Bottom
+            </div>
+            <div class="ox-border ox-p-2 ox-d-inline-block ox-align-text-top">
+              Text-Top
+            </div>
+            <div
+              class="ox-border ox-p-2 ox-d-inline-block ox-align-text-bottom"
+            >
+              Text-Bottom
+            </div>
+            <span class="ox-ms-3">Reference Text</span>
+          </div>
+        </div>
 
-            <div class="ox-flex ox-flex-column ox-gap-4 ox-mb-4">
-              <!-- External Controls Examples -->
-              <div class="ox-flex ox-gap-2 ox-align-center">
-                <span class="ox-text-sm ox-mr-2">By ID:</span>
-                <ox-button
-                  (click)="controlledActiveId.set('item1')"
-                  variant="outline-primary"
-                  size="sm"
-                  >Open 1</ox-button
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Positioning Utilities (ox-position-*)</h3>
+          <div class="ox-row ox-g-3">
+            <div class="ox-col-md-4">
+              <p class="ox-mb-2">Absolute Centering:</p>
+              <div
+                class="ox-position-relative ox-bg-light ox-border ox-h-150px"
+              >
+                <div
+                  class="ox-position-absolute ox-top-50 ox-left-50 ox-translate-middle ox-p-3 ox-bg-primary ox-text-white ox-rounded"
                 >
-                <ox-button
-                  (click)="controlledActiveId.set('item2')"
-                  variant="outline-primary"
-                  size="sm"
-                  >Open 2</ox-button
-                >
-                <ox-button
-                  (click)="controlledActiveId.set(null)"
-                  variant="outline-danger"
-                  size="sm"
-                  >Close All</ox-button
-                >
+                  I'm centered!
+                </div>
               </div>
+              <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-left-50</p>
+            </div>
+            <div class="ox-col-md-4">
+              <p class="ox-mb-2">Corner Pins (Pixel + Alias):</p>
+              <div
+                class="ox-position-relative ox-bg-light ox-border ox-h-150px"
+              >
+                <div
+                  class="ox-position-absolute ox-top-10px ox-left-10px ox-p-2 ox-bg-danger ox-text-white ox-rounded-sm ox-fs-xs"
+                >
+                  10px 10px
+                </div>
+                <div
+                  class="ox-position-absolute ox-top-0 ox-right-0 ox-p-2 ox-bg-success ox-text-white ox-rounded-sm ox-fs-xs"
+                >
+                  Top Right
+                </div>
+              </div>
+              <p class="ox-p-sm ox-mt-1 ox-text-muted">
+                Uses .ox-left-10px and .ox-right-0
+              </p>
+            </div>
+            <div class="ox-col-md-4">
+              <p class="ox-mb-2">Full Inset (inset-x/y):</p>
+              <div
+                class="ox-position-relative ox-bg-light ox-border ox-h-150px ox-p-4"
+              >
+                <div
+                  class="ox-position-absolute ox-inset-x-10px ox-top-10px ox-bg-info ox-text-white ox-p-2 ox-rounded-sm ox-text-center"
+                >
+                  Inset X 10px
+                </div>
+              </div>
+              <p class="ox-p-sm ox-mt-1 ox-text-muted">Uses .ox-inset-x-10px</p>
+            </div>
+          </div>
+        </div>
 
-              <div class="ox-flex ox-gap-2 ox-align-center">
-                <span class="ox-text-sm ox-mr-2">By Step:</span>
-                <ox-button
-                  (click)="prevItem()"
-                  variant="ghost-primary"
-                  size="sm"
-                  >← Prev</ox-button
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Z-Index & Opacity Utilities</h3>
+          <div class="ox-row ox-g-3">
+            <div class="ox-col-md-6">
+              <p class="ox-mb-2">Overlapping (Z-Index):</p>
+              <div class="ox-position-relative ox-h-100px">
+                <div
+                  class="ox-position-absolute ox-top-0 ox-start-0 ox-w-50 ox-h-50 ox-bg-primary ox-z-20 ox-p-2 ox-text-white ox-rounded"
                 >
-                <ox-button
-                  (click)="controlledActiveId.set('item1')"
-                  variant="primary"
-                  size="sm"
-                  >1</ox-button
+                  Z-20
+                </div>
+                <div
+                  class="ox-position-absolute ox-top-10px ox-start-10px ox-w-50 ox-h-50 ox-bg-danger ox-z-10 ox-p-2 ox-text-white ox-rounded"
                 >
-                <ox-button
-                  (click)="controlledActiveId.set('item2')"
-                  variant="primary"
-                  size="sm"
-                  >2</ox-button
-                >
-                <ox-button
-                  (click)="nextItem()"
-                  variant="ghost-primary"
-                  size="sm"
-                  >Next →</ox-button
-                >
+                  Z-10
+                </div>
               </div>
             </div>
-            <ox-accordion [(activeId)]="controlledActiveId">
-              <ox-accordion-item itemId="item1" title="Controlled Item 1">
-                I am controlled by external buttons.
-              </ox-accordion-item>
-              <ox-accordion-item itemId="item2" title="Controlled Item 2">
-                My state is reflected in the parent's signal.
-              </ox-accordion-item>
-            </ox-accordion>
-            <p class="ox-mt-2 ox-text-sm">
-              Current Active ID: {{ controlledActiveId() }}
+            <div class="ox-col-md-6">
+              <p class="ox-mb-2">Opacity Levels:</p>
+              <div class="ox-d-flex ox-gap-2">
+                <div
+                  class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-100 ox-rounded"
+                >
+                  100%
+                </div>
+                <div
+                  class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-75 ox-rounded"
+                >
+                  75%
+                </div>
+                <div
+                  class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-50 ox-rounded"
+                >
+                  50%
+                </div>
+                <div
+                  class="ox-p-3 ox-bg-primary ox-text-white ox-opacity-25 ox-rounded"
+                >
+                  25%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Object Fit Utilities (ox-object-*)</h3>
+          <div class="ox-row ox-g-3">
+            <div class="ox-col-md-6">
+              <p class="ox-mb-2">Object Cover (1x1 ratio):</p>
+              <img
+                src="https://picsum.photos/400/300"
+                class="ox-w-100 ox-h-150px ox-object-cover ox-rounded ox-border"
+                alt="Cover"
+              />
+            </div>
+            <div class="ox-col-md-6">
+              <p class="ox-mb-2">Object Contain (1x1 ratio):</p>
+              <img
+                src="https://picsum.photos/400/300"
+                class="ox-w-100 ox-h-150px ox-object-contain ox-rounded ox-border ox-bg-light"
+                alt="Contain"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>Sizing Utilities (ox-w-*, ox-h-*)</h3>
+
+          <div class="ox-mb-3">
+            <p>Width Percentages (5% - 100%):</p>
+            <div
+              class="ox-w-5 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded ox-fs-xs"
+            >
+              5%
+            </div>
+            <div
+              class="ox-w-10 ox-bg-primary ox-text-white ox-p-1 ox-mb-1 ox-rounded"
+            >
+              10%
+            </div>
+            <div
+              class="ox-w-25 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
+            >
+              w-25
+            </div>
+            <div
+              class="ox-w-50 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
+            >
+              w-50
+            </div>
+            <div
+              class="ox-w-75 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
+            >
+              w-75
+            </div>
+            <div
+              class="ox-w-100 ox-bg-primary ox-text-white ox-p-2 ox-mb-1 ox-rounded"
+            >
+              w-100
+            </div>
+          </div>
+
+          <div class="ox-mb-3">
+            <p>Fixed Height with Width Percentages:</p>
+            <div class="ox-d-flex ox-gap-2 ox-h-100px">
+              <div
+                class="ox-h-100 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
+              >
+                h-100 w-25
+              </div>
+              <div
+                class="ox-h-75 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
+              >
+                h-75 w-25
+              </div>
+              <div
+                class="ox-h-50 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
+              >
+                h-50 w-25
+              </div>
+              <div
+                class="ox-h-25 ox-w-25 ox-bg-danger ox-text-white ox-p-2 ox-rounded"
+              >
+                h-25 w-25
+              </div>
+            </div>
+          </div>
+
+          <div class="ox-mb-3">
+            <p>Viewport Units & Auto:</p>
+            <div
+              class="ox-w-auto ox-bg-info ox-text-white ox-p-2 ox-mb-1 ox-rounded ox-d-inline-block"
+            >
+              w-auto (inline-block)
+            </div>
+          </div>
+        </div>
+
+        <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+          <h3>General Spacing Utilities (ox-m*, ox-p*, ox-gap*)</h3>
+
+          <div class="ox-mb-3">
+            <p class="ox-mb-2">Standard Scale (0-5):</p>
+            <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
+              <div
+                class="ox-bg-primary ox-text-white ox-m-1 ox-p-1 ox-d-inline-block"
+              >
+                m-1 p-1
+              </div>
+              <div
+                class="ox-bg-primary ox-text-white ox-m-3 ox-p-3 ox-d-inline-block"
+              >
+                m-3 p-3
+              </div>
+              <div
+                class="ox-bg-primary ox-text-white ox-m-5 ox-p-5 ox-d-inline-block"
+              >
+                m-5 p-5
+              </div>
+            </div>
+          </div>
+
+          <div class="ox-mb-3">
+            <p class="ox-mb-2">Granular Pixel Scale (e.g., 10px, 32px):</p>
+            <div
+              class="ox-bg-light ox-p-4 ox-border ox-rounded ox-d-flex ox-flex-wrap ox-gap-16px"
+            >
+              <div class="ox-bg-danger ox-text-white ox-p-10px ox-rounded">
+                p-10px
+              </div>
+              <div class="ox-bg-danger ox-text-white ox-p-24px ox-rounded">
+                p-24px
+              </div>
+              <div class="ox-bg-danger ox-text-white ox-p-48px ox-rounded">
+                p-48px
+              </div>
+            </div>
+            <p class="ox-p-sm ox-mt-2 ox-text-muted">
+              Flex container above uses .ox-gap-16px
             </p>
           </div>
 
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Custom Template Header:</p>
-            <ox-accordion>
-              <ox-accordion-item>
-                <ng-template oxAccordionHeader>
-                  <div class="ox-flex ox-align-center ox-gap-2">
-                    <span class="ox-text-primary">★</span>
-                    <span style="font-weight: bold; color: #4f46e5"
-                      >Premium Feature</span
-                    >
-                    <span
-                      class="ox-badge ox-badge--success"
-                      style="
-                        font-size: 10px;
-                        padding: 2px 6px;
-                        border-radius: 10px;
-                        background: #dcfce7;
-                        color: #166534;
-                        border: 1px solid #bbfcce;
-                      "
-                      >NEW</span
-                    >
-                  </div>
-                </ng-template>
-                This item uses a custom template for the header, allowing
-                badges, icons, and custom styling.
-              </ox-accordion-item>
-              <ox-accordion-item title="Regular Header">
-                This one uses the standard 'title' input.
-              </ox-accordion-item>
-            </ox-accordion>
+          <div class="ox-mb-3">
+            <p class="ox-mb-2">Directional Aliases (l, r):</p>
+            <div class="ox-bg-light ox-p-3 ox-border ox-rounded">
+              <div class="ox-bg-info ox-text-white ox-ml-5 ox-pl-4">
+                ml-5 pl-4 (Left)
+              </div>
+              <div class="ox-bg-warning ox-text-dark ox-mr-5 ox-pr-4">
+                mr-5 pr-4 (Right)
+              </div>
+            </div>
           </div>
 
-          <div class="ox-mb-4">
-            <p class="ox-mb-2">Card Component Examples:</p>
-            <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-4">
-              <!-- Only Body -->
-              <div class="ox-mb-4">
-                <ox-card>
-                  <div oxCardBody>
-                    <h3 class="ox-text-lg ox-font-bold ox-mb-2">Simple Card</h3>
-                    <p>
-                      This card contains only a body. It's the simplest way to
-                      use the component.
-                    </p>
-                  </div>
-                </ox-card>
+          <div class="ox-mb-3">
+            <p class="ox-mb-2">
+              Responsive Spacing (Padding 10px on mobile, 48px on MD+):
+            </p>
+            <div
+              class="ox-bg-success ox-text-white ox-p-10px ox-p-md-48px ox-rounded ox-text-center"
+            >
+              Watch my padding change on different screens!
+            </div>
+          </div>
+          <div class="ox-mt-5 ox-border-top ox-pt-4 ox-mb-5">
+            <h3>Accordion Component</h3>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Single Selection (default):</p>
+              <ox-accordion>
+                <ox-accordion-item title="What is Oxygen UI?">
+                  Oxygen UI is a modern, high-performance UI library for Angular
+                  applications, focusing on clean design and developer
+                  experience.
+                </ox-accordion-item>
+                <ox-accordion-item title="Is it responsive?">
+                  Yes, all components are built with responsiveness in mind,
+                  utilizing a utility-first CSS approach.
+                </ox-accordion-item>
+                <ox-accordion-item title="Can I customize the themes?">
+                  Absolutely! Oxygen UI supports custom theming through CSS
+                  variables and a powerful utility framework.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Multiple Selection (multi="true"):</p>
+              <ox-accordion [multi]="true">
+                <ox-accordion-item title="Feature: Animations">
+                  Smooth animations using CSS transitions for a premium feel.
+                </ox-accordion-item>
+                <ox-accordion-item title="Feature: Accessibility">
+                  Built with ARIA support and keyboard navigation in mind.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Custom Border Radius (borderRadius="20px"):</p>
+              <ox-accordion borderRadius="20px">
+                <ox-accordion-item title="Customized Look">
+                  You can easily change the border-radius to match your brand's
+                  style.
+                </ox-accordion-item>
+                <ox-accordion-item title="Another Item">
+                  The border radius is applied to the main container.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">
+                Medium Shadow on All Items (boxShadow="md"):
+              </p>
+              <ox-accordion>
+                <ox-accordion-item title="Item with shadow" boxShadow="md">
+                  Each item can have its own shadow settings.
+                </ox-accordion-item>
+                <ox-accordion-item
+                  title="Another item with shadow"
+                  boxShadow="md"
+                >
+                  This works in contiguous mode too.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Small Shadow (boxShadow="sm"):</p>
+              <ox-accordion>
+                <ox-accordion-item
+                  title="I have a smaller shadow"
+                  boxShadow="sm"
+                >
+                  The shadow level can be adjusted.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">
+                Mixed Shadows & Colors (Only visible with [bordered]="false"):
+              </p>
+              <ox-accordion [bordered]="false">
+                <ox-accordion-item
+                  title="Solid Primary + Shadow"
+                  color="primary"
+                  boxShadow="md"
+                >
+                  I have a shadow because the parent has no border.
+                </ox-accordion-item>
+                <ox-accordion-item
+                  title="Outline Success (No Shadow)"
+                  color="outline-success"
+                >
+                  I don't have a shadow.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">No Shadow (boxShadow="none"):</p>
+              <ox-accordion boxShadow="none">
+                <ox-accordion-item title="I have no shadow">
+                  Flat design is also possible.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">
+                Card Style with Individual Shadows ([bordered]="false"):
+              </p>
+              <ox-accordion [bordered]="false">
+                <ox-accordion-item title="Card with Shadow 1" boxShadow="md">
+                  Now items have both borders and shadows.
+                </ox-accordion-item>
+                <ox-accordion-item title="Card with Shadow 2" boxShadow="sm">
+                  This creates a very modern, separated look with different
+                  shadows per card.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Disabled Item ([disabled]="true"):</p>
+              <ox-accordion>
+                <ox-accordion-item title="I am disabled" [disabled]="true">
+                  You cannot open me.
+                </ox-accordion-item>
+                <ox-accordion-item title="I am active">
+                  I work as usual.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">
+                Controlled Accordion (Programmatic Control):
+              </p>
+
+              <div class="ox-flex ox-flex-column ox-gap-4 ox-mb-4">
+                <!-- External Controls Examples -->
+                <div class="ox-flex ox-gap-2 ox-align-center">
+                  <span class="ox-text-sm ox-mr-2">By ID:</span>
+                  <ox-button
+                    (click)="controlledActiveId.set('item1')"
+                    variant="outline-primary"
+                    size="sm"
+                    >Open 1</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledActiveId.set('item2')"
+                    variant="outline-primary"
+                    size="sm"
+                    >Open 2</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledActiveId.set(null)"
+                    variant="outline-danger"
+                    size="sm"
+                    >Close All</ox-button
+                  >
+                </div>
+
+                <div class="ox-flex ox-gap-2 ox-align-center">
+                  <span class="ox-text-sm ox-mr-2">By Step:</span>
+                  <ox-button
+                    (click)="prevItem()"
+                    variant="ghost-primary"
+                    size="sm"
+                    >← Prev</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledActiveId.set('item1')"
+                    variant="primary"
+                    size="sm"
+                    >1</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledActiveId.set('item2')"
+                    variant="primary"
+                    size="sm"
+                    >2</ox-button
+                  >
+                  <ox-button
+                    (click)="nextItem()"
+                    variant="ghost-primary"
+                    size="sm"
+                    >Next →</ox-button
+                  >
+                </div>
+              </div>
+              <ox-accordion [(activeId)]="controlledActiveId">
+                <ox-accordion-item itemId="item1" title="Controlled Item 1">
+                  I am controlled by external buttons.
+                </ox-accordion-item>
+                <ox-accordion-item itemId="item2" title="Controlled Item 2">
+                  My state is reflected in the parent's signal.
+                </ox-accordion-item>
+              </ox-accordion>
+              <p class="ox-mt-2 ox-text-sm">
+                Current Active ID: {{ controlledActiveId() }}
+              </p>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Custom Template Header:</p>
+              <ox-accordion>
+                <ox-accordion-item>
+                  <ng-template oxAccordionHeader>
+                    <div class="ox-flex ox-align-center ox-gap-2">
+                      <span class="ox-text-primary">★</span>
+                      <span style="font-weight: bold; color: #4f46e5"
+                        >Premium Feature</span
+                      >
+                      <span
+                        class="ox-badge ox-badge--success"
+                        style="
+                          font-size: 10px;
+                          padding: 2px 6px;
+                          border-radius: 10px;
+                          background: #dcfce7;
+                          color: #166534;
+                          border: 1px solid #bbfcce;
+                        "
+                        >NEW</span
+                      >
+                    </div>
+                  </ng-template>
+                  This item uses a custom template for the header, allowing
+                  badges, icons, and custom styling.
+                </ox-accordion-item>
+                <ox-accordion-item title="Regular Header">
+                  This one uses the standard 'title' input.
+                </ox-accordion-item>
+              </ox-accordion>
+            </div>
+
+            <div class="ox-mb-4">
+              <p class="ox-mb-2">Card Component Examples:</p>
+              <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-4">
+                <!-- Only Body -->
+                <div class="ox-mb-4">
+                  <ox-card>
+                    <div oxCardBody>
+                      <h3 class="ox-text-lg ox-font-bold ox-mb-2">
+                        Simple Card
+                      </h3>
+                      <p>
+                        This card contains only a body. It's the simplest way to
+                        use the component.
+                      </p>
+                    </div>
+                  </ox-card>
+                </div>
+
+                <!-- Header and Body -->
+                <div class="ox-mb-4">
+                  <ox-card>
+                    <div oxCardHeader>
+                      <h3 class="ox-text-lg ox-font-bold">Card with Header</h3>
+                    </div>
+                    <div oxCardBody>
+                      <p>This card has a structured header and a body.</p>
+                    </div>
+                  </ox-card>
+                </div>
+
+                <!-- Image Header -->
+                <div class="ox-mb-4">
+                  <ox-card
+                    boxShadow="md"
+                    [hoverable]="true"
+                    [liftOnHover]="true"
+                  >
+                    <div oxCardHeader>
+                      <img
+                        src="https://picsum.photos/seed/oxygen/600/300"
+                        alt="Sample Image"
+                      />
+                    </div>
+                    <div oxCardBody>
+                      <h3 class="ox-text-xl ox-font-bold ox-mb-2">
+                        Image Card
+                      </h3>
+                      <p>
+                        Cards support full-width images in the header perfectly.
+                      </p>
+                    </div>
+                    <div
+                      oxCardFooter
+                      class="ox-flex ox-justify-between ox-align-center"
+                    >
+                      <span class="ox-text-sm ox-text-secondary"
+                        >Jan 6, 2026</span
+                      >
+                      <ox-button size="sm">Read More</ox-button>
+                    </div>
+                  </ox-card>
+                </div>
               </div>
 
-              <!-- Header and Body -->
+              <!-- Flippable Card -->
               <div class="ox-mb-4">
-                <ox-card>
-                  <div oxCardHeader>
-                    <h3 class="ox-text-lg ox-font-bold">Card with Header</h3>
-                  </div>
-                  <div oxCardBody>
-                    <p>This card has a structured header and a body.</p>
-                  </div>
-                </ox-card>
-              </div>
-
-              <!-- Image Header -->
-              <div class="ox-mb-4">
-                <ox-card boxShadow="md" [hoverable]="true" [liftOnHover]="true">
+                <ox-card
+                  [hoverable]="true"
+                  [liftOnHover]="true"
+                  [(flipped)]="cardFlipped"
+                  boxShadow="lg"
+                >
                   <div oxCardHeader>
                     <img
-                      src="https://picsum.photos/seed/oxygen/600/300"
-                      alt="Sample Image"
+                      src="https://picsum.photos/seed/flip/600/300"
+                      alt="Front Side"
                     />
                   </div>
                   <div oxCardBody>
-                    <h3 class="ox-text-xl ox-font-bold ox-mb-2">Image Card</h3>
-                    <p>
-                      Cards support full-width images in the header perfectly.
-                    </p>
-                  </div>
-                  <div
-                    oxCardFooter
-                    class="ox-flex ox-justify-between ox-align-center"
-                  >
-                    <span class="ox-text-sm ox-text-secondary"
-                      >Jan 6, 2026</span
+                    <h3 class="ox-text-lg ox-font-bold">
+                      Front Side (Flippable)
+                    </h3>
+                    <p>Click the button to see the back side animation.</p>
+                    <ox-button
+                      (click)="cardFlipped.set(true)"
+                      variant="outline-primary"
+                      class="ox-mt-4"
+                      >Flip Card</ox-button
                     >
-                    <ox-button size="sm">Read More</ox-button>
+                  </div>
+
+                  <div
+                    oxCardBack
+                    class="ox-flex ox-flex-column ox-align-center ox-justify-center"
+                    style="
+                      height: 100%;
+                      min-height: 300px;
+                      padding: 2rem;
+                      background: linear-gradient(
+                        135deg,
+                        #667eea 0%,
+                        #764ba2 100%
+                      );
+                      color: white;
+                    "
+                  >
+                    <h3 class="ox-text-2xl ox-font-bold ox-mb-4">
+                      Back Content
+                    </h3>
+                    <p class="ox-text-center">
+                      This side uses the <code>oxCardBack</code> directive.
+                    </p>
+                    <ox-button
+                      (click)="cardFlipped.set(false)"
+                      variant="outline-primary"
+                      style="border-color: white; color: white"
+                      class="ox-mt-6"
+                      >Volver</ox-button
+                    >
+                  </div>
+                </ox-card>
+              </div>
+
+              <!-- Structured Back Card -->
+              <div class="ox-mb-4">
+                <ox-card [hoverable]="true" boxShadow="md" [(flipped)]="flip2">
+                  <!-- Front -->
+                  <div oxCardHeader>
+                    <h3 class="ox-text-lg ox-font-bold">Structured Side</h3>
+                  </div>
+                  <div oxCardBody>
+                    <p>
+                      This card has a structured back with its own header, body,
+                      and footer.
+                    </p>
+                    <ox-button
+                      (click)="flip2.set(true)"
+                      size="sm"
+                      class="ox-mt-2"
+                      >View Technical Specs</ox-button
+                    >
+                  </div>
+
+                  <!-- Back -->
+                  <div
+                    oxCardBackHeader
+                    class="ox-bg-primary ox-text-white ox-p-3"
+                  >
+                    <span class="ox-font-bold">Technical Specifications</span>
+                  </div>
+                  <div oxCardBackBody>
+                    <ul class="ox-list-none ox-p-0">
+                      <li><strong>Model:</strong> OX-2026</li>
+                      <li><strong>Battery:</strong> 5000mAh</li>
+                      <li><strong>Status:</strong> Optimized</li>
+                    </ul>
+                  </div>
+                  <div oxCardBackFooter class="ox-flex ox-justify-end">
+                    <ox-button
+                      (click)="flip2.set(false)"
+                      variant="ghost-primary"
+                      size="sm"
+                      >Back to Summary</ox-button
+                    >
                   </div>
                 </ox-card>
               </div>
             </div>
 
-            <!-- Flippable Card -->
-            <div class="ox-mb-4">
-              <ox-card
-                [hoverable]="true"
-                [liftOnHover]="true"
-                [(flipped)]="cardFlipped"
-                boxShadow="lg"
+            <!-- Divider Section -->
+            <section class="ox-mb-8">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-4">Dividers</h2>
+
+              <div
+                class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mb-4"
               >
-                <div oxCardHeader>
-                  <img
-                    src="https://picsum.photos/seed/flip/600/300"
-                    alt="Front Side"
-                  />
-                </div>
-                <div oxCardBody>
-                  <h3 class="ox-text-lg ox-font-bold">
-                    Front Side (Flippable)
-                  </h3>
-                  <p>Click the button to see the back side animation.</p>
-                  <ox-button
-                    (click)="cardFlipped.set(true)"
-                    variant="outline-primary"
-                    class="ox-mt-4"
-                    >Flip Card</ox-button
-                  >
-                </div>
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">Static Dividers</h3>
+                <p>Paragraph 1</p>
+                <ox-divider></ox-divider>
+                <p>Paragraph 2</p>
 
                 <div
-                  oxCardBack
-                  class="ox-flex ox-flex-column ox-align-center ox-justify-center"
-                  style="
-                    height: 100%;
-                    min-height: 300px;
-                    padding: 2rem;
-                    background: linear-gradient(
-                      135deg,
-                      #667eea 0%,
-                      #764ba2 100%
-                    );
-                    color: white;
-                  "
+                  class="ox-flex ox-items-center ox-mt-4"
+                  style="height: 50px"
                 >
-                  <h3 class="ox-text-2xl ox-font-bold ox-mb-4">Back Content</h3>
-                  <p class="ox-text-center">
-                    This side uses the <code>oxCardBack</code> directive.
-                  </p>
-                  <ox-button
-                    (click)="cardFlipped.set(false)"
-                    variant="outline-primary"
-                    style="border-color: white; color: white"
-                    class="ox-mt-6"
-                    >Volver</ox-button
-                  >
+                  <span>Left</span>
+                  <ox-divider
+                    orientation="vertical"
+                    style="height: 100%"
+                  ></ox-divider>
+                  <span>Right</span>
                 </div>
-              </ox-card>
-            </div>
-
-            <!-- Structured Back Card -->
-            <div class="ox-mb-4">
-              <ox-card [hoverable]="true" boxShadow="md" [(flipped)]="flip2">
-                <!-- Front -->
-                <div oxCardHeader>
-                  <h3 class="ox-text-lg ox-font-bold">Structured Side</h3>
-                </div>
-                <div oxCardBody>
-                  <p>
-                    This card has a structured back with its own header, body,
-                    and footer.
-                  </p>
-                  <ox-button (click)="flip2.set(true)" size="sm" class="ox-mt-2"
-                    >View Technical Specs</ox-button
-                  >
-                </div>
-
-                <!-- Back -->
-                <div
-                  oxCardBackHeader
-                  class="ox-bg-primary ox-text-white ox-p-3"
-                >
-                  <span class="ox-font-bold">Technical Specifications</span>
-                </div>
-                <div oxCardBackBody>
-                  <ul class="ox-list-none ox-p-0">
-                    <li><strong>Model:</strong> OX-2026</li>
-                    <li><strong>Battery:</strong> 5000mAh</li>
-                    <li><strong>Status:</strong> Optimized</li>
-                  </ul>
-                </div>
-                <div oxCardBackFooter class="ox-flex ox-justify-end">
-                  <ox-button
-                    (click)="flip2.set(false)"
-                    variant="ghost-primary"
-                    size="sm"
-                    >Back to Summary</ox-button
-                  >
-                </div>
-              </ox-card>
-            </div>
-          </div>
-
-          <!-- Divider Section -->
-          <section class="ox-mb-8">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-4">Dividers</h2>
-
-            <div
-              class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mb-4"
-            >
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Static Dividers</h3>
-              <p>Paragraph 1</p>
-              <ox-divider></ox-divider>
-              <p>Paragraph 2</p>
-
-              <div class="ox-flex ox-items-center ox-mt-4" style="height: 50px">
-                <span>Left</span>
-                <ox-divider
-                  orientation="vertical"
-                  style="height: 100%"
-                ></ox-divider>
-                <span>Right</span>
               </div>
-            </div>
 
-            <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Resizable Dividers
-              </h3>
+              <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Resizable Dividers
+                </h3>
 
-              <div class="ox-mb-8 ox-border ox-border-color ox-p-4 ox-rounded">
-                <p>Drag the line below to resize this paragraph:</p>
                 <div
-                  style="height: 100px; overflow: hidden; background: #f0f4f8"
-                  class="ox-p-2 ox-mb-2"
+                  class="ox-mb-8 ox-border ox-border-color ox-p-4 ox-rounded"
                 >
-                  This area is resizable via the horizontal divider below. It
-                  works by adjusting the height of the previous element.
+                  <p>Drag the line below to resize this paragraph:</p>
+                  <div
+                    style="height: 100px; overflow: hidden; background: #f0f4f8"
+                    class="ox-p-2 ox-mb-2"
+                  >
+                    This area is resizable via the horizontal divider below. It
+                    works by adjusting the height of the previous element.
+                  </div>
+                  <ox-divider [resizable]="true"></ox-divider>
+                  <div class="ox-p-2 ox-mt-2" style="background: #fff0f0">
+                    Next paragraph (static).
+                  </div>
                 </div>
-                <ox-divider [resizable]="true"></ox-divider>
-                <div class="ox-p-2 ox-mt-2" style="background: #fff0f0">
-                  Next paragraph (static).
+
+                <div
+                  class="ox-flex ox-border ox-border-color ox-rounded"
+                  style="height: 200px"
+                >
+                  <div
+                    style="width: 30%; background: #e6fffa; min-width: 50px"
+                    class="ox-p-4"
+                  >
+                    Left Panel (Resizable)
+                  </div>
+                  <ox-divider
+                    orientation="vertical"
+                    [resizable]="true"
+                  ></ox-divider>
+                  <div style="flex: 1; background: #fff5f5" class="ox-p-4">
+                    Right Panel (Flex Grow)
+                  </div>
                 </div>
               </div>
 
               <div
-                class="ox-flex ox-border ox-border-color ox-rounded"
-                style="height: 200px"
+                class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4"
               >
-                <div
-                  style="width: 30%; background: #e6fffa; min-width: 50px"
-                  class="ox-p-4"
-                >
-                  Left Panel (Resizable)
-                </div>
-                <ox-divider
-                  orientation="vertical"
-                  [resizable]="true"
-                ></ox-divider>
-                <div style="flex: 1; background: #fff5f5" class="ox-p-4">
-                  Right Panel (Flex Grow)
-                </div>
-              </div>
-            </div>
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Labeled Dividers
+                </h3>
 
-            <div
-              class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4"
-            >
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Labeled Dividers</h3>
-
-              <p><strong>Horizontal:</strong></p>
-              <ox-divider label="Left" labelPosition="start"></ox-divider>
-              <ox-divider label="Center" labelPosition="center"></ox-divider>
-              <ox-divider label="Right" labelPosition="end"></ox-divider>
-              <ox-divider
-                label="Bold Title"
-                labelPosition="center"
-                labelFontWeight="bold"
-                class="ox-mt-2"
-              ></ox-divider>
-
-              <p class="ox-mt-4"><strong>Vertical:</strong></p>
-              <div
-                class="ox-flex ox-items-center ox-mt-4"
-                style="height: 200px; border: 1px solid #eee"
-              >
-                <div class="ox-p-4">Content A</div>
+                <p><strong>Horizontal:</strong></p>
+                <ox-divider label="Left" labelPosition="start"></ox-divider>
+                <ox-divider label="Center" labelPosition="center"></ox-divider>
+                <ox-divider label="Right" labelPosition="end"></ox-divider>
                 <ox-divider
-                  orientation="vertical"
-                  label="Top"
-                  labelPosition="start"
-                ></ox-divider>
-                <div class="ox-p-4">Content B</div>
-                <ox-divider
-                  orientation="vertical"
-                  label="Center"
+                  label="Bold Title"
                   labelPosition="center"
+                  labelFontWeight="bold"
+                  class="ox-mt-2"
                 ></ox-divider>
-                <div class="ox-p-4">Content C</div>
-                <ox-divider
-                  orientation="vertical"
-                  label="Bottom"
-                  labelPosition="end"
-                ></ox-divider>
-                <div class="ox-p-4">Content D</div>
-              </div>
-            </div>
 
-            <div
-              class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4"
-            >
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Divider Styles</h3>
-              <ox-divider label="Solid (Default)"></ox-divider>
-              <ox-divider label="Dashed" borderStyle="dashed"></ox-divider>
-              <ox-divider label="Dotted" borderStyle="dotted"></ox-divider>
-              <!-- Double usually requires width > 1px to be visible, showing as concept -->
-              <ox-divider
-                label="Double (3px)"
-                borderStyle="double"
-                style="border-width: 3px !important"
-              ></ox-divider>
-            </div>
-          </section>
-
-          <!-- FIELDSET DEMO -->
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Fieldset
-            </h2>
-
-            <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
-              <!-- Outlined (Default) -->
-              <ox-fieldset legend="Personal Information" variant="outlined">
-                <div class="ox-flex ox-flex-col ox-gap-2">
-                  <label>First Name</label>
-                  <input
-                    type="text"
-                    class="ox-p-2 ox-border ox-rounded"
-                    placeholder="John"
-                  />
-                  <label>Last Name</label>
-                  <input
-                    type="text"
-                    class="ox-p-2 ox-border ox-rounded"
-                    placeholder="Doe"
-                  />
-                </div>
-              </ox-fieldset>
-
-              <!-- Dashed Border -->
-              <ox-fieldset
-                legend="Additional Info (Dashed)"
-                variant="outlined"
-                borderStyle="dashed"
-              >
-                <div class="ox-p-2 ox-text-secondary">
-                  This area has a custom border style.
-                </div>
-              </ox-fieldset>
-
-              <!-- Toggleable -->
-              <ox-fieldset
-                legend="Toggle Me"
-                variant="outlined"
-                [toggleable]="true"
-              >
-                <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
-                  Peek-a-boo! I can be hidden.
-                </div>
-              </ox-fieldset>
-
-              <!-- Custom Templates -->
-              <ng-template #customIcon let-collapsed>
-                <span>{{ collapsed ? "+" : "-" }}</span>
-              </ng-template>
-
-              <ng-template #customLegend>
-                <span class="ox-flex ox-items-center ox-gap-2">
-                  <span>Custom Title</span>
-                  <span
-                    class="ox-bg-primary ox-text-white ox-text-xs ox-px-2 ox-rounded-full"
-                    >New</span
-                  >
-                </span>
-              </ng-template>
-
-              <ox-fieldset
-                [legendTemplate]="customLegend"
-                [iconTemplate]="customIcon"
-                [toggleable]="true"
-                variant="outlined"
-              >
-                <div class="ox-p-4">
-                  This fieldset uses custom templates for both the icon (+/-)
-                  and the legend (with a badge).
-                </div>
-              </ox-fieldset>
-
-              <!-- Flat -->
-              <ox-fieldset
-                legend="Settings (Centered)"
-                variant="flat"
-                legendPosition="center"
-              >
-                <div class="ox-flex ox-items-center ox-gap-4">
-                  <input type="checkbox" id="check1" />
-                  <label for="check1">Enable Notifications</label>
-                </div>
-                <div class="ox-flex ox-items-center ox-gap-4">
-                  <input type="checkbox" id="check2" checked />
-                  <label for="check2">Dark Mode</label>
-                </div>
-              </ox-fieldset>
-
-              <!-- Disabled -->
-              <ox-fieldset
-                legend="Disabled Group (Right)"
-                [disabled]="true"
-                legendPosition="end"
-              >
-                <div class="ox-flex ox-flex-col ox-gap-2">
-                  <label>Cannot edit this</label>
-                  <input
-                    type="text"
-                    class="ox-p-2 ox-border ox-rounded"
-                    value="Locked Data"
-                  />
-                </div>
-              </ox-fieldset>
-            </div>
-          </section>
-          <!-- PANEL DEMO -->
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Panel
-            </h2>
-
-            <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
-              <!-- Outlined (Default) -->
-              <ox-panel header="Panel Header" variant="outlined">
-                <div class="ox-p-2">
-                  This is a standard panel with content. It uses divs instead of
-                  fieldset.
-                </div>
-              </ox-panel>
-
-              <!-- Dashed Border -->
-              <ox-panel
-                header="Dashed Panel"
-                variant="outlined"
-                borderStyle="dashed"
-              >
-                <div class="ox-p-2 ox-text-secondary">
-                  This panel has a dashed border.
-                </div>
-              </ox-panel>
-
-              <!-- Flat -->
-              <ox-panel header="Flat Panel" variant="flat">
-                <div class="ox-text-secondary">
-                  This panel has a flat style.
-                </div>
-              </ox-panel>
-
-              <!-- Toggleable -->
-              <ox-panel
-                header="Toggleable Panel"
-                variant="outlined"
-                [toggleable]="true"
-              >
-                <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
-                  You can collapse this content.
-                </div>
-              </ox-panel>
-
-              <!-- Custom Templates -->
-              <ng-template #customPanelIcon let-collapsed>
-                <span>{{ collapsed ? "Show" : "Hide" }}</span>
-              </ng-template>
-
-              <ox-panel
-                header="Custom Header"
-                [iconTemplate]="customPanelIcon"
-                [toggleable]="true"
-                variant="outlined"
-              >
-                <div class="ox-p-4">Custom toggle text instead of icon.</div>
-              </ox-panel>
-
-              <!-- Disabled -->
-              <ox-panel header="Disabled Panel" [disabled]="true">
-                <div class="ox-p-2">This panel is disabled.</div>
-              </ox-panel>
-
-              <!-- Header Position Center -->
-              <ox-panel
-                header="Centered Header"
-                headerPosition="center"
-                variant="outlined"
-              >
-                <div class="ox-p-2">The header is centered.</div>
-              </ox-panel>
-
-              <!-- Header Position End -->
-              <ox-panel
-                header="Right Aligned Header"
-                headerPosition="end"
-                variant="outlined"
-              >
-                <div class="ox-p-2">The header is on the right.</div>
-              </ox-panel>
-
-              <!-- Box Shadow -->
-              <ox-panel
-                header="Shadowed Panel"
-                variant="outlined"
-                boxShadow="md"
-              >
-                <div class="ox-p-2">This panel has a medium box shadow.</div>
-              </ox-panel>
-
-              <!-- Scrollable Vertical -->
-              <ox-panel
-                header="Vertical Scroll"
-                [scrollable]="true"
-                scrollHeight="150px"
-              >
-                <div class="ox-p-2">
-                  <p>Content line 1</p>
-                  <p>Content line 2</p>
-                  <p>Content line 3</p>
-                  <p>Content line 4</p>
-                  <p>Content line 5</p>
-                  <p>Content line 6</p>
-                  <p>Content line 7</p>
-                  <p>Content line 8</p>
-                  <p>Content line 9</p>
-                  <p>Content line 10</p>
-                </div>
-              </ox-panel>
-
-              <!-- Scrollable Horizontal -->
-              <ox-panel
-                header="Horizontal Scroll"
-                [scrollable]="true"
-                scrollDirection="x"
-                scrollWidth="200px"
-              >
-                <div class="ox-p-2" style="width: 500px; white-space: nowrap">
-                  This content is very wide and should trigger a horizontal
-                  scrollbar because the width exceeds the scrollWidth.
-                </div>
-              </ox-panel>
-
-              <!-- Scrollable Both -->
-              <ox-panel
-                header="Both Scroll"
-                [scrollable]="true"
-                scrollDirection="both"
-                scrollHeight="150px"
-                scrollWidth="200px"
-              >
-                <div class="ox-p-2" style="width: 500px; height: 300px">
-                  Wide and tall content to trigger both scrollbars.
-                  <br />
-                  ...
-                </div>
-              </ox-panel>
-            </div>
-          </section>
-
-          <!-- STEPPER DEMO -->
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Stepper
-            </h2>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Horizontal Stepper (Linear)
-              </h3>
-              <ox-stepper #stepper1>
-                <ox-step label="Personal Info">
-                  <div class="ox-flex ox-flex-col ox-gap-4">
-                    <p>Step 1: Enter your details</p>
-                    <div class="ox-flex ox-gap-2">
-                      <label>Name:</label>
-                      <input
-                        class="ox-border ox-p-1 ox-rounded"
-                        placeholder="First Name"
-                      />
-                    </div>
-                    <div class="ox-flex ox-justify-end ox-mt-2">
-                      <ox-button (click)="stepper1.next()" variant="primary"
-                        >Next</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-                <ox-step label="Address">
-                  <div class="ox-flex ox-flex-col ox-gap-4">
-                    <p>Step 2: Enter your address</p>
-                    <div class="ox-flex ox-gap-2">
-                      <label>City:</label>
-                      <input
-                        class="ox-border ox-p-1 ox-rounded"
-                        placeholder="City"
-                      />
-                    </div>
-                    <div class="ox-flex ox-justify-between ox-mt-2">
-                      <ox-button
-                        (click)="stepper1.previous()"
-                        variant="secondary"
-                        >Back</ox-button
-                      >
-                      <ox-button (click)="stepper1.next()" variant="primary"
-                        >Next</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-                <ox-step label="Review" [completed]="true">
-                  <div class="ox-flex ox-flex-col ox-gap-4">
-                    <p>Step 3: Review and Submit</p>
-                    <p class="ox-text-secondary">Summary of your data...</p>
-                    <div class="ox-flex ox-justify-between ox-mt-2">
-                      <ox-button
-                        (click)="stepper1.previous()"
-                        variant="secondary"
-                        >Back</ox-button
-                      >
-                      <ox-button (click)="stepper1.reset()" variant="success"
-                        >Submit & Reset</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-              </ox-stepper>
-            </div>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Vertical Stepper</h3>
-              <ox-stepper
-                orientation="vertical"
-                [headerNavigation]="false"
-                #stepper2
-              >
-                <ox-step label="Account Setup">
-                  <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
-                    <p class="ox-text-sm ox-text-secondary">
-                      Create your account credentials.
-                    </p>
-                    <div class="ox-flex ox-flex-col ox-gap-2">
-                      <label class="ox-text-sm ox-font-medium">Username</label>
-                      <input
-                        class="ox-border ox-p-2 ox-rounded ox-text-sm"
-                        placeholder="johndoe"
-                      />
-                    </div>
-                    <div class="ox-flex ox-justify-end ox-mt-2">
-                      <ox-button
-                        (click)="stepper2.next()"
-                        variant="primary"
-                        size="sm"
-                        >Continue</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-                <ox-step label="Personal Details" [optional]="true">
-                  <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
-                    <p class="ox-text-sm ox-text-secondary">
-                      Tell us about yourself.
-                    </p>
-                    <div class="ox-flex ox-gap-4">
-                      <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
-                        <label class="ox-text-sm ox-font-medium"
-                          >First Name</label
-                        >
-                        <input
-                          class="ox-border ox-p-2 ox-rounded ox-text-sm"
-                          placeholder="John"
-                        />
-                      </div>
-                      <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
-                        <label class="ox-text-sm ox-font-medium"
-                          >Last Name</label
-                        >
-                        <input
-                          class="ox-border ox-p-2 ox-rounded ox-text-sm"
-                          placeholder="Doe"
-                        />
-                      </div>
-                    </div>
-                    <div class="ox-flex ox-justify-between ox-mt-2">
-                      <ox-button
-                        (click)="stepper2.previous()"
-                        variant="secondary"
-                        size="sm"
-                        >Back</ox-button
-                      >
-                      <ox-button
-                        (click)="stepper2.next()"
-                        variant="primary"
-                        size="sm"
-                        >Next</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-                <ox-step label="Confirmation">
-                  <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
-                    <div class="ox-bg-gray-50 ox-p-4 ox-rounded ox-border">
-                      <h4 class="ox-font-bold ox-mb-2">Summary</h4>
-                      <p class="ox-text-sm">Username: johndoe</p>
-                      <p class="ox-text-sm">Name: John Doe</p>
-                    </div>
-                    <div class="ox-flex ox-justify-between ox-mt-2">
-                      <ox-button
-                        (click)="stepper2.previous()"
-                        variant="secondary"
-                        size="sm"
-                        >Back</ox-button
-                      >
-                      <ox-button
-                        (click)="stepper2.reset()"
-                        variant="success"
-                        size="sm"
-                        >Confirm & Reset</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-step>
-              </ox-stepper>
-            </div>
-          </section>
-
-          <!-- TABS DEMO -->
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Tabs
-            </h2>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Basic Tabs</h3>
-              <ox-tabs>
-                <ox-tab label="Account">
-                  <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
-                    <h4 class="ox-font-bold ox-mb-2">Account Settings</h4>
-                    <p class="ox-text-secondary">
-                      Manage your account details and preferences here.
-                    </p>
-                  </div>
-                </ox-tab>
-                <ox-tab label="Password">
-                  <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
-                    <h4 class="ox-font-bold ox-mb-2">Password Change</h4>
-                    <div class="ox-flex ox-flex-col ox-gap-2 ox-max-w-md">
-                      <label class="ox-text-sm">Current Password</label>
-                      <input
-                        type="password"
-                        class="ox-border ox-p-2 ox-rounded"
-                      />
-                      <label class="ox-text-sm">New Password</label>
-                      <input
-                        type="password"
-                        class="ox-border ox-p-2 ox-rounded"
-                      />
-                      <ox-button variant="primary" class="ox-mt-2"
-                        >Update Password</ox-button
-                      >
-                    </div>
-                  </div>
-                </ox-tab>
-                <ox-tab label="Disabled" [disabled]="true">
-                  <div class="ox-p-4">This content should not be visible.</div>
-                </ox-tab>
-                <ox-tab label="Notifications">
-                  <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
-                    <h4 class="ox-font-bold ox-mb-2">Notifications</h4>
-                    <div class="ox-flex ox-items-center ox-gap-2">
-                      <input type="checkbox" checked />
-                      <label>Email Notifications</label>
-                    </div>
-                  </div>
-                </ox-tab>
-              </ox-tabs>
-            </div>
-          </section>
-
-          <section class="ox-mb-16">
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Color Variants</h3>
-
-              <p class="ox-mb-2">Danger:</p>
-              <ox-tabs color="danger">
-                <ox-tab label="Alerts">Critical alerts here.</ox-tab>
-                <ox-tab label="Errors">Error logs.</ox-tab>
-              </ox-tabs>
-
-              <p class="ox-mt-4 ox-mb-2">Success:</p>
-              <ox-tabs color="success">
-                <ox-tab label="Completed">All tasks done.</ox-tab>
-                <ox-tab label="Verified">Verified items.</ox-tab>
-              </ox-tabs>
-            </div>
-          </section>
-
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Scrollable Tabs
-            </h2>
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Auto-Scrolling with Arrows
-              </h3>
-              <p class="ox-mb-4 ox-text-secondary">
-                The header automatically shows navigation arrows when the tabs
-                overflow the container.
-              </p>
-
-              <ox-tabs>
-                <ox-tab label="Overview">Overview Content</ox-tab>
-                <ox-tab label="Detailed Analysis"
-                  >Detailed Analysis Content</ox-tab
+                <p class="ox-mt-4"><strong>Vertical:</strong></p>
+                <div
+                  class="ox-flex ox-items-center ox-mt-4"
+                  style="height: 200px; border: 1px solid #eee"
                 >
-                <ox-tab label="Projects & Tasks">Projects Content</ox-tab>
-                <ox-tab label="Team Members">Team Content</ox-tab>
-                <ox-tab label="Document Management">Document Content</ox-tab>
-                <ox-tab label="External Connections"
-                  >Connections Content</ox-tab
-                >
-                <ox-tab label="Recent Activity">Activity Content</ox-tab>
-                <ox-tab label="System Settings">Settings Content</ox-tab>
-                <ox-tab label="User Permissions">Permissions Content</ox-tab>
-                <ox-tab label="Audit Logs">Audit Logs Content</ox-tab>
-                <ox-tab label="Financial Reports">Reports Content</ox-tab>
-                <ox-tab label="Usage Analytics">Analytics Content</ox-tab>
-                <ox-tab label="Subscription & Billing">Billing Content</ox-tab>
-              </ox-tabs>
-            </div>
-          </section>
-
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Controlled Tabs
-            </h2>
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                External Navigation
-              </h3>
-              <p class="ox-mb-4 ox-text-secondary">
-                You can control the active tab using external buttons and
-                two-way binding on <code>[(activeIndex)]</code>.
-              </p>
-
-              <div class="ox-flex ox-gap-2 ox-mb-4">
-                <ox-button
-                  (click)="controlledTabIndex.set(0)"
-                  variant="secondary"
-                  size="sm"
-                  >Go to Start</ox-button
-                >
-                <ox-button
-                  (click)="controlledTabs.previous()"
-                  variant="info"
-                  size="sm"
-                  >Prev Tab</ox-button
-                >
-                <ox-button
-                  (click)="controlledTabs.next()"
-                  variant="info"
-                  size="sm"
-                  >Next Tab</ox-button
-                >
-                <ox-button
-                  (click)="controlledTabIndex.set(2)"
-                  variant="secondary"
-                  size="sm"
-                  >Go to Statistics</ox-button
-                >
+                  <div class="ox-p-4">Content A</div>
+                  <ox-divider
+                    orientation="vertical"
+                    label="Top"
+                    labelPosition="start"
+                  ></ox-divider>
+                  <div class="ox-p-4">Content B</div>
+                  <ox-divider
+                    orientation="vertical"
+                    label="Center"
+                    labelPosition="center"
+                  ></ox-divider>
+                  <div class="ox-p-4">Content C</div>
+                  <ox-divider
+                    orientation="vertical"
+                    label="Bottom"
+                    labelPosition="end"
+                  ></ox-divider>
+                  <div class="ox-p-4">Content D</div>
+                </div>
               </div>
 
-              <div class="ox-bg-gray-50 ox-p-4 ox-rounded ox-border ox-mb-4">
-                Active Index: <strong>{{ controlledTabIndex() }}</strong>
-              </div>
-
-              <ox-tabs
-                [(activeIndex)]="controlledTabIndex"
-                #controlledTabs
-                color="info"
-              >
-                <ox-tab label="General Info">
-                  <div class="ox-p-4">
-                    <h4 class="ox-font-bold">General Information</h4>
-                    <p>This tab is being controlled externally.</p>
-                  </div>
-                </ox-tab>
-                <ox-tab label="Team Settings">
-                  <div class="ox-p-4">
-                    <h4 class="ox-font-bold">Team Settings</h4>
-                    <p>Adjust your team preferences here.</p>
-                  </div>
-                </ox-tab>
-                <ox-tab label="Statistics">
-                  <div class="ox-p-4">
-                    <h4 class="ox-font-bold">Usage Statistics</h4>
-                    <p>View your platform usage data.</p>
-                  </div>
-                </ox-tab>
-              </ox-tabs>
-            </div>
-          </section>
-
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Custom Header Templates
-            </h2>
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Tabs with Icons & HTML
-              </h3>
-              <p class="ox-mb-4 ox-text-secondary">
-                Use <code>*oxTabHeader</code> on an <code>ng-template</code> to
-                define custom content for the tab header.
-              </p>
-
-              <ox-tabs color="primary">
-                <ox-tab>
-                  <ng-template oxTabHeader>
-                    <div class="ox-flex ox-items-center ox-gap-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path
-                          d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-                        ></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
-                      <span>Profile</span>
-                    </div>
-                  </ng-template>
-                  <div class="ox-p-4">
-                    User profile details with icon in header.
-                  </div>
-                </ox-tab>
-
-                <ox-tab>
-                  <ng-template oxTabHeader>
-                    <div class="ox-flex ox-items-center ox-gap-2">
-                      <span>Messages</span>
-                      <span
-                        class="ox-bg-danger ox-text-white ox-text-[10px] ox-px-1.5 ox-rounded-full"
-                        >3</span
-                      >
-                    </div>
-                  </ng-template>
-                  <div class="ox-p-4">
-                    Inbox content with a notification badge in header.
-                  </div>
-                </ox-tab>
-
-                <ox-tab label="Plain Text">
-                  <div class="ox-p-4">
-                    This tab uses the standard string label.
-                  </div>
-                </ox-tab>
-              </ox-tabs>
-            </div>
-          </section>
-
-          <section class="ox-mb-16">
-            <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
-              Toolbar
-            </h2>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Standard Surface Toolbar
-              </h3>
-              <ox-toolbar>
-                <div left class="ox-font-bold ox-text-lg">Oxygen UI</div>
-                <div>Navigation Link</div>
-                <div right class="ox-flex ox-gap-2">
-                  <ox-button variant="ghost-primary" size="sm">Login</ox-button>
-                  <ox-button variant="primary" size="sm">Sign Up</ox-button>
-                </div>
-              </ox-toolbar>
-            </div>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">Primary Variant</h3>
-              <ox-toolbar color="primary">
-                <div left class="ox-font-bold">Admin Console</div>
-                <div right>
-                  <ox-button
-                    variant="ghost-secondary"
-                    size="sm"
-                    style="color: white; border-color: rgba(255, 255, 255, 0.3)"
-                    >Logout</ox-button
-                  >
-                </div>
-              </ox-toolbar>
-            </div>
-
-            <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
-              <h3 class="ox-text-lg ox-font-bold ox-mb-4">
-                Sticky Toolbar Demo
-              </h3>
               <div
-                class="ox-relative ox-h-[150px] ox-overflow-auto ox-border ox-rounded"
+                class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4"
               >
-                <ox-toolbar [sticky]="true" [shadow]="true">
-                  <div left>Sticky Header</div>
-                  <div right>
-                    <ox-button variant="primary" size="sm">Action</ox-button>
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">Divider Styles</h3>
+                <ox-divider label="Solid (Default)"></ox-divider>
+                <ox-divider label="Dashed" borderStyle="dashed"></ox-divider>
+                <ox-divider label="Dotted" borderStyle="dotted"></ox-divider>
+                <!-- Double usually requires width > 1px to be visible, showing as concept -->
+                <ox-divider
+                  label="Double (3px)"
+                  borderStyle="double"
+                  style="border-width: 3px !important"
+                ></ox-divider>
+              </div>
+            </section>
+
+            <!-- FIELDSET DEMO -->
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Fieldset
+              </h2>
+
+              <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+                <!-- Outlined (Default) -->
+                <ox-fieldset legend="Personal Information" variant="outlined">
+                  <div class="ox-flex ox-flex-col ox-gap-2">
+                    <label>First Name</label>
+                    <input
+                      type="text"
+                      class="ox-p-2 ox-border ox-rounded"
+                      placeholder="John"
+                    />
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      class="ox-p-2 ox-border ox-rounded"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </ox-fieldset>
+
+                <!-- Dashed Border -->
+                <ox-fieldset
+                  legend="Additional Info (Dashed)"
+                  variant="outlined"
+                  borderStyle="dashed"
+                >
+                  <div class="ox-p-2 ox-text-secondary">
+                    This area has a custom border style.
+                  </div>
+                </ox-fieldset>
+
+                <!-- Toggleable -->
+                <ox-fieldset
+                  legend="Toggle Me"
+                  variant="outlined"
+                  [toggleable]="true"
+                >
+                  <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
+                    Peek-a-boo! I can be hidden.
+                  </div>
+                </ox-fieldset>
+
+                <!-- Custom Templates -->
+                <ng-template #customIcon let-collapsed>
+                  <span>{{ collapsed ? "+" : "-" }}</span>
+                </ng-template>
+
+                <ng-template #customLegend>
+                  <span class="ox-flex ox-items-center ox-gap-2">
+                    <span>Custom Title</span>
+                    <span
+                      class="ox-bg-primary ox-text-white ox-text-xs ox-px-2 ox-rounded-full"
+                      >New</span
+                    >
+                  </span>
+                </ng-template>
+
+                <ox-fieldset
+                  [legendTemplate]="customLegend"
+                  [iconTemplate]="customIcon"
+                  [toggleable]="true"
+                  variant="outlined"
+                >
+                  <div class="ox-p-4">
+                    This fieldset uses custom templates for both the icon (+/-)
+                    and the legend (with a badge).
+                  </div>
+                </ox-fieldset>
+
+                <!-- Flat -->
+                <ox-fieldset
+                  legend="Settings (Centered)"
+                  variant="flat"
+                  legendPosition="center"
+                >
+                  <div class="ox-flex ox-items-center ox-gap-4">
+                    <input type="checkbox" id="check1" />
+                    <label for="check1">Enable Notifications</label>
+                  </div>
+                  <div class="ox-flex ox-items-center ox-gap-4">
+                    <input type="checkbox" id="check2" checked />
+                    <label for="check2">Dark Mode</label>
+                  </div>
+                </ox-fieldset>
+
+                <!-- Disabled -->
+                <ox-fieldset
+                  legend="Disabled Group (Right)"
+                  [disabled]="true"
+                  legendPosition="end"
+                >
+                  <div class="ox-flex ox-flex-col ox-gap-2">
+                    <label>Cannot edit this</label>
+                    <input
+                      type="text"
+                      class="ox-p-2 ox-border ox-rounded"
+                      value="Locked Data"
+                    />
+                  </div>
+                </ox-fieldset>
+              </div>
+            </section>
+            <!-- PANEL DEMO -->
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Panel
+              </h2>
+
+              <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+                <!-- Outlined (Default) -->
+                <ox-panel header="Panel Header" variant="outlined">
+                  <div class="ox-p-2">
+                    This is a standard panel with content. It uses divs instead
+                    of fieldset.
+                  </div>
+                </ox-panel>
+
+                <!-- Dashed Border -->
+                <ox-panel
+                  header="Dashed Panel"
+                  variant="outlined"
+                  borderStyle="dashed"
+                >
+                  <div class="ox-p-2 ox-text-secondary">
+                    This panel has a dashed border.
+                  </div>
+                </ox-panel>
+
+                <!-- Flat -->
+                <ox-panel header="Flat Panel" variant="flat">
+                  <div class="ox-text-secondary">
+                    This panel has a flat style.
+                  </div>
+                </ox-panel>
+
+                <!-- Toggleable -->
+                <ox-panel
+                  header="Toggleable Panel"
+                  variant="outlined"
+                  [toggleable]="true"
+                >
+                  <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
+                    You can collapse this content.
+                  </div>
+                </ox-panel>
+
+                <!-- Custom Templates -->
+                <ng-template #customPanelIcon let-collapsed>
+                  <span>{{ collapsed ? "Show" : "Hide" }}</span>
+                </ng-template>
+
+                <ox-panel
+                  header="Custom Header"
+                  [iconTemplate]="customPanelIcon"
+                  [toggleable]="true"
+                  variant="outlined"
+                >
+                  <div class="ox-p-4">Custom toggle text instead of icon.</div>
+                </ox-panel>
+
+                <!-- Disabled -->
+                <ox-panel header="Disabled Panel" [disabled]="true">
+                  <div class="ox-p-2">This panel is disabled.</div>
+                </ox-panel>
+
+                <!-- Header Position Center -->
+                <ox-panel
+                  header="Centered Header"
+                  headerPosition="center"
+                  variant="outlined"
+                >
+                  <div class="ox-p-2">The header is centered.</div>
+                </ox-panel>
+
+                <!-- Header Position End -->
+                <ox-panel
+                  header="Right Aligned Header"
+                  headerPosition="end"
+                  variant="outlined"
+                >
+                  <div class="ox-p-2">The header is on the right.</div>
+                </ox-panel>
+
+                <!-- Box Shadow -->
+                <ox-panel
+                  header="Shadowed Panel"
+                  variant="outlined"
+                  boxShadow="md"
+                >
+                  <div class="ox-p-2">This panel has a medium box shadow.</div>
+                </ox-panel>
+
+                <!-- Scrollable Vertical -->
+                <ox-panel
+                  header="Vertical Scroll"
+                  [scrollable]="true"
+                  scrollHeight="150px"
+                >
+                  <div class="ox-p-2">
+                    <p>Content line 1</p>
+                    <p>Content line 2</p>
+                    <p>Content line 3</p>
+                    <p>Content line 4</p>
+                    <p>Content line 5</p>
+                    <p>Content line 6</p>
+                    <p>Content line 7</p>
+                    <p>Content line 8</p>
+                    <p>Content line 9</p>
+                    <p>Content line 10</p>
+                  </div>
+                </ox-panel>
+
+                <!-- Scrollable Horizontal -->
+                <ox-panel
+                  header="Horizontal Scroll"
+                  [scrollable]="true"
+                  scrollDirection="x"
+                  scrollWidth="200px"
+                >
+                  <div class="ox-p-2" style="width: 500px; white-space: nowrap">
+                    This content is very wide and should trigger a horizontal
+                    scrollbar because the width exceeds the scrollWidth.
+                  </div>
+                </ox-panel>
+
+                <!-- Scrollable Both -->
+                <ox-panel
+                  header="Both Scroll"
+                  [scrollable]="true"
+                  scrollDirection="both"
+                  scrollHeight="150px"
+                  scrollWidth="200px"
+                >
+                  <div class="ox-p-2" style="width: 500px; height: 300px">
+                    Wide and tall content to trigger both scrollbars.
+                    <br />
+                    ...
+                  </div>
+                </ox-panel>
+              </div>
+            </section>
+
+            <!-- STEPPER DEMO -->
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Stepper
+              </h2>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Horizontal Stepper (Linear)
+                </h3>
+                <ox-stepper #stepper1>
+                  <ox-step label="Personal Info">
+                    <div class="ox-flex ox-flex-col ox-gap-4">
+                      <p>Step 1: Enter your details</p>
+                      <div class="ox-flex ox-gap-2">
+                        <label>Name:</label>
+                        <input
+                          class="ox-border ox-p-1 ox-rounded"
+                          placeholder="First Name"
+                        />
+                      </div>
+                      <div class="ox-flex ox-justify-end ox-mt-2">
+                        <ox-button (click)="stepper1.next()" variant="primary"
+                          >Next</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                  <ox-step label="Address">
+                    <div class="ox-flex ox-flex-col ox-gap-4">
+                      <p>Step 2: Enter your address</p>
+                      <div class="ox-flex ox-gap-2">
+                        <label>City:</label>
+                        <input
+                          class="ox-border ox-p-1 ox-rounded"
+                          placeholder="City"
+                        />
+                      </div>
+                      <div class="ox-flex ox-justify-between ox-mt-2">
+                        <ox-button
+                          (click)="stepper1.previous()"
+                          variant="secondary"
+                          >Back</ox-button
+                        >
+                        <ox-button (click)="stepper1.next()" variant="primary"
+                          >Next</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                  <ox-step label="Review" [completed]="true">
+                    <div class="ox-flex ox-flex-col ox-gap-4">
+                      <p>Step 3: Review and Submit</p>
+                      <p class="ox-text-secondary">Summary of your data...</p>
+                      <div class="ox-flex ox-justify-between ox-mt-2">
+                        <ox-button
+                          (click)="stepper1.previous()"
+                          variant="secondary"
+                          >Back</ox-button
+                        >
+                        <ox-button (click)="stepper1.reset()" variant="success"
+                          >Submit & Reset</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                </ox-stepper>
+              </div>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Vertical Stepper
+                </h3>
+                <ox-stepper
+                  orientation="vertical"
+                  [headerNavigation]="false"
+                  #stepper2
+                >
+                  <ox-step label="Account Setup">
+                    <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                      <p class="ox-text-sm ox-text-secondary">
+                        Create your account credentials.
+                      </p>
+                      <div class="ox-flex ox-flex-col ox-gap-2">
+                        <label class="ox-text-sm ox-font-medium"
+                          >Username</label
+                        >
+                        <input
+                          class="ox-border ox-p-2 ox-rounded ox-text-sm"
+                          placeholder="johndoe"
+                        />
+                      </div>
+                      <div class="ox-flex ox-justify-end ox-mt-2">
+                        <ox-button
+                          (click)="stepper2.next()"
+                          variant="primary"
+                          size="sm"
+                          >Continue</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                  <ox-step label="Personal Details" [optional]="true">
+                    <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                      <p class="ox-text-sm ox-text-secondary">
+                        Tell us about yourself.
+                      </p>
+                      <div class="ox-flex ox-gap-4">
+                        <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
+                          <label class="ox-text-sm ox-font-medium"
+                            >First Name</label
+                          >
+                          <input
+                            class="ox-border ox-p-2 ox-rounded ox-text-sm"
+                            placeholder="John"
+                          />
+                        </div>
+                        <div class="ox-flex ox-flex-col ox-gap-2 ox-flex-1">
+                          <label class="ox-text-sm ox-font-medium"
+                            >Last Name</label
+                          >
+                          <input
+                            class="ox-border ox-p-2 ox-rounded ox-text-sm"
+                            placeholder="Doe"
+                          />
+                        </div>
+                      </div>
+                      <div class="ox-flex ox-justify-between ox-mt-2">
+                        <ox-button
+                          (click)="stepper2.previous()"
+                          variant="secondary"
+                          size="sm"
+                          >Back</ox-button
+                        >
+                        <ox-button
+                          (click)="stepper2.next()"
+                          variant="primary"
+                          size="sm"
+                          >Next</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                  <ox-step label="Confirmation">
+                    <div class="ox-flex ox-flex-col ox-gap-4 ox-p-2">
+                      <div class="ox-bg-gray-50 ox-p-4 ox-rounded ox-border">
+                        <h4 class="ox-font-bold ox-mb-2">Summary</h4>
+                        <p class="ox-text-sm">Username: johndoe</p>
+                        <p class="ox-text-sm">Name: John Doe</p>
+                      </div>
+                      <div class="ox-flex ox-justify-between ox-mt-2">
+                        <ox-button
+                          (click)="stepper2.previous()"
+                          variant="secondary"
+                          size="sm"
+                          >Back</ox-button
+                        >
+                        <ox-button
+                          (click)="stepper2.reset()"
+                          variant="success"
+                          size="sm"
+                          >Confirm & Reset</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-step>
+                </ox-stepper>
+              </div>
+            </section>
+
+            <!-- TABS DEMO -->
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Tabs
+              </h2>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">Basic Tabs</h3>
+                <ox-tabs>
+                  <ox-tab label="Account">
+                    <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
+                      <h4 class="ox-font-bold ox-mb-2">Account Settings</h4>
+                      <p class="ox-text-secondary">
+                        Manage your account details and preferences here.
+                      </p>
+                    </div>
+                  </ox-tab>
+                  <ox-tab label="Password">
+                    <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
+                      <h4 class="ox-font-bold ox-mb-2">Password Change</h4>
+                      <div class="ox-flex ox-flex-col ox-gap-2 ox-max-w-md">
+                        <label class="ox-text-sm">Current Password</label>
+                        <input
+                          type="password"
+                          class="ox-border ox-p-2 ox-rounded"
+                        />
+                        <label class="ox-text-sm">New Password</label>
+                        <input
+                          type="password"
+                          class="ox-border ox-p-2 ox-rounded"
+                        />
+                        <ox-button variant="primary" class="ox-mt-2"
+                          >Update Password</ox-button
+                        >
+                      </div>
+                    </div>
+                  </ox-tab>
+                  <ox-tab label="Disabled" [disabled]="true">
+                    <div class="ox-p-4">
+                      This content should not be visible.
+                    </div>
+                  </ox-tab>
+                  <ox-tab label="Notifications">
+                    <div class="ox-p-4 ox-bg-gray-50 ox-rounded">
+                      <h4 class="ox-font-bold ox-mb-2">Notifications</h4>
+                      <div class="ox-flex ox-items-center ox-gap-2">
+                        <input type="checkbox" checked />
+                        <label>Email Notifications</label>
+                      </div>
+                    </div>
+                  </ox-tab>
+                </ox-tabs>
+              </div>
+            </section>
+
+            <section class="ox-mb-16">
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">Color Variants</h3>
+
+                <p class="ox-mb-2">Danger:</p>
+                <ox-tabs color="danger">
+                  <ox-tab label="Alerts">Critical alerts here.</ox-tab>
+                  <ox-tab label="Errors">Error logs.</ox-tab>
+                </ox-tabs>
+
+                <p class="ox-mt-4 ox-mb-2">Success:</p>
+                <ox-tabs color="success">
+                  <ox-tab label="Completed">All tasks done.</ox-tab>
+                  <ox-tab label="Verified">Verified items.</ox-tab>
+                </ox-tabs>
+              </div>
+            </section>
+
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Scrollable Tabs
+              </h2>
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Auto-Scrolling with Arrows
+                </h3>
+                <p class="ox-mb-4 ox-text-secondary">
+                  The header automatically shows navigation arrows when the tabs
+                  overflow the container.
+                </p>
+
+                <ox-tabs>
+                  <ox-tab label="Overview">Overview Content</ox-tab>
+                  <ox-tab label="Detailed Analysis"
+                    >Detailed Analysis Content</ox-tab
+                  >
+                  <ox-tab label="Projects & Tasks">Projects Content</ox-tab>
+                  <ox-tab label="Team Members">Team Content</ox-tab>
+                  <ox-tab label="Document Management">Document Content</ox-tab>
+                  <ox-tab label="External Connections"
+                    >Connections Content</ox-tab
+                  >
+                  <ox-tab label="Recent Activity">Activity Content</ox-tab>
+                  <ox-tab label="System Settings">Settings Content</ox-tab>
+                  <ox-tab label="User Permissions">Permissions Content</ox-tab>
+                  <ox-tab label="Audit Logs">Audit Logs Content</ox-tab>
+                  <ox-tab label="Financial Reports">Reports Content</ox-tab>
+                  <ox-tab label="Usage Analytics">Analytics Content</ox-tab>
+                  <ox-tab label="Subscription & Billing"
+                    >Billing Content</ox-tab
+                  >
+                </ox-tabs>
+              </div>
+            </section>
+
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Controlled Tabs
+              </h2>
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  External Navigation
+                </h3>
+                <p class="ox-mb-4 ox-text-secondary">
+                  You can control the active tab using external buttons and
+                  two-way binding on <code>[(activeIndex)]</code>.
+                </p>
+
+                <div class="ox-flex ox-gap-2 ox-mb-4">
+                  <ox-button
+                    (click)="controlledTabIndex.set(0)"
+                    variant="secondary"
+                    size="sm"
+                    >Go to Start</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledTabs.previous()"
+                    variant="info"
+                    size="sm"
+                    >Prev Tab</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledTabs.next()"
+                    variant="info"
+                    size="sm"
+                    >Next Tab</ox-button
+                  >
+                  <ox-button
+                    (click)="controlledTabIndex.set(2)"
+                    variant="secondary"
+                    size="sm"
+                    >Go to Statistics</ox-button
+                  >
+                </div>
+
+                <div class="ox-bg-gray-50 ox-p-4 ox-rounded ox-border ox-mb-4">
+                  Active Index: <strong>{{ controlledTabIndex() }}</strong>
+                </div>
+
+                <ox-tabs
+                  [(activeIndex)]="controlledTabIndex"
+                  #controlledTabs
+                  color="info"
+                >
+                  <ox-tab label="General Info">
+                    <div class="ox-p-4">
+                      <h4 class="ox-font-bold">General Information</h4>
+                      <p>This tab is being controlled externally.</p>
+                    </div>
+                  </ox-tab>
+                  <ox-tab label="Team Settings">
+                    <div class="ox-p-4">
+                      <h4 class="ox-font-bold">Team Settings</h4>
+                      <p>Adjust your team preferences here.</p>
+                    </div>
+                  </ox-tab>
+                  <ox-tab label="Statistics">
+                    <div class="ox-p-4">
+                      <h4 class="ox-font-bold">Usage Statistics</h4>
+                      <p>View your platform usage data.</p>
+                    </div>
+                  </ox-tab>
+                </ox-tabs>
+              </div>
+            </section>
+
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Custom Header Templates
+              </h2>
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Tabs with Icons & HTML
+                </h3>
+                <p class="ox-mb-4 ox-text-secondary">
+                  Use <code>*oxTabHeader</code> on an
+                  <code>ng-template</code> to define custom content for the tab
+                  header.
+                </p>
+
+                <ox-tabs color="primary">
+                  <ox-tab>
+                    <ng-template oxTabHeader>
+                      <div class="ox-flex ox-items-center ox-gap-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                          ></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Profile</span>
+                      </div>
+                    </ng-template>
+                    <div class="ox-p-4">
+                      User profile details with icon in header.
+                    </div>
+                  </ox-tab>
+
+                  <ox-tab>
+                    <ng-template oxTabHeader>
+                      <div class="ox-flex ox-items-center ox-gap-2">
+                        <span>Messages</span>
+                        <span
+                          class="ox-bg-danger ox-text-white ox-text-[10px] ox-px-1.5 ox-rounded-full"
+                          >3</span
+                        >
+                      </div>
+                    </ng-template>
+                    <div class="ox-p-4">
+                      Inbox content with a notification badge in header.
+                    </div>
+                  </ox-tab>
+
+                  <ox-tab label="Plain Text">
+                    <div class="ox-p-4">
+                      This tab uses the standard string label.
+                    </div>
+                  </ox-tab>
+                </ox-tabs>
+              </div>
+            </section>
+
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Toolbar
+              </h2>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Standard Surface Toolbar
+                </h3>
+                <ox-toolbar>
+                  <div left class="ox-font-bold ox-text-lg">Oxygen UI</div>
+                  <div>Navigation Link</div>
+                  <div right class="ox-flex ox-gap-2">
+                    <ox-button variant="ghost-primary" size="sm"
+                      >Login</ox-button
+                    >
+                    <ox-button variant="primary" size="sm">Sign Up</ox-button>
                   </div>
                 </ox-toolbar>
-                <div class="ox-p-4">
-                  <p class="ox-mb-2">
-                    This is scrollable content to demonstrate sticky behavior.
-                  </p>
-                  <p class="ox-mb-2">
-                    Scroll down and the toolbar will stay at the top of this
-                    container.
-                  </p>
-                  <p class="ox-mb-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
-                  <p class="ox-mb-2">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                  <p class="ox-mb-2">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur.
-                  </p>
+              </div>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">Primary Variant</h3>
+                <ox-toolbar color="primary">
+                  <div left class="ox-font-bold">Admin Console</div>
+                  <div right>
+                    <ox-button
+                      variant="ghost-secondary"
+                      size="sm"
+                      style="
+                        color: white;
+                        border-color: rgba(255, 255, 255, 0.3);
+                      "
+                      >Logout</ox-button
+                    >
+                  </div>
+                </ox-toolbar>
+              </div>
+
+              <div class="ox-mb-8 ox-p-4 ox-bg-surface ox-border ox-rounded">
+                <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                  Sticky Toolbar Demo
+                </h3>
+                <div
+                  class="ox-relative ox-h-[150px] ox-overflow-auto ox-border ox-rounded"
+                >
+                  <ox-toolbar [sticky]="true" [shadow]="true">
+                    <div left>Sticky Header</div>
+                    <div right>
+                      <ox-button variant="primary" size="sm">Action</ox-button>
+                    </div>
+                  </ox-toolbar>
+                  <div class="ox-p-4">
+                    <p class="ox-mb-2">
+                      This is scrollable content to demonstrate sticky behavior.
+                    </p>
+                    <p class="ox-mb-2">
+                      Scroll down and the toolbar will stay at the top of this
+                      container.
+                    </p>
+                    <p class="ox-mb-2">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </p>
+                    <p class="ox-mb-2">
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="ox-mb-2">
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       </div>
+      [diff_block_end] [diff_block_end] [diff_block_end]
     </div>
-    [diff_block_end] [diff_block_end] [diff_block_end]
   </div>
 </div>

@@ -81,6 +81,7 @@ export class CardComponent {
   backContainer = viewChild<ElementRef<HTMLElement>>('backSide');
 
   constructor() {
+    let isFirstRun = true;
     effect((onCleanup) => {
       const isFlipped = this.flipped();
       
@@ -94,15 +95,18 @@ export class CardComponent {
             this.isAnimating.set(false);
         });
 
-        // Focus management logic (moved here to align with animation end)
-        const target = isFlipped ? this.backContainer() : this.frontContainer();
-        if (target) {
-          const focusable = target.nativeElement.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
-          if (focusable) {
-            focusable.focus();
+        // Focus management logic (only if not first run to prevent auto-scroll on load)
+        if (!isFirstRun) {
+          const target = isFlipped ? this.backContainer() : this.frontContainer();
+          if (target) {
+            const focusable = target.nativeElement.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
+            if (focusable) {
+              focusable.focus();
+            }
           }
         }
-      }, 600); // Full 0.6s transition
+        isFirstRun = false;
+      }, 600); // Wait for animation to finish
 
       onCleanup(() => clearTimeout(timer));
     });

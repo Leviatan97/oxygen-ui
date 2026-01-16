@@ -1,2 +1,13 @@
 <ng-content></ng-content>
 {{ label() }}
+
+@if (badge() !== undefined) {
+<ox-badge
+  [value]="badge()"
+  [severity]="badgeSeverity()"
+  [overlay]="badgeOverlay()"
+  aria-hidden="true"
+  size="sm"
+>
+</ox-badge>
+}

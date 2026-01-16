@@ -1,4 +1,5 @@
 import { Component, input, computed, ViewEncapsulation } from '@angular/core';
+import { BadgeComponent, BadgeSeverity } from '../badge/badge.component';
 
 export type ButtonColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 export type ButtonVariantPrefix = 'outline' | 'ghost';
@@ -10,7 +11,7 @@ export interface TypesButton {
 
 @Component({
   selector: 'ox-button, button[ox-button], button[oxy-button]',
-  imports: [],
+  imports: [BadgeComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -20,7 +21,7 @@ export interface TypesButton {
     '[attr.tabindex]': 'disabled() ? "-1" : "0"',
     '[attr.disabled]': 'disabled() ? "" : null',
     '[attr.aria-disabled]': 'disabled()',
-    '[attr.aria-label]': 'ariaLabel() || null',
+    '[attr.aria-label]': 'effectiveAriaLabel()',
     '[attr.aria-describedby]': 'ariaDescribedBy() || null',
     '[attr.aria-expanded]': 'ariaExpanded() !== undefined ? ariaExpanded() : null',
     '[attr.aria-pressed]': 'ariaPressed() !== undefined ? ariaPressed() : null',
@@ -39,6 +40,11 @@ export class ButtonComponent {
   disabled = input<boolean>(false);
   borderRadius = input<string>();
 
+  // Badge inputs
+  badge = input<string | number>();
+  badgeSeverity = input<BadgeSeverity>('danger');
+  badgeOverlay = input<boolean>(true);
+
   // Accessibility inputs
   ariaLabel = input<string | null>(null, { alias: 'aria-label' });
   ariaDescribedBy = input<string | null>(null, { alias: 'aria-describedby' });
@@ -46,6 +52,17 @@ export class ButtonComponent {
   ariaPressed = input<boolean | undefined>(undefined, { alias: 'aria-pressed' });
   ariaControls = input<string | null>(null, { alias: 'aria-controls' });
   type = input<'button' | 'submit' | 'reset'>('button');
+
+  effectiveAriaLabel = computed(() => {
+    const label = this.ariaLabel() || this.label();
+    const badge = this.badge();
+    
+    if (badge !== undefined && label) {
+      return `${label}, ${badge} notifications`;
+    }
+    
+    return label || null;
+  });
 
   hostClasses = computed(() => {
     return [

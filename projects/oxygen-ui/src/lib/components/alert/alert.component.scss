@@ -1,0 +1,142 @@
+@use "sass:map";
+
+:host {
+  display: block;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: var(--radius-md, 8px);
+}
+
+:host(.ox-alert--hidden) {
+  opacity: 0;
+  transform: scale(0.95);
+  height: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease, margin 0.3s ease;
+}
+
+.ox-alert__container {
+  display: flex;
+  padding: 1rem;
+  gap: 0.75rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.ox-alert__content {
+  flex: 1;
+}
+
+.ox-alert__title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+.ox-alert__message {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.ox-alert__close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: inherit;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  margin-top: -0.125rem;
+  margin-right: -0.25rem;
+
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+// Variables based on type
+$types: (
+  'success': (
+    'bg': var(--oxy-success),
+    'text': #ffffff,
+    'border': var(--oxy-success),
+    'flat-bg': rgba(34, 197, 94, 0.1),
+    'flat-text': #15803d
+  ),
+  'info': (
+    'bg': var(--oxy-primary),
+    'text': #ffffff,
+    'border': var(--oxy-primary),
+    'flat-bg': rgba(59, 130, 246, 0.1),
+    'flat-text': #1d4ed8
+  ),
+  'warning': (
+    'bg': var(--oxy-warning),
+    'text': #ffffff,
+    'border': var(--oxy-warning),
+    'flat-bg': rgba(245, 158, 11, 0.1),
+    'flat-text': #a16207
+  ),
+  'danger': (
+    'bg': var(--oxy-danger),
+    'text': #ffffff,
+    'border': var(--oxy-danger),
+    'flat-bg': rgba(239, 68, 68, 0.1),
+    'flat-text': #b91c1c
+  )
+);
+
+@each $name, $colors in $types {
+  :host(.ox-alert--#{$name}) {
+    
+    // Filled Variant
+    &.ox-alert--filled {
+      background-color: map.get($colors, 'bg');
+      color: map.get($colors, 'text');
+    }
+
+    // Outlined Variant
+    &.ox-alert--outlined {
+      border: 1px solid map.get($colors, 'bg');
+      background-color: transparent;
+      color: map.get($colors, 'flat-text');
+    }
+
+    // Flat Variant
+    &.ox-alert--flat {
+      background-color: map.get($colors, 'flat-bg');
+      color: map.get($colors, 'flat-text');
+    }
+
+    // Glass Variant
+    &.ox-alert--glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: map.get($colors, 'flat-text');
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: map.get($colors, 'bg');
+      }
+    }
+  }
+}
