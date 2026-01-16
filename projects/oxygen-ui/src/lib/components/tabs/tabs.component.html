@@ -1,0 +1,97 @@
+<div class="ox-tabs">
+  <div class="ox-tabs__header-container">
+    @if (showLeftArrow()) {
+    <button
+      class="ox-tabs__nav ox-tabs__nav--prev"
+      (click)="scrollHeader('left')"
+      aria-label="Previous tabs"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    }
+
+    <div
+      class="ox-tabs__header"
+      role="tablist"
+      #headerContainer
+      (scroll)="onScroll()"
+      (keydown)="onKeyDown($event)"
+    >
+      @for (tab of tabs(); track tab; let i = $index) {
+      <button
+        #tabButton
+        class="ox-tabs__tab-label"
+        [class.ox-tabs__tab-label--active]="i === activeIndex()"
+        [class.ox-tabs__tab-label--disabled]="tab.disabled()"
+        (click)="selectTab(i)"
+        role="tab"
+        [id]="tab.id() + '-label'"
+        [attr.aria-selected]="i === activeIndex()"
+        [attr.aria-controls]="tab.id() + '-panel'"
+        [attr.tabindex]="i === activeIndex() ? 0 : -1"
+        [disabled]="tab.disabled()"
+      >
+        @if (tab.headerTemplate()) {
+        <ng-container
+          *ngTemplateOutlet="tab.headerTemplate()!.templateRef"
+        ></ng-container>
+        } @else {
+        {{ tab.label() }}
+        }
+      </button>
+      }
+      <div
+        class="ox-tabs__indicator"
+        [style.left.px]="indicatorLeft()"
+        [style.width.px]="indicatorWidth()"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    @if (showRightArrow()) {
+    <button
+      class="ox-tabs__nav ox-tabs__nav--next"
+      (click)="scrollHeader('right')"
+      aria-label="Next tabs"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    }
+  </div>
+
+  <div
+    class="ox-tabs__content"
+    role="tabpanel"
+    [id]="(activeTab()?.id() ?? '') + '-panel'"
+    [attr.aria-labelledby]="(activeTab()?.id() ?? '') + '-label'"
+    tabindex="0"
+  >
+    @if (activeTab()) {
+    <ng-container *ngTemplateOutlet="activeTab()!.content()"></ng-container>
+    }
+  </div>
+</div>

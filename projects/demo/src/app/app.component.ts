@@ -19,7 +19,7 @@ import {
   FieldsetComponent 
 } from 'oxygen-ui';
 
-import { PanelComponent, StepperComponent, StepComponent } from 'oxygen-ui';
+import { PanelComponent, StepperComponent, StepComponent, TabsComponent, TabComponent, OxTabHeaderDirective, ToolbarComponent } from 'oxygen-ui';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +43,12 @@ import { PanelComponent, StepperComponent, StepComponent } from 'oxygen-ui';
     FieldsetComponent,
     PanelComponent,
     StepperComponent,
-    StepComponent
+    StepperComponent,
+    StepComponent,
+    TabsComponent,
+    TabComponent,
+    OxTabHeaderDirective,
+    ToolbarComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -51,6 +56,7 @@ import { PanelComponent, StepperComponent, StepComponent } from 'oxygen-ui';
 export class AppComponent {
   title = 'demo';
   controlledActiveId = signal<string | null>(null);
+  controlledTabIndex = signal<number>(0);
   cardFlipped = signal<boolean>(false);
   flip2 = signal<boolean>(false);
 

@@ -14,3 +14,6 @@ export * from './lib/components/fieldset/fieldset.component';
 export * from './lib/components/panel/panel.component';
 export * from './lib/components/stepper/stepper.component';
 export * from './lib/components/stepper/step.component';
+export * from './lib/components/tabs/tabs.component';
+export * from './lib/components/tabs/tab.component';
+export * from './lib/components/toolbar/toolbar.component';

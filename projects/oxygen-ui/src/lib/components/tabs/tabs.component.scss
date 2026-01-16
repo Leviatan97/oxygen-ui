@@ -1,0 +1,121 @@
+// Color Logic via CSS Variables
+:host {
+  --ox-tabs-color: #3b82f6; // Default to Primary Blue
+}
+
+:host.ox-tabs--secondary { --ox-tabs-color: #64748b; }
+:host.ox-tabs--success { --ox-tabs-color: #22c55e; }
+:host.ox-tabs--warning { --ox-tabs-color: #eab308; }
+:host.ox-tabs--danger { --ox-tabs-color: #ef4444; }
+:host.ox-tabs--info { --ox-tabs-color: #06b6d4; }
+
+.ox-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__header {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0;
+    gap: 1rem;
+    overflow-x: auto;
+    position: relative; 
+    scrollbar-width: none; 
+    scroll-behavior: smooth;
+    width: 100%;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0)); // Subtle fade
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+    padding: 0;
+    transition: color 0.2s;
+    
+    &:hover {
+      color: #3b82f6;
+    }
+
+    &--prev {
+      left: 0;
+      background: linear-gradient(to right, white 50%, transparent);
+    }
+    
+    &--next {
+      right: 0;
+      background: linear-gradient(to left, white 50%, transparent);
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--ox-tabs-color); // Use variable
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  &__tab-label {
+    // Reset button styles
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1rem;
+    
+    // Tab specific styles
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--ox-tabs-color); // Use variable
+    border-bottom: 2px solid transparent; 
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    opacity: 0.5;
+    
+    &:hover:not(&--disabled) {
+      opacity: 0.8;
+      background-color: color-mix(in srgb, var(--ox-tabs-color), transparent 95%); // Subtle hover using mix
+    }
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+    }
+  }
+
+  &__content {
+    padding-top: 1rem;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
