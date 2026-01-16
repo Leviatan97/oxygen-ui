@@ -1,0 +1,66 @@
+<div class="ox-card__flipper" [class.ox-card__flipper--flipped]="flipped()">
+  <!-- Front Side -->
+  <div class="ox-card__front" 
+       #frontSide
+       [attr.aria-hidden]="flipped()"
+       [inert]="flipped()">
+    <div class="ox-card__inner">
+      <!-- Header Image / Content -->
+      @if (header()) {
+        <div class="ox-card__header">
+          <ng-content select="[oxCardHeader]"></ng-content>
+        </div>
+      }
+
+      <!-- Body Content -->
+      @if (body()) {
+        <div class="ox-card__body">
+          <ng-content select="[oxCardBody]"></ng-content>
+        </div>
+      } @else {
+        <div class="ox-card__body">
+          <ng-content></ng-content>
+        </div>
+      }
+
+      <!-- Footer Content -->
+      @if (footer()) {
+        <div class="ox-card__footer">
+          <ng-content select="[oxCardFooter]"></ng-content>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Back Side -->
+  @if (hasBack()) {
+    <div class="ox-card__back"
+         #backSide
+         [attr.aria-hidden]="!flipped()"
+         [inert]="!flipped()">
+      <div class="ox-card__inner">
+        @if (backHeader()) {
+          <div class="ox-card__header">
+            <ng-content select="[oxCardBackHeader]"></ng-content>
+          </div>
+        }
+
+        @if (backBody()) {
+          <div class="ox-card__body">
+            <ng-content select="[oxCardBackBody]"></ng-content>
+          </div>
+        } @else if (back()) {
+          <div class="ox-card__body">
+            <ng-content select="[oxCardBack]"></ng-content>
+          </div>
+        }
+
+        @if (backFooter()) {
+          <div class="ox-card__footer">
+            <ng-content select="[oxCardBackFooter]"></ng-content>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

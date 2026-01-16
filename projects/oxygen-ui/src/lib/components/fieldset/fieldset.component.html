@@ -1,0 +1,38 @@
+<fieldset [disabled]="disabled()" [class.ox-fieldset--collapsed]="collapsed()">
+  @if (legend() || legendTemplate()) {
+    <legend class="ox-fieldset__legend">
+      <span class="ox-fieldset__legend-content"
+            [class.ox-fieldset__legend-content--toggleable]="toggleable()"
+            (click)="toggle()"
+            (keydown.enter)="toggle()"
+            (keydown.space)="toggle()"
+            [attr.tabindex]="toggleable() ? 0 : null"
+            [attr.role]="toggleable() ? 'button' : null"
+            [attr.aria-expanded]="toggleable() ? !collapsed() : null">
+        
+        @if (toggleable()) {
+           @if (iconTemplate()) {
+             <ng-container *ngTemplateOutlet="iconTemplate() || null; context: { $implicit: collapsed() }"></ng-container>
+           } @else {
+             <svg class="ox-fieldset__icon" [class.ox-fieldset__icon--collapsed]="collapsed()" 
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <polyline points="6 9 12 15 18 9"></polyline>
+             </svg>
+           }
+        }
+        
+        @if (legendTemplate()) {
+          <ng-container *ngTemplateOutlet="legendTemplate() || null; context: { $implicit: collapsed() }"></ng-container>
+        } @else {
+          {{ legend() }}
+        }
+      </span>
+    </legend>
+  }
+  
+  <div class="ox-fieldset__wrapper" [class.ox-fieldset__wrapper--collapsed]="collapsed()">
+    <div class="ox-fieldset__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</fieldset>

@@ -31,77 +31,113 @@ export class AccordionComponent {
 
   borderWidth = computed(() => this.bordered() ? '1px' : '0px');
 
-  private lastExpandedItem = signal<AccordionItemComponent | null>(null);
+  private lastSyncedExpandedStates: boolean[] = [];
+  private isSyncing = false;
 
   constructor() {
     effect(() => {
-      // 1. Dependencies
+      // 1. Dependencies - Reading these registers them as dependencies
       const active = this.activeId();
       const items = this.items();
       const multi = this.multi();
-      
-      // Track items expansions to detect manual clicks
+      // Track items items and expansions to detect change
       const itemExpandedStates = items.map(item => item.expanded());
-      const itemIds = items.map(item => item.itemId());
 
       untracked(() => {
-        const lastExpanded = this.lastExpandedItem();
-        
-        // A) Detection: Did a user just open an item manually?
-        // We find an item that is expanded but wasn't the lastExpanded one
-        const newlyOpened = items.find(item => item.expanded() && item !== lastExpanded);
-
-        if (newlyOpened && !this.isSyncing) {
-          this.isSyncing = true;
-          if (!multi) {
-            // Force exclusivity
-            items.forEach(item => {
-              if (item !== newlyOpened && item.expanded()) {
-                item.expanded.set(false);
-              }
-            });
-            this.activeId.set(newlyOpened.itemId());
-          } else {
-            const currentActiveIds = items
-              .filter(i => i.expanded())
-              .map(i => i.itemId());
-            this.activeId.set(currentActiveIds);
-          }
-          this.lastExpandedItem.set(newlyOpened);
-          this.isSyncing = false;
-          return;
-        }
-
-        // B) Detection: Did a user just close all items?
-        const anyExpanded = items.some(i => i.expanded());
-        if (!anyExpanded && lastExpanded !== null && !this.isSyncing) {
-          this.isSyncing = true;
-          this.activeId.set(multi ? [] : null);
-          this.lastExpandedItem.set(null);
-          this.isSyncing = false;
-          return;
-        }
-
-        // C) Downward Sync: External activeId changed OR Initialization
+        if (this.isSyncing) return;
         this.isSyncing = true;
-        items.forEach(item => {
-          const shouldBeOpen = multi
-            ? Array.isArray(active) && active.includes(item.itemId())
-            : active === item.itemId();
+
+        try {
+          // Normalize model value to array of strings for easier comparison
+          const modelActiveIds = this.normalizeActiveIds(active);
           
-          if (item.expanded() !== shouldBeOpen) {
-            item.expanded.set(shouldBeOpen);
+          // Get current view state (expanded items)
+          const viewActiveIds = items
+            .filter(item => item.expanded())
+            .map(item => item.itemId());
+
+          // Check if View changed since last sync
+          const viewChanged = !this.arraysEqual(itemExpandedStates, this.lastSyncedExpandedStates);
+
+          if (viewChanged) {
+            // CASE 1: User Interaction (View -> Model)
+            // The user clicked something, causing expanded state to change.
+            
+            if (!multi) {
+              // Single Mode logic
+              // Identify the 'newly opened' item if any.
+              // Since we know view changed, find the item that is Expanded NOW but was NOT expanded BEFORE.
+              const newlyOpenedIndex = itemExpandedStates.findIndex((exp, i) => exp && !this.lastSyncedExpandedStates[i]);
+              
+              if (newlyOpenedIndex !== -1) {
+                // User opened an item. Close others.
+                const newlyOpenedItem = items[newlyOpenedIndex];
+                
+                // Close everyone else
+                items.forEach((item, index) => {
+                  if (index !== newlyOpenedIndex && item.expanded()) {
+                    item.expanded.set(false);
+                  }
+                });
+                
+                this.activeId.set(newlyOpenedItem.itemId());
+              } else {
+                // User closed the active item (or all were closed).
+                // Ensure activeId is null
+                this.activeId.set(null);
+              }
+
+            } else {
+              // Multi Mode logic: Simple Sync View -> Model
+              this.activeId.set(viewActiveIds);
+            }
+
+          } else {
+             // CASE 2: External Update (Model -> View) (or initialization)
+             // The view didn't change (user didn't click), so the 'activeId' must have changed externally.
+             
+             // Check if we even need to update anything (Model vs View content match)
+             const areContentEqual = this.areSetsEqual(modelActiveIds, viewActiveIds);
+             
+             if (!areContentEqual) {
+                // Force View to match Model
+                items.forEach(item => {
+                  const shouldBeOpen = modelActiveIds.includes(item.itemId());
+                  if (item.expanded() !== shouldBeOpen) {
+                    item.expanded.set(shouldBeOpen);
+                  }
+                });
+             }
           }
-        });
-        
-        // Update tracking post-sync
-        if (!multi) {
-          const currentActive = items.find(i => i.itemId() === active);
-          this.lastExpandedItem.set(currentActive || null);
+
+          // Update our history tracker
+          // Re-read expanded signals just in case we changed them above? 
+          // Actually, we should start tracking exactly what the DOM/Signal state is NOW.
+          this.lastSyncedExpandedStates = items.map(i => i.expanded());
+
+        } finally {
+          this.isSyncing = false;
         }
-        this.isSyncing = false;
       });
     });
+  }
+
+  private normalizeActiveIds(active: string | string[] | null): string[] {
+    if (active === null || active === undefined) return [];
+    if (Array.isArray(active)) return active;
+    return [active];
+  }
+
+  private arraysEqual(a: boolean[], b: boolean[]): boolean {
+    if (a.length !== b.length) return false;
+    if (a.length === 0 && b.length === 0) return true; // Start state might be empty
+    return a.every((val, i) => val === b[i]);
+  }
+
+  private areSetsEqual(a: string[], b: string[]): boolean {
+    if (a.length !== b.length) return false;
+    const setA = new Set(a);
+    return b.every(val => setA.has(val));
   }
 
   @HostListener('keydown', ['$event'])
@@ -140,5 +176,4 @@ export class AccordionComponent {
     }
   }
 
-  private isSyncing = false;
 }

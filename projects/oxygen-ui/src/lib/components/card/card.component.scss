@@ -1,0 +1,134 @@
+@use 'sass:map';
+:host {
+  display: block;
+  // Background, border-radius, and shadow moved to faces for true 3D flip
+  // background-color: var(--ox-bg-secondary, #ffffff); 
+  // border-radius: var(--ox-border-radius, 8px);
+  width: 100%;
+  perspective: 1000px; // Essential for 3D flip
+  position: relative; // Ensure it holds space
+
+  // Border logic moves to faces
+  &.ox-card--bordered .ox-card__front,
+  &.ox-card--bordered .ox-card__back {
+    border: 1px solid var(--ox-border-color, #e0e0e0);
+  }
+
+  // Lift logic remains on host (container moves), but we need to ensure shadows update on faces?
+  // Actually, if host transforms, children transform.
+  &.ox-card--lift {
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  // Hoverable shadow logic
+  &.ox-card--hoverable {
+    cursor: pointer;
+    &:hover .ox-card__front,
+    &:hover .ox-card__back {
+       // On hover, we might want to increase the shadow.
+       // The base shadow is var(--ox-card-shadow).
+       // We can override it here or use a variable for hover state.
+       box-shadow: var(--shadow-md) !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    perspective: none;
+    
+    .ox-card__flipper {
+      transition: none;
+    }
+    
+    .ox-card__back {
+      transition: none;
+    }
+  }
+}
+
+.ox-card {
+  &__flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+
+    &--flipped {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__front, &__back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    // position: absolute; // Front shouldn't be absolute if it dictates height? 
+    // In a flipper, typically both are absolute to overlap, OR one is static to give height.
+    // Usually Front is relative/static (default) to give size, Back is absolute.
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    flex-direction: column;
+    
+    // Moved visuals here
+    background-color: var(--ox-bg-secondary, #ffffff);
+    border-radius: var(--ox-border-radius, 8px);
+    box-shadow: var(--ox-card-shadow);
+  }
+
+  &__back {
+    position: absolute;
+    transform: rotateY(180deg);
+    // background already applied above
+  }
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--ox-border-radius, 8px);
+  }
+
+  &__header {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    // Support for full-width images in header
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    // Default padding if it's text, but 0 for images
+    &:not(:has(img)) {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--ox-border-color, #e0e0e0);
+    }
+
+    // Ensure children (like the directive div) don't add unwanted spacing
+    > * {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__body {
+    padding: 1.5rem;
+    color: var(--ox-text-primary, #333);
+    line-height: 1.5;
+  }
+
+  &__footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--ox-border-color, #e0e0e0);
+    background-color: var(--ox-bg-tertiary, #fafafa);
+  }
+}

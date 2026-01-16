@@ -1,0 +1,135 @@
+:host {
+  display: block;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ox-fieldset__legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--ox-text-primary, #333);
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.ox-fieldset__legend-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  &--toggleable {
+    cursor: pointer;
+    user-select: none;
+    
+    &:hover {
+      color: var(--ox-primary-color, #007bff);
+    }
+  }
+}
+
+.ox-fieldset__icon {
+  transition: transform 0.2s ease;
+  // Arrow default (points down)
+  
+  &--collapsed {
+    transform: rotate(-90deg);
+  }
+}
+
+// Animation Wrapper
+.ox-fieldset__wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease-out;
+  overflow: hidden; // Should be on wrapper to clip content during collapse
+
+  &--collapsed {
+    grid-template-rows: 0fr;
+  }
+}
+
+.ox-fieldset__content {
+  min-height: 0;
+  
+  // Flex layout for actual content
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  text-align: start; 
+}
+
+// Adjusting Variant Padding behavior if needed?
+// If collapsed, the gap from padding might look weird if empty.
+// We might want to animate padding of wrapper?
+// For now, let's keep it simple: content collapses. Fieldset shell remains with its padding.
+
+// Legend Positions
+:host(.ox-fieldset--legend-start) {
+  fieldset { text-align: start; }
+  
+  .ox-fieldset__legend {
+    margin-right: auto;
+    margin-left: 0;
+  }
+}
+
+:host(.ox-fieldset--legend-center) {
+  fieldset { text-align: center; }
+  
+  .ox-fieldset__legend {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+:host(.ox-fieldset--legend-end) {
+  fieldset { text-align: end; }
+  
+  .ox-fieldset__legend {
+     margin-left: auto;
+     margin-right: 0;
+  }
+}
+
+// Variants
+:host(.ox-fieldset--outlined) {
+  fieldset {
+    border: 1px var(--ox-fieldset-border-style, solid) var(--ox-border-color, #e0e0e0);
+    border-radius: var(--ox-border-radius-md, 8px);
+    padding: 1rem;
+  }
+
+  .ox-fieldset__legend {
+    padding: 0 0.25rem;
+    // Remove margin-left which forces left align visually
+    // margin-left: 0.5rem; 
+  }
+}
+
+:host(.ox-fieldset--flat) {
+   fieldset {
+    background-color: var(--ox-surface-secondary, #f8f9fa);
+    border-radius: var(--ox-border-radius-md, 8px);
+    padding: 1rem;
+   }
+}
+
+:host(.ox-fieldset--seamless) {
+  fieldset {
+    padding: 0;
+    border: none;
+  }
+}
+
+// Disabled State
+:host(.ox-fieldset--disabled) {
+  opacity: 0.6;
+  pointer-events: none;
+}

@@ -1,16 +1,56 @@
 import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { SampleComponent, ButtonComponent, AccordionComponent, AccordionItemComponent, OxAccordionHeaderDirective } from 'oxygen-ui';
+import { 
+  SampleComponent, 
+  ButtonComponent, 
+  AccordionComponent, 
+  AccordionItemComponent, 
+  OxAccordionHeaderDirective, 
+  CardComponent, 
+  OxCardHeaderDirective, 
+  OxCardBodyDirective, 
+  OxCardFooterDirective, 
+  OxCardBackDirective, 
+  OxCardBackHeaderDirective, 
+  OxCardBackBodyDirective, 
+  OxCardBackFooterDirective, 
+  DividerComponent, 
+  FieldsetComponent 
+} from 'oxygen-ui';
+
+import { PanelComponent } from 'oxygen-ui';
 
 @Component({
   selector: 'app-root',
-  imports: [SampleComponent, ButtonComponent, AccordionComponent, AccordionItemComponent, OxAccordionHeaderDirective],
+  standalone: true,
+  imports: [
+    CommonModule, 
+    SampleComponent,
+    ButtonComponent, 
+    CardComponent, 
+    AccordionComponent, 
+    AccordionItemComponent,
+    OxAccordionHeaderDirective,
+    OxCardHeaderDirective,
+    OxCardBodyDirective,
+    OxCardFooterDirective,
+    OxCardBackDirective,
+    OxCardBackHeaderDirective,
+    OxCardBackBodyDirective,
+    OxCardBackFooterDirective,
+    DividerComponent,
+    FieldsetComponent,
+    PanelComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'demo';
   controlledActiveId = signal<string | null>(null);
+  cardFlipped = signal<boolean>(false);
+  flip2 = signal<boolean>(false);
 
   private accordionIds = ['item1', 'item2'];
 

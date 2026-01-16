@@ -554,3 +554,313 @@
           </ox-accordion-item>
         </ox-accordion>
       </div>
+
+      <div class="ox-mb-4">
+        <p class="ox-mb-2">Card Component Examples:</p>
+        <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-4">
+          <!-- Only Body -->
+          <div class="ox-mb-4">
+            <ox-card>
+              <div oxCardBody>
+                <h3 class="ox-text-lg ox-font-bold ox-mb-2">Simple Card</h3>
+                <p>This card contains only a body. It's the simplest way to use the component.</p>
+              </div>
+            </ox-card>
+          </div>
+
+          <!-- Header and Body -->
+          <div class="ox-mb-4">
+            <ox-card>
+              <div oxCardHeader>
+                <h3 class="ox-text-lg ox-font-bold">Card with Header</h3>
+              </div>
+              <div oxCardBody>
+                <p>This card has a structured header and a body.</p>
+              </div>
+            </ox-card>
+          </div>
+
+          <!-- Image Header -->
+          <div class="ox-mb-4">
+            <ox-card boxShadow="md" [hoverable]="true" [liftOnHover]="true">
+              <div oxCardHeader>
+                <img src="https://picsum.photos/seed/oxygen/600/300" alt="Sample Image">
+              </div>
+              <div oxCardBody>
+                <h3 class="ox-text-xl ox-font-bold ox-mb-2">Image Card</h3>
+                <p>Cards support full-width images in the header perfectly.</p>
+              </div>
+              <div oxCardFooter class="ox-flex ox-justify-between ox-align-center">
+                <span class="ox-text-sm ox-text-secondary">Jan 6, 2026</span>
+                <ox-button size="sm">Read More</ox-button>
+              </div>
+            </ox-card>
+          </div>
+          </div>
+
+          <!-- Flippable Card -->
+          <div class="ox-mb-4">
+            <ox-card [hoverable]="true" [liftOnHover]="true" [(flipped)]="cardFlipped" boxShadow="lg">
+              <div oxCardHeader>
+                <img src="https://picsum.photos/seed/flip/600/300" alt="Front Side">
+              </div>
+              <div oxCardBody>
+                <h3 class="ox-text-lg ox-font-bold">Front Side (Flippable)</h3>
+                <p>Click the button to see the back side animation.</p>
+                <ox-button (click)="cardFlipped.set(true)" variant="outline-primary" class="ox-mt-4">Flip Card</ox-button>
+              </div>
+
+              <div oxCardBack class="ox-flex ox-flex-column ox-align-center ox-justify-center" style="height: 100%; min-height: 300px; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <h3 class="ox-text-2xl ox-font-bold ox-mb-4">Back Content</h3>
+                <p class="ox-text-center">This side uses the <code>oxCardBack</code> directive.</p>
+                <ox-button (click)="cardFlipped.set(false)" variant="outline-primary" style="border-color: white; color: white;" class="ox-mt-6">Volver</ox-button>
+              </div>
+            </ox-card>
+          </div>
+
+          <!-- Structured Back Card -->
+          <div class="ox-mb-4">
+            <ox-card [hoverable]="true" boxShadow="md" [(flipped)]="flip2">
+              <!-- Front -->
+              <div oxCardHeader>
+                <h3 class="ox-text-lg ox-font-bold">Structured Side</h3>
+              </div>
+              <div oxCardBody>
+                <p>This card has a structured back with its own header, body, and footer.</p>
+                <ox-button (click)="flip2.set(true)" size="sm" class="ox-mt-2">View Technical Specs</ox-button>
+              </div>
+
+              <!-- Back -->
+              <div oxCardBackHeader class="ox-bg-primary ox-text-white ox-p-3">
+                <span class="ox-font-bold">Technical Specifications</span>
+              </div>
+              <div oxCardBackBody>
+                <ul class="ox-list-none ox-p-0">
+                  <li><strong>Model:</strong> OX-2026</li>
+                  <li><strong>Battery:</strong> 5000mAh</li>
+                  <li><strong>Status:</strong> Optimized</li>
+                </ul>
+              </div>
+              <div oxCardBackFooter class="ox-flex ox-justify-end">
+                <ox-button (click)="flip2.set(false)" variant="ghost-primary" size="sm">Back to Summary</ox-button>
+              </div>
+            </ox-card>
+          </div>
+        </div>
+
+        <!-- Divider Section -->
+        <section class="ox-mb-8">
+          <h2 class="ox-text-2xl ox-font-bold ox-mb-4">Dividers</h2>
+
+          <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mb-4">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Static Dividers</h3>
+            <p>Paragraph 1</p>
+            <ox-divider></ox-divider>
+            <p>Paragraph 2</p>
+            
+            <div class="ox-flex ox-items-center ox-mt-4" style="height: 50px;">
+              <span>Left</span>
+              <ox-divider orientation="vertical" style="height: 100%"></ox-divider>
+              <span>Right</span>
+            </div>
+          </div>
+
+          <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Resizable Dividers</h3>
+            
+            <div class="ox-mb-8 ox-border ox-border-color ox-p-4 ox-rounded">
+              <p>Drag the line below to resize this paragraph:</p>
+              <div style="height: 100px; overflow: hidden; background: #f0f4f8;" class="ox-p-2 ox-mb-2">
+                This area is resizable via the horizontal divider below. It works by adjusting the height of the previous element.
+              </div>
+              <ox-divider [resizable]="true"></ox-divider>
+              <div class="ox-p-2 ox-mt-2" style="background: #fff0f0;">
+                Next paragraph (static).
+              </div>
+            </div>
+
+            <div class="ox-flex ox-border ox-border-color ox-rounded" style="height: 200px;">
+              <div style="width: 30%; background: #e6fffa; min-width: 50px;" class="ox-p-4">
+                Left Panel (Resizable)
+              </div>
+              <ox-divider orientation="vertical" [resizable]="true"></ox-divider>
+              <div style="flex: 1; background: #fff5f5;" class="ox-p-4">
+                Right Panel (Flex Grow)
+              </div>
+            </div>
+          </div>
+
+          <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Labeled Dividers</h3>
+            
+            <p><strong>Horizontal:</strong></p>
+            <ox-divider label="Left" labelPosition="start"></ox-divider>
+            <ox-divider label="Center" labelPosition="center"></ox-divider>
+            <ox-divider label="Right" labelPosition="end"></ox-divider>
+            <ox-divider label="Bold Title" labelPosition="center" labelFontWeight="bold" class="ox-mt-2"></ox-divider>
+
+            <p class="ox-mt-4"><strong>Vertical:</strong></p>
+            <div class="ox-flex ox-items-center ox-mt-4" style="height: 200px; border: 1px solid #eee;">
+              <div class="ox-p-4">Content A</div>
+              <ox-divider orientation="vertical" label="Top" labelPosition="start"></ox-divider>
+              <div class="ox-p-4">Content B</div>
+              <ox-divider orientation="vertical" label="Center" labelPosition="center"></ox-divider>
+              <div class="ox-p-4">Content C</div>
+              <ox-divider orientation="vertical" label="Bottom" labelPosition="end"></ox-divider>
+              <div class="ox-p-4">Content D</div>
+            </div>
+          </div>
+
+          <div class="ox-p-4 ox-bg-surface ox-rounded-lg ox-shadow-sm ox-mt-4">
+            <h3 class="ox-text-lg ox-font-bold ox-mb-4">Divider Styles</h3>
+            <ox-divider label="Solid (Default)"></ox-divider>
+            <ox-divider label="Dashed" borderStyle="dashed"></ox-divider>
+            <ox-divider label="Dotted" borderStyle="dotted"></ox-divider>
+            <!-- Double usually requires width > 1px to be visible, showing as concept -->
+            <ox-divider label="Double (3px)" borderStyle="double" style="border-width: 3px !important;"></ox-divider>
+          </div>
+        </section>
+
+        <!-- FIELDSET DEMO -->
+        <section class="ox-mb-16">
+          <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">Fieldset</h2>
+          
+          <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+            <!-- Outlined (Default) -->
+            <ox-fieldset legend="Personal Information" variant="outlined">
+              <div class="ox-flex ox-flex-col ox-gap-2">
+                <label>First Name</label>
+                <input type="text" class="ox-p-2 ox-border ox-rounded" placeholder="John">
+                <label>Last Name</label>
+                <input type="text" class="ox-p-2 ox-border ox-rounded" placeholder="Doe">
+              </div>
+            </ox-fieldset>
+
+            <!-- Dashed Border -->
+            <ox-fieldset legend="Additional Info (Dashed)" variant="outlined" borderStyle="dashed">
+               <div class="ox-p-2 ox-text-secondary">
+                 This area has a custom border style.
+               </div>
+            </ox-fieldset>
+
+            <!-- Toggleable -->
+            <ox-fieldset legend="Toggle Me" variant="outlined" [toggleable]="true">
+               <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
+                 Peek-a-boo! I can be hidden.
+               </div>
+            </ox-fieldset>
+
+            <!-- Custom Templates -->
+            <ng-template #customIcon let-collapsed>
+              <span>{{ collapsed ? '+' : '-' }}</span>
+            </ng-template>
+
+            <ng-template #customLegend>
+              <span class="ox-flex ox-items-center ox-gap-2">
+                <span>Custom Title</span>
+                <span class="ox-bg-primary ox-text-white ox-text-xs ox-px-2 ox-rounded-full">New</span>
+              </span>
+            </ng-template>
+
+            <ox-fieldset [legendTemplate]="customLegend" [iconTemplate]="customIcon" [toggleable]="true" variant="outlined">
+              <div class="ox-p-4">
+                This fieldset uses custom templates for both the icon (+/-) and the legend (with a badge).
+              </div>
+            </ox-fieldset>
+
+            <!-- Flat -->
+            <ox-fieldset legend="Settings (Centered)" variant="flat" legendPosition="center">
+              <div class="ox-flex ox-items-center ox-gap-4">
+                <input type="checkbox" id="check1">
+                <label for="check1">Enable Notifications</label>
+              </div>
+              <div class="ox-flex ox-items-center ox-gap-4">
+                <input type="checkbox" id="check2" checked>
+                <label for="check2">Dark Mode</label>
+              </div>
+            </ox-fieldset>
+            
+            <!-- Disabled -->
+            <ox-fieldset legend="Disabled Group (Right)" [disabled]="true" legendPosition="end">
+               <div class="ox-flex ox-flex-col ox-gap-2">
+                <label>Cannot edit this</label>
+                <input type="text" class="ox-p-2 ox-border ox-rounded" value="Locked Data">
+              </div>
+            </ox-fieldset>
+          </div>
+        </section>
+        <!-- PANEL DEMO -->
+        <section class="ox-mb-16">
+          <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">Panel</h2>
+          
+          <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+            <!-- Outlined (Default) -->
+            <ox-panel header="Panel Header" variant="outlined">
+              <div class="ox-p-2">
+                This is a standard panel with content. It uses divs instead of fieldset.
+              </div>
+            </ox-panel>
+
+            <!-- Dashed Border -->
+            <ox-panel header="Dashed Panel" variant="outlined" borderStyle="dashed">
+              <div class="ox-p-2 ox-text-secondary">
+                This panel has a dashed border.
+              </div>
+            </ox-panel>
+
+            <!-- Flat -->
+            <ox-panel header="Flat Panel" variant="flat">
+               <div class="ox-text-secondary">
+                 This panel has a flat style.
+               </div>
+            </ox-panel>
+
+            <!-- Toggleable -->
+            <ox-panel header="Toggleable Panel" variant="outlined" [toggleable]="true">
+               <div class="ox-p-4 ox-bg-surface-secondary ox-rounded">
+                 You can collapse this content.
+               </div>
+            </ox-panel>
+
+            <!-- Custom Templates -->
+            <ng-template #customPanelIcon let-collapsed>
+               <span>{{ collapsed ? 'Show' : 'Hide' }}</span>
+            </ng-template>
+
+            <ox-panel header="Custom Header" [iconTemplate]="customPanelIcon" [toggleable]="true" variant="outlined">
+              <div class="ox-p-4">
+                Custom toggle text instead of icon.
+              </div>
+            </ox-panel>
+            
+            <!-- Disabled -->
+            <ox-panel header="Disabled Panel" [disabled]="true">
+               <div class="ox-p-2">
+                This panel is disabled.
+              </div>
+            </ox-panel>
+
+            <!-- Header Position Center -->
+            <ox-panel header="Centered Header" headerPosition="center" variant="outlined">
+              <div class="ox-p-2">
+                The header is centered.
+              </div>
+            </ox-panel>
+
+            <!-- Header Position End -->
+            <ox-panel header="Right Aligned Header" headerPosition="end" variant="outlined">
+              <div class="ox-p-2">
+                The header is on the right.
+              </div>
+            </ox-panel>
+
+            <!-- Box Shadow -->
+            <ox-panel header="Shadowed Panel" variant="outlined" boxShadow="md">
+              <div class="ox-p-2">
+                This panel has a medium box shadow.
+              </div>
+            </ox-panel>
+          </div>
+        </section>
+      </div>
+    </div>

@@ -1,0 +1,151 @@
+// Mixin for the line style
+@mixin divider-line($orientation) {
+  content: '';
+  flex: 1;
+  background-color: transparent;
+  
+  @if $orientation == 'horizontal' {
+      height: 0;
+      border-top: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+  } @else {
+      width: 0;
+      border-left: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+  }
+}
+
+:host {
+  display: block; // Default
+  opacity: 1;
+}
+
+// =============================================================================
+// HORIZONTAL
+// =============================================================================
+:host(.ox-divider--horizontal) {
+  width: 100%;
+  margin: 1rem 0;
+  cursor: default;
+
+  // Base Style (No Label)
+  // We use border-top instead of height/bg-color to support dashed/dotted
+  border-top: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+
+  // WITH LABEL
+  &.ox-divider--has-label {
+    border-top: none; // Remove base border
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+
+    // Lines
+    &::before, &::after {
+      @include divider-line('horizontal');
+    }
+
+    // Logic for Position
+    &.ox-divider--label-start::before { display: none; }
+    &.ox-divider--label-end::after { display: none; }
+    
+    // Ensure label text has color
+    .ox-divider__label {
+      color: var(--ox-text-secondary, #666);
+      font-size: 0.875rem;
+    }
+  }
+
+  // RESIZABLE
+  &.ox-divider--resizable {
+    cursor: row-resize;
+    position: relative;
+    border-top: none; // Hide base border, use pseudo for easier grabbing area
+    height: 6px; 
+    margin: 0; 
+    background-color: transparent; 
+    z-index: 10;
+    
+    // If NO LABEL, we need the centered line.
+    &:not(.ox-divider--has-label)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      // Use border for style support
+      height: 0;
+      border-top: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+      transform: translateY(-50%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ox-primary-color, #007bff);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// =============================================================================
+// VERTICAL
+// =============================================================================
+:host(.ox-divider--vertical) {
+  height: auto;
+  margin: 0 1rem;
+  min-height: 1em;
+  display: inline-block;
+  align-self: stretch;
+
+  // Base Style
+  border-left: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+
+  // WITH LABEL
+  &.ox-divider--has-label {
+    border-left: none;
+    display: inline-flex; // Or flex if parent is flex
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    gap: 1rem;
+
+    &::before, &::after {
+      @include divider-line('vertical');
+      min-height: 10px; // Ensure visibility
+    }
+
+    &.ox-divider--label-start::before { display: none; }
+    &.ox-divider--label-end::after { display: none; }
+
+    .ox-divider__label {
+      color: var(--ox-text-secondary, #666);
+      font-size: 0.875rem;
+      writing-mode: vertical-lr; // Makes text vertical!
+      transform: rotate(180deg); // Reading direction
+    }
+  }
+
+  // RESIZABLE
+  &.ox-divider--resizable {
+    cursor: col-resize;
+    position: relative;
+    border-left: none; // Hide base
+    width: 6px; 
+    margin: 0;
+    background-color: transparent;
+    z-index: 10;
+
+    &:not(.ox-divider--has-label)::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 0;
+      border-left: 1px var(--ox-divider-style, solid) var(--ox-border-color, #e0e0e0);
+      transform: translateX(-50%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--ox-primary-color, #007bff);
+      outline-offset: 2px;
+    }
+  }
+}

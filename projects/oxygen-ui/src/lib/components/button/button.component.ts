@@ -16,6 +16,8 @@ export interface TypesButton {
   encapsulation: ViewEncapsulation.None,
   host: {
     '[class]': 'hostClasses()',
+    'role': 'button',
+    '[attr.tabindex]': 'disabled() ? "-1" : "0"',
     '[attr.disabled]': 'disabled() ? "" : null',
     '[attr.aria-disabled]': 'disabled()',
     '[attr.aria-label]': 'ariaLabel() || null',
@@ -25,6 +27,8 @@ export interface TypesButton {
     '[attr.aria-controls]': 'ariaControls() || null',
     '[attr.type]': 'type()',
     '[style.border-radius]': 'borderRadius()',
+    '(keydown.enter)': 'onKeydown($event)',
+    '(keydown.space)': 'onKeydown($event)',
   }
 })
 export class ButtonComponent {
@@ -52,4 +56,23 @@ export class ButtonComponent {
       this.disabled() ? 'oxy-button--disabled' : ''
     ].filter(Boolean).join(' ');
   });
+
+  onKeydown(event: KeyboardEvent) {
+    if (this.disabled()) return;
+    
+    const isNavigationKey = event.key === 'Enter' || event.key === ' ';
+    if (!isNavigationKey) return;
+
+    // If it's a native button, the browser already handles Enter/Space clicks.
+    // We only need this for custom elements <ox-button>.
+    const isNativeButton = event.target instanceof HTMLButtonElement;
+    
+    if (event.key === ' ') {
+      event.preventDefault(); // Prevent scrolling
+    }
+    
+    if (!isNativeButton) {
+      (event.target as HTMLElement).click();
+    }
+  }
 }

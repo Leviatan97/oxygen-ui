@@ -1,0 +1,45 @@
+<div class="ox-panel__container" 
+     [class.ox-panel--collapsed]="collapsed()"
+     role="region" 
+     [attr.aria-labelledby]="headerId()">
+  @if (header() || headerTemplate()) {
+    <div class="ox-panel__header">
+      <span class="ox-panel__header-content"
+            [id]="headerId()"
+            [class.ox-panel__header-content--toggleable]="toggleable()"
+            (click)="toggle()"
+            (keydown.enter)="toggle()"
+            (keydown.space)="toggle()"
+            [attr.tabindex]="toggleable() ? 0 : null"
+            [attr.role]="toggleable() ? 'button' : null"
+            [attr.aria-expanded]="toggleable() ? !collapsed() : null"
+            [attr.aria-controls]="toggleable() ? contentId() : null">
+        
+        @if (toggleable()) {
+           @if (iconTemplate()) {
+             <ng-container *ngTemplateOutlet="iconTemplate() || null; context: { $implicit: collapsed() }"></ng-container>
+           } @else {
+             <svg class="ox-panel__icon" [class.ox-panel__icon--collapsed]="collapsed()" 
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <polyline points="6 9 12 15 18 9"></polyline>
+             </svg>
+           }
+        }
+        
+        @if (headerTemplate()) {
+          <ng-container *ngTemplateOutlet="headerTemplate() || null; context: { $implicit: collapsed() }"></ng-container>
+        } @else {
+          {{ header() }}
+        }
+      </span>
+    </div>
+  }
+  
+  <div class="ox-panel__wrapper" 
+       [id]="contentId()"
+       [class.ox-panel__wrapper--collapsed]="collapsed()">
+    <div class="ox-panel__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
