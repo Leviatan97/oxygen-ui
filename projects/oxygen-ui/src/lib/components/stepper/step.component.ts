@@ -1,4 +1,4 @@
-import { Component, input, TemplateRef, ViewChild } from '@angular/core';
+import { Component, input, TemplateRef, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <ng-template>
+    <ng-template #stepContent>
       <ng-content></ng-content>
     </ng-template>
   `,
@@ -18,5 +18,5 @@ export class StepComponent {
   editable = input<boolean>(true);
   completed = input<boolean>(false);
 
-  @ViewChild(TemplateRef) content!: TemplateRef<any>;
+  content = viewChild.required<TemplateRef<any>>('stepContent');
 }
