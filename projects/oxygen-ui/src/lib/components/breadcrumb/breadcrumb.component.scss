@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '../../styles/tokens' as t;
 
 .ox-breadcrumb {
@@ -7,14 +8,14 @@
   margin: 0;
   list-style: none;
   align-items: center;
-  gap: map-get(t.$spacings, '2');
+  gap: map.get(t.$spacings, '2');
   font-family: inherit;
-  font-size: map-get(t.$font-sizes, 'sm');
+  font-size: map.get(t.$font-sizes, 'sm');
 
   .ox-breadcrumb-item {
     display: flex;
     align-items: center;
-    gap: map-get(t.$spacings, '2');
+    gap: map.get(t.$spacings, '2');
     color: var(--oxy-muted, #6c757d);
 
     &--disabled {
@@ -26,7 +27,7 @@
   .ox-breadcrumb-link {
     display: flex;
     align-items: center;
-    gap: map-get(t.$spacings, '1');
+    gap: map.get(t.$spacings, '1');
     color: var(--oxy-primary, #0d6efd);
     text-decoration: none;
     transition: color 0.15s ease-in-out;
@@ -40,13 +41,13 @@
   .ox-breadcrumb-text {
     display: flex;
     align-items: center;
-    gap: map-get(t.$spacings, '1');
+    gap: map.get(t.$spacings, '1');
     color: var(--oxy-text, #212529);
-    font-weight: map-get(t.$font-weights, 'medium');
+    font-weight: map.get(t.$font-weights, 'medium');
 
     &[aria-current="page"] {
       color: var(--oxy-text-muted, #6c757d);
-      font-weight: map-get(t.$font-weights, 'normal');
+      font-weight: map.get(t.$font-weights, 'normal');
     }
   }
 
@@ -59,7 +60,7 @@
     align-items: center;
     color: var(--oxy-muted, #6c757d);
     user-select: none;
-    padding: 0 map-get(t.$spacings, '1');
+    padding: 0 map.get(t.$spacings, '1');
   }
 }
 

@@ -3,10 +3,10 @@ import { BadgeComponent, BadgeSeverity } from '../badge/badge.component';
 
 export type ButtonColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 export type ButtonVariantPrefix = 'outline' | 'ghost';
-export type InputVariant = ButtonColor | `${ButtonVariantPrefix}-${ButtonColor}`;
+export type ButtonVariant = ButtonColor | `${ButtonVariantPrefix}-${ButtonColor}`;
 
 export interface TypesButton {
-  variant: InputVariant;
+  variant: ButtonVariant;
 }
 
 @Component({
@@ -34,7 +34,7 @@ export interface TypesButton {
 })
 export class ButtonComponent {
   label = input<string>();
-  variant = input<InputVariant>('primary');
+  variant = input<ButtonVariant>('primary');
   size = input<'sm' | 'md' | 'lg'>('sm');
   boxShadow = input<'sm' | 'md' | 'none'>('none');
   disabled = input<boolean>(false);

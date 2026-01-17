@@ -21,3 +21,4 @@ export * from './lib/components/alert/alert.component';
 export * from './lib/components/badge/badge.component';
 export * from './lib/components/breadcrumb/breadcrumb.component';
 export * from './lib/components/breadcrumb/breadcrumb-item-def.directive';
+export * from './lib/components/input/input.component';

@@ -1,0 +1,37 @@
+@if (hasLabel()) {
+  <label [for]="id()" class="oxy-input-label">
+    {{ label() }}
+    @if (required()) {
+      <span class="oxy-input-required">*</span>
+    }
+  </label>
+}
+
+<div class="oxy-input-container">
+  <input
+    [id]="id()"
+    [type]="type()"
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    [readOnly]="readonly()"
+    [required]="required()"
+    class="oxy-input-field"
+    [attr.aria-describedby]="
+      error() ? id() + '-error' : hint() ? id() + '-hint' : null
+    "
+    [attr.aria-invalid]="!!error()"
+    (input)="onInput($event)"
+    (blur)="onBlur()"
+  />
+</div>
+
+@if (error()) {
+  <div [id]="id() + '-error'" class="oxy-input-error" role="alert">
+    {{ error() }}
+  </div>
+} @else if (hint()) {
+  <div [id]="id() + '-hint'" class="oxy-input-hint">
+    {{ hint() }}
+  </div>
+}

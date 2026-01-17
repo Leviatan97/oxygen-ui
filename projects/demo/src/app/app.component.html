@@ -2207,10 +2207,248 @@
                 </div>
               </div>
             </section>
+
+            <!-- INPUT DEMO -->
+            <section class="ox-mb-16">
+              <h2 class="ox-text-2xl ox-font-bold ox-mb-6 ox-text-primary">
+                Input
+              </h2>
+
+              <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-8">
+                <!-- Basic Inputs -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">Basic Usage</h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      label="Full Name"
+                      placeholder="Enter your name"
+                    ></ox-input>
+                    <ox-input
+                      type="password"
+                      label="Password"
+                      placeholder="Minimum 8 characters"
+                    ></ox-input>
+                    <ox-input
+                      type="email"
+                      label="Email Address"
+                      placeholder="alex@example.com"
+                      hint="We'll never share your email."
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Sizes -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">Sizes</h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      size="sm"
+                      label="Small"
+                      placeholder="Small input"
+                    ></ox-input>
+                    <ox-input
+                      size="md"
+                      label="Medium"
+                      placeholder="Medium input (default)"
+                    ></ox-input>
+                    <ox-input
+                      size="lg"
+                      label="Large"
+                      placeholder="Large input"
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- States -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">States</h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      label="Disabled"
+                      value="Disabled value"
+                      [disabled]="true"
+                    ></ox-input>
+                    <ox-input
+                      label="Read Only"
+                      value="Read only value"
+                      [readonly]="true"
+                    ></ox-input>
+                    <ox-input
+                      label="Required"
+                      placeholder="Required field"
+                      [required]="true"
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Validation & Hints -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                    Validation & Hints
+                  </h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      label="With Error"
+                      value="invalid"
+                      error="This field is required."
+                    ></ox-input>
+                    <ox-input
+                      label="With Hint"
+                      hint="Your password must be at least 8 characters long."
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Variants -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                    Variants
+                  </h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      variant="default"
+                      label="Default Variant"
+                      placeholder="Standard input style"
+                    ></ox-input>
+                    <ox-input
+                      variant="fieldset"
+                      label="Fieldset Variant"
+                      placeholder="Label inside border like fieldset"
+                    ></ox-input>
+                    <ox-input
+                      variant="oneLine"
+                      label="OneLine Variant"
+                      placeholder="Only bottom border"
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Float Label -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                    Float Label
+                  </h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      variant="default"
+                      label="Float Default"
+                      [floatLabel]="true"
+                    ></ox-input>
+                    <ox-input
+                      variant="fieldset"
+                      label="Float Fieldset"
+                      [floatLabel]="true"
+                    ></ox-input>
+                    <ox-input
+                      variant="oneLine"
+                      label="Float OneLine"
+                      [floatLabel]="true"
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Custom Focus Color -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                    Custom Focus Color
+                  </h3>
+                  <div class="ox-flex ox-flex-col ox-gap-4">
+                    <ox-input
+                      label="Success Color"
+                      placeholder="Focus color green"
+                      focusColor="success"
+                    ></ox-input>
+                    <ox-input
+                      variant="fieldset"
+                      label="Warning Color"
+                      placeholder="Focus color orange"
+                      [floatLabel]="true"
+                      focusColor="warning"
+                    ></ox-input>
+                    <ox-input
+                      variant="oneLine"
+                      label="Danger Color"
+                      placeholder="Focus color red"
+                      [floatLabel]="true"
+                      focusColor="danger"
+                    ></ox-input>
+                    <ox-input
+                      label="Info Color"
+                      placeholder="Focus color cyan"
+                      focusColor="info"
+                    ></ox-input>
+                    <ox-input
+                      variant="fieldset"
+                      label="Secondary Color"
+                      placeholder="Focus color gray"
+                      focusColor="secondary"
+                    ></ox-input>
+                  </div>
+                </div>
+
+                <!-- Reactive Forms -->
+                <div class="ox-p-4 ox-bg-surface ox-border ox-rounded ox-col-span-2">
+                  <h3 class="ox-text-lg ox-font-bold ox-mb-4">
+                    Reactive Forms Integration
+                  </h3>
+                  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="ox-grid ox-grid-cols-1 md:ox-grid-cols-2 ox-gap-4">
+                      <ox-input
+                        formControlName="fullName"
+                        label="Full Name"
+                        placeholder="John Doe"
+                        [required]="true"
+                        [error]="userForm.get('fullName')?.touched && userForm.get('fullName')?.hasError('required') ? 'Name is required' : userForm.get('fullName')?.hasError('minlength') ? 'Minimum 3 characters' : ''"
+                      ></ox-input>
+
+                      <ox-input
+                        formControlName="email"
+                        type="email"
+                        label="Email"
+                        placeholder="john@example.com"
+                        [required]="true"
+                        [error]="userForm.get('email')?.touched && userForm.get('email')?.hasError('required') ? 'Email is required' : userForm.get('email')?.hasError('email') ? 'Invalid email format' : ''"
+                      ></ox-input>
+
+                      <ox-input
+                        formControlName="phone"
+                        type="tel"
+                        label="Phone"
+                        placeholder="+1 234 567 890"
+                        hint="Optional field"
+                      ></ox-input>
+
+                      <ox-input
+                        formControlName="website"
+                        type="url"
+                        label="Website"
+                        placeholder="https://example.com"
+                        [error]="userForm.get('website')?.touched && userForm.get('website')?.hasError('pattern') ? 'Invalid URL format' : ''"
+                      ></ox-input>
+                    </div>
+
+                    <div class="ox-flex ox-gap-2 ox-mt-4">
+                      <ox-button type="submit" [disabled]="userForm.invalid">
+                        Submit Form
+                      </ox-button>
+                      <ox-button variant="outline-primary" (click)="resetForm()">
+                        Reset
+                      </ox-button>
+                    </div>
+
+                    @if (formValues()) {
+                      <div class="ox-mt-4 ox-p-4 ox-bg-primary-50 ox-rounded">
+                        <h4 class="ox-font-bold ox-mb-2">Form Values:</h4>
+                        <pre class="ox-text-sm">{{ formValues() | json }}</pre>
+                      </div>
+                    }
+                  </form>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
-      [diff_block_end] [diff_block_end] [diff_block_end]
     </div>
   </div>
 </div>

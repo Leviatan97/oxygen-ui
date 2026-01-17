@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { 
   SampleComponent, 
@@ -19,13 +20,14 @@ import {
   FieldsetComponent 
 } from 'oxygen-ui';
 
-import { PanelComponent, StepperComponent, StepComponent, TabsComponent, TabComponent, OxTabHeaderDirective, ToolbarComponent, AlertComponent, BadgeComponent, BreadcrumbComponent, BreadcrumbItem, OxBreadcrumbItemDef } from 'oxygen-ui';
+import { InputComponent, PanelComponent, StepperComponent, StepComponent, TabsComponent, TabComponent, OxTabHeaderDirective, ToolbarComponent, AlertComponent, BadgeComponent, BreadcrumbComponent, BreadcrumbItem, OxBreadcrumbItemDef } from 'oxygen-ui';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
+    ReactiveFormsModule,
     SampleComponent,
     ButtonComponent, 
     CardComponent, 
@@ -52,7 +54,8 @@ import { PanelComponent, StepperComponent, StepComponent, TabsComponent, TabComp
     AlertComponent,
     BadgeComponent,
     BreadcrumbComponent,
-    OxBreadcrumbItemDef
+    OxBreadcrumbItemDef,
+    InputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -92,5 +95,29 @@ export class AppComponent {
     const index = current ? this.accordionIds.indexOf(current) : -1;
     const prevIndex = index <= 0 ? this.accordionIds.length - 1 : index - 1;
     this.controlledActiveId.set(this.accordionIds[prevIndex]);
+  }
+
+  // Reactive Forms
+  userForm = new FormGroup({
+    fullName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phone: new FormControl(''),
+    website: new FormControl('', [Validators.pattern('https?://.+')]),
+  });
+
+  formValues = signal<any>(null);
+
+  onSubmit() {
+    if (this.userForm.valid) {
+      this.formValues.set(this.userForm.value);
+      console.log('Form submitted:', this.userForm.value);
+    } else {
+      this.formValues.set({ error: 'Please fix the validation errors' });
+    }
+  }
+
+  resetForm() {
+    this.userForm.reset();
+    this.formValues.set(null);
   }
 }
