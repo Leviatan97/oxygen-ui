@@ -34,6 +34,7 @@ import { TextareaDemoComponent } from './pages/components/textarea-demo.componen
 import { SliderDemoComponent } from './pages/components/slider-demo.component';
 import { KnobDemoComponent } from './pages/components/knob-demo.component';
 import { InputSwitchDemoComponent } from './pages/components/input-switch-demo.component';
+import { DatePickerDemoComponent } from './pages/components/datepicker-demo.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -55,6 +56,7 @@ export const routes: Routes = [
       { path: 'password', component: PasswordDemoComponent },
       { path: 'textarea', component: TextareaDemoComponent },
       { path: 'date', component: DateDemoComponent },
+      { path: 'datepicker', component: DatePickerDemoComponent },
       { path: 'file', component: FileDemoComponent },
       { path: 'otp', component: OtpDemoComponent },
       { path: 'radio', component: RadioDemoComponent },

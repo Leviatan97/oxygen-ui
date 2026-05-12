@@ -67,6 +67,15 @@ export interface DropdownOption<T = unknown> {
                 [class.ox-dropdown-item-selected]="isSelected(option)"
                 [class.ox-dropdown-item-disabled]="option.disabled"
                 (click)="selectOption(option, $event)">
+                @if (multiple()) {
+                  <div class="ox-dropdown-checkbox" [class.ox-dropdown-checkbox-selected]="isSelected(option)">
+                    @if (isSelected(option)) {
+                      <svg viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                      </svg>
+                    }
+                  </div>
+                }
                 {{ option.label }}
               </li>
             } @empty {
@@ -101,8 +110,9 @@ export class DropdownComponent<T = unknown> implements ControlValueAccessor {
   size = input<'sm' | 'md' | 'lg'>('md');
   variant = input<'default' | 'filled' | 'outlined' | 'fieldset' | 'oneLine'>('default');
   severity = input<'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'>('primary');
+  multiple = input<boolean>(false);
   
-  value = model<T | null>(null);
+  value = model<any>(null);
   
   isOpen = signal(false);
   filterValue = signal('');
@@ -116,11 +126,16 @@ export class DropdownComponent<T = unknown> implements ControlValueAccessor {
 
   selectedLabel = computed(() => {
     const currentVal = this.value();
+    if (this.multiple() && Array.isArray(currentVal)) {
+      if (currentVal.length === 0) return null;
+      const selectedOptions = this.options().filter(o => currentVal.some(val => JSON.stringify(val) === JSON.stringify(o.value)));
+      return selectedOptions.map(o => o.label).join(', ');
+    }
     const selected = this.options().find(o => JSON.stringify(o.value) === JSON.stringify(currentVal));
     return selected ? selected.label : null;
   });
 
-  private onChange: (value: T | null) => void = () => {};
+  private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};
 
   toggle() {
@@ -137,17 +152,40 @@ export class DropdownComponent<T = unknown> implements ControlValueAccessor {
   }
 
   selectOption(option: DropdownOption<T>, event: Event) {
-    event.stopPropagation();
+    if (this.multiple()) {
+      event.stopPropagation();
+    }
     if (option.disabled) return;
     
-    this.value.set(option.value);
-    this.onChange(option.value);
+    if (this.multiple()) {
+      let currentVal = this.value();
+      if (!Array.isArray(currentVal)) {
+        currentVal = [];
+      }
+      
+      const index = currentVal.findIndex((v: any) => JSON.stringify(v) === JSON.stringify(option.value));
+      if (index === -1) {
+        currentVal = [...currentVal, option.value];
+      } else {
+        currentVal = currentVal.filter((_: any, i: number) => i !== index);
+      }
+      
+      this.value.set(currentVal);
+      this.onChange(currentVal);
+    } else {
+      this.value.set(option.value);
+      this.onChange(option.value);
+      this.close();
+    }
     this.onTouched();
-    this.close();
   }
 
   isSelected(option: DropdownOption<T>): boolean {
-    return JSON.stringify(option.value) === JSON.stringify(this.value());
+    const currentVal = this.value();
+    if (this.multiple() && Array.isArray(currentVal)) {
+      return currentVal.some(val => JSON.stringify(val) === JSON.stringify(option.value));
+    }
+    return JSON.stringify(option.value) === JSON.stringify(currentVal);
   }
 
   onFilterChange() {

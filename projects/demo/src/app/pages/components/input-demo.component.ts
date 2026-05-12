@@ -42,6 +42,16 @@ import { InputComponent } from 'oxygen-ui';
       </section>
 
       <section class="demo-section">
+        <h2>Float Label</h2>
+        <p>La etiqueta se desplaza hacia arriba cuando el campo recibe el foco o tiene contenido. Disponible en las tres variantes.</p>
+        <div class="demo-grid">
+          <ox-input label="Variante Estándar" [floatLabel]="true" variant="default" placeholder=" "></ox-input>
+          <ox-input label="Variante Fieldset" [floatLabel]="true" variant="fieldset"></ox-input>
+          <ox-input label="Variante One Line" [floatLabel]="true" variant="oneLine" placeholder=" "></ox-input>
+        </div>
+      </section>
+
+      <section class="demo-section">
         <h2>Variantes de Diseño</h2>
         <div class="demo-grid">
           <ox-input label="Estándar" variant="default" placeholder="Borde normal completol"></ox-input>

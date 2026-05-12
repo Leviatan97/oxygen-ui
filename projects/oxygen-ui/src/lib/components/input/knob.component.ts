@@ -9,6 +9,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   template: `
     <div class="oxy-knob-container" 
          [class.oxy-knob--disabled]="disabled()"
+         [ngClass]="'oxy-knob--' + variant()"
+         [style.width.px]="size()"
          (mousedown)="onMouseDown($event)"
          (wheel)="onWheel($event)">
       
@@ -17,6 +19,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         <circle 
           cx="50" cy="50" r="40" 
           class="oxy-knob-track"
+          [style.stroke]="rangeColor()"
+          [style.stroke-width]="strokeWidth()"
           stroke-dasharray="251.2"
           stroke-dashoffset="0" />
         
@@ -24,16 +28,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         <circle 
           cx="50" cy="50" r="40" 
           class="oxy-knob-progress"
+          [style.stroke]="valueColor()"
+          [style.stroke-width]="strokeWidth()"
           [style.stroke-dashoffset]="dashOffset()"
           stroke-dasharray="251.2" />
         
         <!-- Center Knob -->
-        <circle cx="50" cy="50" r="32" class="oxy-knob-center" />
+        @if (variant() === 'default') {
+          <circle cx="50" cy="50" r="32" class="oxy-knob-center" />
+        }
         
         <!-- Indicator Dot -->
-        <g [style.transform]="rotateIndicator()">
-          <circle cx="50" cy="18" r="4" class="oxy-knob-indicator" />
-        </g>
+        @if (variant() !== 'outline') {
+          <g [style.transform]="rotateIndicator()" style="transform-origin: 50% 50%">
+            <circle cx="50" cy="18" r="4" class="oxy-knob-indicator" [style.fill]="valueColor()" />
+          </g>
+        }
 
         <!-- Value Text -->
         <text 
@@ -67,6 +77,10 @@ export class KnobComponent implements ControlValueAccessor {
   label = input<string>();
   disabled = input<boolean>(false);
   size = input<number>(100);
+  variant = input<'default' | 'flat' | 'outline'>('default');
+  strokeWidth = input<number>(8);
+  valueColor = input<string>('#3b82f6');
+  rangeColor = input<string>('#e5e7eb');
   
   value = model<number>(0);
 

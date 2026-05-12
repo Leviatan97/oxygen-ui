@@ -22,13 +22,11 @@
 .oxy-knob-track {
   fill: none;
   stroke: var(--oxy-border-color, #e5e7eb);
-  stroke-width: 8;
 }
 
 .oxy-knob-progress {
   fill: none;
   stroke: var(--oxy-primary-color, #3b82f6);
-  stroke-width: 8;
   stroke-linecap: round;
   transition: stroke-dashoffset 0.1s ease-out;
 }
@@ -40,6 +38,19 @@
 
 .oxy-knob-indicator {
   fill: var(--oxy-primary-color, #3b82f6);
+}
+
+/* Variantes */
+.oxy-knob--flat {
+  .oxy-knob-track {
+    stroke-opacity: 0.2;
+  }
+}
+
+.oxy-knob--outline {
+  .oxy-knob-track {
+    stroke-dasharray: 2, 2;
+  }
 }
 
 .oxy-knob-text {

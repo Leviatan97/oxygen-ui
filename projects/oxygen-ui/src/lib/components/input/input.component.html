@@ -1,4 +1,4 @@
-@if (hasLabel()) {
+@if (hasLabel() && !floatLabel()) {
   <label [for]="id()" class="oxy-input-label">
     {{ label() }}
     @if (required()) {
@@ -8,6 +8,14 @@
 }
 
 <div class="oxy-input-container">
+  @if (hasLabel() && floatLabel()) {
+    <label [for]="id()" class="oxy-input-label">
+      {{ label() }}
+      @if (required()) {
+        <span class="oxy-input-required">*</span>
+      }
+    </label>
+  }
   <input
     [id]="id()"
     [type]="type()"

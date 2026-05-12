@@ -60,6 +60,20 @@ import { DropdownComponent } from '../../../../../oxygen-ui/src/lib/components/d
       </section>
 
       <section class="demo-section">
+        <h2>Selección Múltiple</h2>
+        <div class="flex flex-col gap-4">
+          <ox-dropdown 
+            [options]="cities" 
+            [multiple]="true" 
+            [(ngModel)]="selectedCities" 
+            placeholder="Selecciona varias ciudades"
+            label="Ciudades">
+          </ox-dropdown>
+          <p class="mt-4">Ciudades seleccionadas: {{ selectedCitiesLabels() || 'Ninguna' }}</p>
+        </div>
+      </section>
+
+      <section class="demo-section">
         <h2>Severidades (Colores)</h2>
         <div class="grid grid-cols-2 gap-4">
           <ox-dropdown [options]="cities" severity="success" placeholder="Success"></ox-dropdown>
@@ -104,4 +118,9 @@ export class DropdownDemoComponent {
   ];
   selectedCity: any = null;
   filteredCity: any = null;
+  selectedCities: any[] = [];
+
+  selectedCitiesLabels() {
+    return this.selectedCities.map(c => c.name).join(', ');
+  }
 }

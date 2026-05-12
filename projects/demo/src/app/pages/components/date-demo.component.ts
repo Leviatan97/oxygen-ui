@@ -24,6 +24,29 @@ import { DateInputComponent } from 'oxygen-ui';
           <ox-date-input label="Máximo 2024-12-31" max="2024-12-31"></ox-date-input>
         </div>
       </section>
+
+      <section class="demo-section">
+        <h2>Float Labels</h2>
+        <div class="demo-grid">
+          <ox-date-input 
+            label="Default Float" 
+            [floatLabel]="true" 
+            variant="default">
+          </ox-date-input>
+          
+          <ox-date-input 
+            label="Fieldset Float" 
+            [floatLabel]="true" 
+            variant="fieldset">
+          </ox-date-input>
+
+          <ox-date-input 
+            label="One Line Float" 
+            [floatLabel]="true" 
+            variant="oneLine">
+          </ox-date-input>
+        </div>
+      </section>
     </div>
   `,
   styles: [`

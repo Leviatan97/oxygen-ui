@@ -28,7 +28,8 @@ import { SidebarComponent } from 'oxygen-ui';
           <a routerLink="input" routerLinkActive="active" class="nav-item">Input</a>
           <a routerLink="password" routerLinkActive="active" class="nav-item">Password</a>
           <a routerLink="textarea" routerLinkActive="active" class="nav-item">Textarea</a>
-          <a routerLink="date" routerLinkActive="active" class="nav-item">Date</a>
+          <a routerLink="date" routerLinkActive="active" class="nav-item">Date Input</a>
+          <a routerLink="datepicker" routerLinkActive="active" class="nav-item">DatePicker</a>
           <a routerLink="file" routerLinkActive="active" class="nav-item">File Upload</a>
           <a routerLink="otp" routerLinkActive="active" class="nav-item">OTP</a>
           <a routerLink="radio" routerLinkActive="active" class="nav-item">Radio</a>

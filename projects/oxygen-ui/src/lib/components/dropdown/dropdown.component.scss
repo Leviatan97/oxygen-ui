@@ -210,6 +210,9 @@
   color: #1e293b;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   &:hover {
     background: #f8fafc;
@@ -224,6 +227,29 @@
   &-disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+}
+
+.ox-dropdown-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &-selected {
+    background: #3b82f6;
+    border-color: #3b82f6;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+    color: white;
   }
 }
 

@@ -10,7 +10,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
     <div class="oxy-input-wrapper" 
          [class.oxy-input-wrapper--disabled]="disabled()"
          [class.oxy-input-wrapper--error]="!!error()"
-         [ngClass]="'oxy-input-wrapper--' + size()">
+         [class.oxy-input-wrapper--float]="floatLabel()"
+         [class.oxy-input-wrapper--has-value]="!!value()"
+         [ngClass]="[
+           'oxy-input-wrapper--' + size(),
+           variant() === 'fieldset' ? 'oxy-input-wrapper--fieldset' : '',
+           variant() === 'oneLine' ? 'oxy-input-wrapper--oneLine' : ''
+         ]">
       
       @if (label()) {
         <label [for]="id()" class="oxy-input-label">
@@ -43,7 +49,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
       }
     </div>
   `,
-  styleUrl: './input.component.scss',
+  styleUrl: './date-input.component.scss',
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
@@ -63,6 +69,8 @@ export class DateInputComponent implements ControlValueAccessor {
   hint = input<string>();
   error = input<string>();
   size = input<'sm' | 'md' | 'lg'>('md');
+  floatLabel = input<boolean>(false);
+  variant = input<'default' | 'fieldset' | 'oneLine'>('default');
 
   value = signal<string>('');
 

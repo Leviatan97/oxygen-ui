@@ -210,20 +210,22 @@
   // Default variant with float label
   &.oxy-input-wrapper--default {
     position: relative;
+    padding-top: 0;
 
     .oxy-input-label {
       position: absolute;
-      top: 35%;
+      top: 50%;
       left: 0.75rem;
       transform: translateY(-50%);
       pointer-events: none;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       background-color: transparent;
-      padding: 0;
+      padding: 0 0.25rem;
       margin: 0;
       z-index: 2;
-      font-weight: 500;
-      color: var(--oxy-text-color, #374151);
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--oxy-placeholder-color, #9ca3af);
     }
 
     .oxy-input-container {
@@ -237,47 +239,38 @@
     // When input has focus or has value
     &.oxy-input-wrapper--has-value .oxy-input-label,
     &:has(.oxy-input-field:focus) .oxy-input-label {
-      top: 0px;
+      top: 0;
+      transform: translateY(-50%);
       font-size: 0.75rem;
-      background-color: transparent;
-      padding-bottom: 8%;
-      left: 2px;
-    }
-
-    &:has(.oxy-input-field:focus) .oxy-input-label {
+      font-weight: 600;
+      background-color: var(--oxy-bg-color, #ffffff);
+      left: 0.75rem;
       color: var(--oxy-input-focus-color, var(--oxy-primary-color, #3b82f6));
     }
 
-    &.oxy-input-wrapper--error {
-      .oxy-input-label {
-        color: var(--oxy-danger-color, #ef4444);
-      }
-
-      &.oxy-input-wrapper--has-value .oxy-input-label,
-      &:has(.oxy-input-field:focus) .oxy-input-label {
-        color: var(--oxy-danger-color, #ef4444);
-      }
+    &.oxy-input-wrapper--has-value:not(:has(.oxy-input-field:focus)) .oxy-input-label {
+      color: var(--oxy-text-hint, #6b7280);
     }
   }
 
-  // Fieldset variant with float label
   &.oxy-input-wrapper--fieldset {
     padding-top: 0;
     position: relative;
 
     .oxy-input-label {
       position: absolute;
-      top: calc(50% - 0.50rem);
+      top: 50%;
       left: 0.75rem;
       transform: translateY(-50%);
       pointer-events: none;
       transition: all 0.2s ease-in-out;
       background-color: transparent;
-      padding: 0;
+      padding: 0 0.25rem;
       margin: 0;
       z-index: 2;
-      font-weight: 600;
-      color: var(--oxy-text-color, #374151);
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--oxy-placeholder-color, #9ca3af);
       line-height: 1;
     }
 
@@ -296,7 +289,7 @@
       transform: translateY(-50%);
       font-size: 0.75rem;
       background-color: var(--oxy-bg-color, #ffffff);
-      padding: 0 0.375rem;
+      padding: 0 0.25rem;
       left: 0.75rem;
     }
 
@@ -316,21 +309,21 @@
     }
   }
 
-  // OneLine variant with float label
   &.oxy-input-wrapper--oneLine {
     position: relative;
-    padding-top: 1rem;
+    padding-top: 0;
 
     .oxy-input-label {
       position: absolute;
-      top: 2.5rem;
+      top: 50%;
       left: 0;
       transform: translateY(-50%);
       pointer-events: none;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       margin: 0;
-      font-weight: 500;
-      color: var(--oxy-text-color, #374151);
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--oxy-placeholder-color, #9ca3af);
       z-index: 2;
     }
 
@@ -346,8 +339,14 @@
     &.oxy-input-wrapper--has-value .oxy-input-label,
     &:has(.oxy-input-field:focus) .oxy-input-label {
       top: 0;
-      transform: translateY(0);
+      transform: translateY(-100%);
       font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--oxy-input-focus-color, var(--oxy-primary-color, #3b82f6));
+    }
+
+    &.oxy-input-wrapper--has-value:not(:has(.oxy-input-field:focus)) .oxy-input-label {
+      color: var(--oxy-text-hint, #6b7280);
     }
 
     &:has(.oxy-input-field:focus) .oxy-input-label {

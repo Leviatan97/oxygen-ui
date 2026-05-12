@@ -35,6 +35,7 @@ import { InputSwitchDemoComponent } from './pages/components/input-switch-demo.c
 import { FieldsetDemoComponent } from './pages/components/fieldset-demo.component';
 import { PaginatorDemoComponent } from './pages/components/paginator-demo.component';
 import { MenubarDemoComponent } from './pages/components/menubar-demo.component';
+import { DatePickerDemoComponent } from './pages/components/datepicker-demo.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,6 +57,7 @@ export const routes: Routes = [
       { path: 'password', component: PasswordDemoComponent },
       { path: 'textarea', component: TextareaDemoComponent },
       { path: 'date', component: DateDemoComponent },
+      { path: 'datepicker', component: DatePickerDemoComponent },
       { path: 'file', component: FileDemoComponent },
       { path: 'otp', component: OtpDemoComponent },
       { path: 'radio', component: RadioDemoComponent },

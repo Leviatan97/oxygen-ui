@@ -31,6 +31,7 @@ export * from './lib/components/input/rating.component';
 export * from './lib/components/input/textarea.component';
 export * from './lib/components/input/slider.component';
 export * from './lib/components/input/knob.component';
+export * from './lib/components/date-picker/date-picker.component';
 export * from './lib/components/checkbox/checkbox.component';
 export * from './lib/components/input-switch/input-switch.component';
 export * from './lib/components/dropdown/dropdown.component';
