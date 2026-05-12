@@ -1,9 +1,9 @@
-import { Component, input, computed, ViewEncapsulation } from '@angular/core';
-import { BadgeComponent, BadgeSeverity } from '../badge/badge.component';
+import { Component, input, computed, ViewEncapsulation, output } from '@angular/core';
+import { OxygenColor, OxygenSize, OxygenSeverity } from '../../lib-core';
+import { BadgeComponent } from '../badge/badge.component';
 
-export type ButtonColor = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
 export type ButtonVariantPrefix = 'outline' | 'ghost';
-export type ButtonVariant = ButtonColor | `${ButtonVariantPrefix}-${ButtonColor}`;
+export type ButtonVariant = OxygenColor | `${ButtonVariantPrefix}-${OxygenColor}`;
 
 export interface TypesButton {
   variant: ButtonVariant;
@@ -28,21 +28,25 @@ export interface TypesButton {
     '[attr.aria-controls]': 'ariaControls() || null',
     '[attr.type]': 'type()',
     '[style.border-radius]': 'borderRadius()',
-    '(keydown.enter)': 'onKeydown($event)',
-    '(keydown.space)': 'onKeydown($event)',
+    '(click)': 'handleHostClick($event)',
+    '(keydown.enter)': 'onKeydown($any($event))',
+    '(keydown.space)': 'onKeydown($any($event))',
   }
 })
 export class ButtonComponent {
   label = input<string>();
   variant = input<ButtonVariant>('primary');
-  size = input<'sm' | 'md' | 'lg'>('sm');
-  boxShadow = input<'sm' | 'md' | 'none'>('none');
+  size = input<OxygenSize>('sm');
+  boxShadow = input<OxygenSize | 'none'>('none');
   disabled = input<boolean>(false);
   borderRadius = input<string>();
 
+  // Events
+  onClick = output<MouseEvent>();
+
   // Badge inputs
   badge = input<string | number>();
-  badgeSeverity = input<BadgeSeverity>('danger');
+  badgeSeverity = input<OxygenSeverity | OxygenColor>('danger');
   badgeOverlay = input<boolean>(true);
 
   // Accessibility inputs
@@ -73,6 +77,15 @@ export class ButtonComponent {
       this.disabled() ? 'oxy-button--disabled' : ''
     ].filter(Boolean).join(' ');
   });
+
+  handleHostClick(event: MouseEvent) {
+    if (this.disabled()) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      return;
+    }
+    this.onClick.emit(event);
+  }
 
   onKeydown(event: KeyboardEvent) {
     if (this.disabled()) return;

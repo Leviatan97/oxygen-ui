@@ -60,30 +60,30 @@
   &.ox-badge--lg { width: 10px; height: 10px; min-width: 10px; }
 }
 
-// Severity Mixin
-@mixin badge-severity($color, $bg) {
+// Severity Classes (using CSS variables)
+:host {
+  &.ox-badge--primary { --badge-color: var(--oxy-primary); }
+  &.ox-badge--secondary { --badge-color: var(--oxy-secondary); }
+  &.ox-badge--success { --badge-color: var(--oxy-success); --badge-text-color: white; }
+  &.ox-badge--warning, &.ox-badge--warn { --badge-color: var(--oxy-warning); --badge-text-color: #212529; }
+  &.ox-badge--error, &.ox-badge--danger { --badge-color: var(--oxy-danger); --badge-text-color: white; }
+  &.ox-badge--info { --badge-color: var(--oxy-info); --badge-text-color: #212529; }
+
   &.ox-badge--filled {
-    background-color: var(--oxy-#{$color}, $bg);
-    color: white;
+    background-color: var(--badge-color);
+    color: var(--badge-text-color, white);
     border: 1px solid transparent;
   }
   
   &.ox-badge--outlined {
     background-color: transparent;
-    color: var(--oxy-#{$color}, $bg);
-    border: 1px solid var(--oxy-#{$color}, $bg);
+    color: var(--badge-color);
+    border: 1px solid var(--badge-color);
   }
   
   &.ox-badge--flat {
-    background-color: color-mix(in srgb, var(--oxy-#{$color}, $bg), transparent 85%);
-    color: var(--oxy-#{$color}, $bg);
+    background-color: color-mix(in srgb, var(--badge-color), transparent 85%);
+    color: var(--badge-color);
     border: 1px solid transparent;
-  }
-}
-
-// Apply Severities
-@each $name, $value in t.$text-colors {
-  :host(.ox-badge--#{$name}) {
-    @include badge-severity($name, $value);
   }
 }

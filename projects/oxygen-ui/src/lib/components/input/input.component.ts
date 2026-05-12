@@ -55,12 +55,12 @@ export class InputComponent implements ControlValueAccessor {
     if (!color) return undefined;
     
     const colorMap: Record<InputFocusColor, string> = {
-      primary: '#3b82f6',
-      secondary: '#6b7280',
-      success: '#10b981',
-      danger: '#ef4444',
-      warning: '#f59e0b',
-      info: '#06b6d4'
+      primary: 'var(--oxy-primary)',
+      secondary: 'var(--oxy-secondary)',
+      success: 'var(--oxy-success)',
+      danger: 'var(--oxy-danger)',
+      warning: 'var(--oxy-warning)',
+      info: 'var(--oxy-info)'
     };
     
     return colorMap[color];

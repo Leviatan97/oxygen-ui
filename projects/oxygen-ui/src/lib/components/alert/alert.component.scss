@@ -65,78 +65,50 @@
   }
 }
 
-// Variables based on type
-$types: (
-  'success': (
-    'bg': var(--oxy-success),
-    'text': #ffffff,
-    'border': var(--oxy-success),
-    'flat-bg': rgba(34, 197, 94, 0.1),
-    'flat-text': #15803d
-  ),
-  'info': (
-    'bg': var(--oxy-primary),
-    'text': #ffffff,
-    'border': var(--oxy-primary),
-    'flat-bg': rgba(59, 130, 246, 0.1),
-    'flat-text': #1d4ed8
-  ),
-  'warning': (
-    'bg': var(--oxy-warning),
-    'text': #ffffff,
-    'border': var(--oxy-warning),
-    'flat-bg': rgba(245, 158, 11, 0.1),
-    'flat-text': #a16207
-  ),
-  'danger': (
-    'bg': var(--oxy-danger),
-    'text': #ffffff,
-    'border': var(--oxy-danger),
-    'flat-bg': rgba(239, 68, 68, 0.1),
-    'flat-text': #b91c1c
-  )
-);
+// Variables based on severity (using CSS variables)
+:host {
+  &.ox-alert--success {
+    --alert-color: var(--oxy-success);
+    --alert-bg-flat: rgba(34, 197, 94, 0.1);
+    --alert-text-flat: #15803d;
+  }
+  &.ox-alert--info {
+    --alert-color: var(--oxy-info);
+    --alert-bg-flat: rgba(59, 130, 246, 0.1);
+    --alert-text-flat: #1d4ed8;
+  }
+  &.ox-alert--warning {
+    --alert-color: var(--oxy-warning);
+    --alert-bg-flat: rgba(245, 158, 11, 0.1);
+    --alert-text-flat: #a16207;
+  }
+  &.ox-alert--danger {
+    --alert-color: var(--oxy-danger);
+    --alert-bg-flat: rgba(239, 68, 68, 0.1);
+    --alert-text-flat: #b91c1c;
+  }
 
-@each $name, $colors in $types {
-  :host(.ox-alert--#{$name}) {
-    
-    // Filled Variant
-    &.ox-alert--filled {
-      background-color: map.get($colors, 'bg');
-      color: map.get($colors, 'text');
-    }
+  &.ox-alert--filled {
+    background-color: var(--alert-color);
+    color: white;
+  }
 
-    // Outlined Variant
-    &.ox-alert--outlined {
-      border: 1px solid map.get($colors, 'bg');
-      background-color: transparent;
-      color: map.get($colors, 'flat-text');
-    }
+  &.ox-alert--outlined {
+    background-color: transparent;
+    border: 1px solid var(--alert-color);
+    color: var(--alert-color);
+  }
 
-    // Flat Variant
-    &.ox-alert--flat {
-      background-color: map.get($colors, 'flat-bg');
-      color: map.get($colors, 'flat-text');
-    }
+  &.ox-alert--flat {
+    background-color: var(--alert-bg-flat);
+    color: var(--alert-text-flat);
+  }
 
-    // Glass Variant
-    &.ox-alert--glass {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: map.get($colors, 'flat-text');
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 4px;
-        background-color: map.get($colors, 'bg');
-      }
-    }
+  &.ox-alert--glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--alert-color);
   }
 }
+

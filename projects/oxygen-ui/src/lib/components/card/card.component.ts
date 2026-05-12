@@ -1,64 +1,65 @@
-import { Component, Directive, input, model, computed, contentChild, TemplateRef, ElementRef, ViewChild, effect, viewChild, signal, untracked } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Directive, input, model, computed, contentChild, ElementRef, effect, viewChild, signal, untracked } from "@angular/core";
+import { OxygenSize } from "../../lib-core";
+import { CommonModule } from "@angular/common";
 
 @Directive({
-  selector: '[oxCardHeader]',
+  selector: "[oxCardHeader]",
   standalone: true
 })
 export class OxCardHeaderDirective {}
 
 @Directive({
-  selector: '[oxCardBody]',
+  selector: "[oxCardBody]",
   standalone: true
 })
 export class OxCardBodyDirective {}
 
 @Directive({
-  selector: '[oxCardFooter]',
+  selector: "[oxCardFooter]",
   standalone: true
 })
 export class OxCardFooterDirective {}
 
 @Directive({
-  selector: '[oxCardBack]',
+  selector: "[oxCardBack]",
   standalone: true
 })
 export class OxCardBackDirective {}
 
 @Directive({
-  selector: '[oxCardBackHeader]',
+  selector: "[oxCardBackHeader]",
   standalone: true
 })
 export class OxCardBackHeaderDirective {}
 
 @Directive({
-  selector: '[oxCardBackBody]',
+  selector: "[oxCardBackBody]",
   standalone: true
 })
 export class OxCardBackBodyDirective {}
 
 @Directive({
-  selector: '[oxCardBackFooter]',
+  selector: "[oxCardBackFooter]",
   standalone: true
 })
 export class OxCardBackFooterDirective {}
 
 @Component({
-  selector: 'ox-card',
+  selector: "ox-card",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss',
+  templateUrl: "./card.component.html",
+  styleUrl: "./card.component.scss",
   host: {
-    '[class]': 'hostClasses()',
-    '[style.--ox-card-shadow]': 'shadowValue()',
-    '[class.ox-card--flipped]': 'flipped()',
-    '[class.ox-card--animating]': 'isAnimating()',
-    'role': 'article'
+    "[class]": "hostClasses()",
+    "[style.--ox-card-shadow]": "shadowValue()",
+    "[class.ox-card--flipped]": "flipped()",
+    "[class.ox-card--animating]": "isAnimating()",
+    "role": "article"
   }
 })
 export class CardComponent {
-  boxShadow = input<'sm' | 'md' | 'lg' | 'none'>('sm');
+  boxShadow = input<OxygenSize | "none">("sm");
   bordered = input<boolean>(true);
   hoverable = input<boolean>(false);
   liftOnHover = input<boolean>(false);
@@ -77,15 +78,14 @@ export class CardComponent {
 
   hasBack = computed(() => !!this.back() || !!this.backHeader() || !!this.backBody() || !!this.backFooter());
 
-  frontContainer = viewChild<ElementRef<HTMLElement>>('frontSide');
-  backContainer = viewChild<ElementRef<HTMLElement>>('backSide');
+  frontContainer = viewChild<ElementRef<HTMLElement>>("frontSide");
+  backContainer = viewChild<ElementRef<HTMLElement>>("backSide");
 
   constructor() {
     let isFirstRun = true;
     effect((onCleanup) => {
       const isFlipped = this.flipped();
       
-      // Trigger animation state
       untracked(() => {
         this.isAnimating.set(true);
       });
@@ -95,34 +95,33 @@ export class CardComponent {
             this.isAnimating.set(false);
         });
 
-        // Focus management logic (only if not first run to prevent auto-scroll on load)
         if (!isFirstRun) {
           const target = isFlipped ? this.backContainer() : this.frontContainer();
           if (target) {
-            const focusable = target.nativeElement.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
+            const focusable = target.nativeElement.querySelector("button, a, input, select, textarea, [tabindex]:not([tabindex=\"-1\"])") as HTMLElement;
             if (focusable) {
               focusable.focus();
             }
           }
         }
         isFirstRun = false;
-      }, 600); // Wait for animation to finish
+      }, 600);
 
       onCleanup(() => clearTimeout(timer));
     });
   }
 
   hostClasses = computed(() => {
-    return [
-      'ox-card',
-      this.bordered() ? 'ox-card--bordered' : '',
-      this.hoverable() ? 'ox-card--hoverable' : '',
-      this.liftOnHover() ? 'ox-card--lift' : ''
-    ].filter(Boolean).join(' ');
+    const classes = ["ox-card"];
+    if (this.bordered()) classes.push("ox-card--bordered");
+    if (this.hoverable()) classes.push("ox-card--hoverable");
+    if (this.liftOnHover()) classes.push("ox-card--lift");
+    return classes.join(" ");
   });
 
   shadowValue = computed(() => {
-    if (this.boxShadow() === 'none') return 'none';
-    return `var(--shadow-${this.boxShadow()})`;
+    const s = this.boxShadow();
+    if (s === "none") return "none";
+    return "var(--shadow-" + s + ")";
   });
 }

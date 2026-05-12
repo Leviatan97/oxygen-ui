@@ -19,6 +19,23 @@
   --oxy-info: #0dcaf0;
   --oxy-info-hover: #0bb5d6;
 
+  /* Aliases para consistencia interna */
+  --oxy-primary-color: var(--oxy-primary);
+  --oxy-danger-color: var(--oxy-danger);
+  --oxy-success-color: var(--oxy-success);
+  --oxy-warning-color: var(--oxy-warning);
+  --oxy-info-color: var(--oxy-info);
+
+  /* Colores de componentes */
+  --oxy-text-color: #374151;
+  --oxy-text-hint: #6b7280;
+  --oxy-bg-color: #ffffff;
+  --oxy-border-color: #d1d5db;
+  --oxy-placeholder-color: #9ca3af;
+  --oxy-disabled-bg: #f3f4f6;
+  --oxy-disabled-text: #9ca3af;
+  --oxy-readonly-bg: #f9fafb;
+
   /* Tipografía */
   --font-primary: 'Manrope', sans-serif;
   --font-size-base: 14px;

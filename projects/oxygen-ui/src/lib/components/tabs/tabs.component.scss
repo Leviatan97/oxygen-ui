@@ -1,13 +1,12 @@
 // Color Logic via CSS Variables
 :host {
-  --ox-tabs-color: #3b82f6; // Default to Primary Blue
+  --ox-tabs-color: var(--oxy-primary);
+  &.ox-tabs--secondary { --ox-tabs-color: var(--oxy-secondary); }
+  &.ox-tabs--success { --ox-tabs-color: var(--oxy-success); }
+  &.ox-tabs--warning, &.ox-tabs--warn { --ox-tabs-color: var(--oxy-warning); }
+  &.ox-tabs--danger, &.ox-tabs--error { --ox-tabs-color: var(--oxy-danger); }
+  &.ox-tabs--info { --ox-tabs-color: var(--oxy-info); }
 }
-
-:host.ox-tabs--secondary { --ox-tabs-color: #64748b; }
-:host.ox-tabs--success { --ox-tabs-color: #22c55e; }
-:host.ox-tabs--warning { --ox-tabs-color: #eab308; }
-:host.ox-tabs--danger { --ox-tabs-color: #ef4444; }
-:host.ox-tabs--info { --ox-tabs-color: #06b6d4; }
 
 .ox-tabs {
   display: flex;

@@ -1,0 +1,76 @@
+.ox-table-container {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.ox-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+
+  &-thead {
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  &-th {
+    padding: 1rem;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  &-tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #f8fafc;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    // Support internal <tr> within templates
+    // But we are already using <tr> in templates, let's make sure
+    // the styles apply to <tr> tags inside .ox-table
+  }
+
+  tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #f8fafc;
+    }
+  }
+
+  th {
+    padding: 1rem;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  td {
+    padding: 1rem;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  &-empty {
+    padding: 2rem;
+    text-align: center;
+    color: #94a3b8;
+    font-style: italic;
+  }
+}

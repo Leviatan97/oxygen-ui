@@ -1,0 +1,33 @@
+.oxy-textarea-field {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: var(--oxy-input-font-size, 1rem);
+  color: var(--oxy-text-color, #111827);
+  background-color: var(--oxy-bg-color, #ffffff);
+  border: 1px solid var(--oxy-border-color, #d1d5db);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 5rem;
+
+  &::placeholder {
+    color: var(--oxy-placeholder-color, #9ca3af);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--oxy-primary-color, #3b82f6);
+  }
+
+  &:focus:not(:disabled) {
+    border-color: var(--oxy-primary-color, #3b82f6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  &:disabled {
+    background-color: var(--oxy-disabled-bg, #f3f4f6);
+    color: var(--oxy-disabled-text, #9ca3af);
+    cursor: not-allowed;
+  }
+}

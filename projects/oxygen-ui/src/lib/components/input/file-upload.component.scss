@@ -1,0 +1,94 @@
+.oxy-file-upload {
+  border: 2px dashed var(--oxy-border-color, #d1d5db);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: #f9fafb;
+  position: relative;
+
+  &:hover:not(&--disabled) {
+    border-color: var(--oxy-primary-color, #3b82f6);
+    background-color: #f3f4f6;
+  }
+
+  &--dragging {
+    border-color: var(--oxy-primary-color, #3b82f6);
+    background-color: #eff6ff;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: #f3f4f6;
+  }
+}
+
+.oxy-file-upload-input {
+  display: none;
+}
+
+.oxy-file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.oxy-file-upload-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #9ca3af;
+}
+
+.oxy-file-upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #4b5563;
+  font-size: 0.875rem;
+
+  strong {
+    color: var(--oxy-primary-color, #3b82f6);
+  }
+}
+
+.oxy-file-upload-hint {
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.oxy-file-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.oxy-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background-color: #f3f4f6;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.oxy-file-remove {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ef4444;
+  display: flex;
+  padding: 0.25rem;
+  border-radius: 50%;
+  
+  &:hover {
+    background-color: #fee2e2;
+  }
+}

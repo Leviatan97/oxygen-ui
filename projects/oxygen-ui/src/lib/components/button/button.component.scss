@@ -6,12 +6,12 @@
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  gap: map.get(t.$spacings, '2');
-  font-family: inherit;
-  font-weight: map.get(t.$font-weights, 'medium');
-  border-radius: map.get(t.$radii, 'sm');
+  gap: var(--spacing-sm);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition);
   border: 1px solid transparent;
   outline: none;
   white-space: nowrap;
@@ -27,62 +27,50 @@
 
   // Sizes
   &.oxy-button--sm {
-    padding: calc(map.get(t.$spacings, '1') / 2) map.get(t.$spacings, '3');
-    font-size: map.get(t.$font-sizes, 'sm');
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 12px;
     height: 32px;
   }
 
   &.oxy-button--md {
-    padding: map.get(t.$spacings, '2') map.get(t.$spacings, '4');
-    font-size: map.get(t.$font-sizes, 'base');
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-base);
     height: 40px;
   }
 
   &.oxy-button--lg {
-    padding: map.get(t.$spacings, '3') map.get(t.$spacings, '5');
-    font-size: map.get(t.$font-sizes, 'lg');
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 16px;
     height: 48px;
   }
 
-  // Dynamic Variants (Solid, Outline, Ghost)
-  @each $name, $color in t.$text-colors {
-    @if $name != 'white' and $name != 'black' and $name != 'muted' {
-      // Solid
-      &.oxy-button--#{$name} {
-        background-color: $color !important;
-        color: #ffffff !important;
-        &:hover:not(.oxy-button--disabled) {
-          filter: brightness(0.9) !important;
-        }
-      }
+  // Solid Variants
+  &.oxy-button--primary { background: var(--oxy-primary); color: white; &:hover { background: var(--oxy-primary-hover); } }
+  &.oxy-button--secondary { background: var(--oxy-secondary); color: white; &:hover { background: var(--oxy-secondary-hover); } }
+  &.oxy-button--success { background: var(--oxy-success); color: white; &:hover { background: var(--oxy-success-hover); } }
+  &.oxy-button--warning { background: var(--oxy-warning); color: white; &:hover { background: var(--oxy-warning-hover); } }
+  &.oxy-button--danger { background: var(--oxy-danger); color: white; &:hover { background: var(--oxy-danger-hover); } }
+  &.oxy-button--info { background: var(--oxy-info); color: white; &:hover { background: var(--oxy-info-hover); } }
 
-      // Outline
-      &.oxy-button--outline-#{$name} {
-        background-color: transparent !important;
-        border-color: $color !important;
-        color: $color !important;
-        &:hover:not(.oxy-button--disabled) {
-          background-color: color-mix(in srgb, #{$color}, transparent 90%) !important;
-        }
-      }
+  // Outline Variants
+  &.oxy-button--outline-primary { border-color: var(--oxy-primary); color: var(--oxy-primary); background: transparent; &:hover { background: rgba(0, 102, 255, 0.05); } }
+  &.oxy-button--outline-secondary { border-color: var(--oxy-secondary); color: var(--oxy-secondary); background: transparent; &:hover { background: rgba(108, 117, 125, 0.05); } }
+  &.oxy-button--outline-success { border-color: var(--oxy-success); color: var(--oxy-success); background: transparent; &:hover { background: rgba(40, 167, 69, 0.05); } }
+  &.oxy-button--outline-warning { border-color: var(--oxy-warning); color: var(--oxy-warning); background: transparent; &:hover { background: rgba(255, 193, 7, 0.15); } }
+  &.oxy-button--outline-danger { border-color: var(--oxy-danger); color: var(--oxy-danger); background: transparent; &:hover { background: rgba(220, 53, 69, 0.05); } }
+  &.oxy-button--outline-info { border-color: var(--oxy-info); color: var(--oxy-info); background: transparent; &:hover { background: rgba(13, 202, 240, 0.05); } }
 
-      // Ghost
-      &.oxy-button--ghost-#{$name} {
-        background-color: transparent !important;
-        color: $color !important;
-        &:hover:not(.oxy-button--disabled) {
-          background-color: color-mix(in srgb, #{$color}, transparent 90%) !important;
-        }
-      }
-    }
-  }
+  // Ghost Variants
+  &.oxy-button--ghost-primary { border-color: transparent; color: var(--oxy-primary); background: transparent; &:hover { background: rgba(0, 102, 255, 0.05); } }
+  &.oxy-button--ghost-secondary { border-color: transparent; color: var(--oxy-secondary); background: transparent; &:hover { background: rgba(108, 117, 125, 0.05); } }
+  &.oxy-button--ghost-success { border-color: transparent; color: var(--oxy-success); background: transparent; &:hover { background: rgba(40, 167, 69, 0.05); } }
+  &.oxy-button--ghost-warning { border-color: transparent; color: var(--oxy-warning); background: transparent; &:hover { background: rgba(255, 193, 7, 0.15); } }
+  &.oxy-button--ghost-danger { border-color: transparent; color: var(--oxy-danger); background: transparent; &:hover { background: rgba(220, 53, 69, 0.05); } }
+  &.oxy-button--ghost-info { border-color: transparent; color: var(--oxy-info); background: transparent; &:hover { background: rgba(13, 202, 240, 0.05); } }
 
   // Shadows
-  @each $name, $value in t.$shadows {
-    &.oxy-button--shadow-#{$name} {
-      box-shadow: #{$value} !important;
-    }
-  }
+  &.oxy-button--shadow-sm { box-shadow: var(--shadow-sm); }
+  &.oxy-button--shadow-md { box-shadow: var(--shadow-md); }
 }
 
 // End of button styles

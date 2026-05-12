@@ -1,0 +1,23 @@
+<div class="ox-toast-container ox-toast-{{toastService.position()}}">
+  @for (msg of toastService.messages(); track msg.id) {
+    <div 
+      class="ox-toast-item ox-toast-item-{{msg.severity || 'info'}} ox-toast-item-{{msg.variant || 'standard'}}"
+      [@slideIn]
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true">
+      <div class="ox-toast-item-content">
+        <span class="ox-toast-icon"></span>
+        <div class="ox-toast-message-text">
+          <div class="ox-toast-summary">{{msg.summary}}</div>
+          <div class="ox-toast-detail">{{msg.detail}}</div>
+        </div>
+        @if (msg.closable) {
+          <button class="ox-toast-close-button" (click)="close(msg.id!)">
+            <span class="ox-toast-close-icon">×</span>
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>

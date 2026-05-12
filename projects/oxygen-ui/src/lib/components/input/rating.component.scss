@@ -1,0 +1,32 @@
+.oxy-rating {
+  display: flex;
+  gap: 0.25rem;
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.oxy-star {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #d1d5db; /* Default gray */
+  transition: all 0.1s ease-in-out;
+  display: flex;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &--active {
+    color: #f59e0b; /* Amber 500 */
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

@@ -1,0 +1,91 @@
+.ox-menubar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  position: relative;
+
+  &-root-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.25rem;
+  }
+
+  &-item {
+    position: relative;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      color: #475569;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        background: #f1f5f9;
+        color: #1e293b;
+      }
+    }
+
+    &-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    &-icon {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.5rem 0;
+    min-width: 180px;
+    list-style: none;
+    display: none;
+    z-index: 1000;
+
+    .ox-menubar-item-link {
+      padding: 0.5rem 1rem;
+      border-radius: 0;
+    }
+  }
+
+  &-item:hover > .ox-menubar-submenu {
+    display: block;
+  }
+
+  &-submenu-icon {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  &-start, &-end {
+    display: flex;
+    align-items: center;
+  }
+
+  &-start { margin-right: 1rem; }
+  &-end { margin-left: auto; }
+}
+
+.ox-menubar-separator {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+  margin: 0 0.5rem;
+  align-self: center;
+}

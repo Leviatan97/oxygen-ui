@@ -1,9 +1,8 @@
 import { Component, input, computed } from '@angular/core';
+import { OxygenSeverity, OxygenSize, OxygenColor } from '../../lib-core';
 import { CommonModule } from '@angular/common';
 
-export type BadgeSeverity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
 export type BadgeVariant = 'filled' | 'outlined' | 'flat';
-export type BadgeSize = 'sm' | 'md' | 'lg';
 
 @Component({
   selector: 'ox-badge',
@@ -22,9 +21,9 @@ export type BadgeSize = 'sm' | 'md' | 'lg';
 })
 export class BadgeComponent {
   value = input<string | number>();
-  severity = input<BadgeSeverity>('primary');
+  severity = input<OxygenSeverity | OxygenColor>('primary');
   variant = input<BadgeVariant>('filled');
-  size = input<BadgeSize>('md');
+  size = input<OxygenSize>('md');
   pill = input<boolean>(false);
   dot = input<boolean>(false);
   overlay = input<boolean>(false);

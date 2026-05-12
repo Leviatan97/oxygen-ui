@@ -1,0 +1,98 @@
+.ox-toast-container {
+  position: fixed;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 350px;
+  pointer-events: none;
+  padding: 1rem;
+
+  &.ox-toast-top-right { top: 0; right: 0; }
+  &.ox-toast-top-left { top: 0; left: 0; }
+  &.ox-toast-top-center { top: 0; left: 50%; transform: translateX(-50%); }
+  &.ox-toast-bottom-right { bottom: 0; right: 0; }
+  &.ox-toast-bottom-left { bottom: 0; left: 0; }
+  &.ox-toast-bottom-center { bottom: 0; left: 50%; transform: translateX(-50%); }
+  &.ox-toast-center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+}
+
+.ox-toast-item {
+  pointer-events: auto;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  
+  &-content {
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  /* Variantes */
+  &.ox-toast-item-standard {
+    border-left: 6px solid #ccc;
+    
+    &.ox-toast-item-success { border-left-color: var(--oxy-success, #28a745); .ox-toast-summary { color: var(--oxy-success, #28a745); } }
+    &.ox-toast-item-info { border-left-color: var(--oxy-info, #0dcaf0); .ox-toast-summary { color: var(--oxy-info, #0dcaf0); } }
+    &.ox-toast-item-warn, &.ox-toast-item-warning { border-left-color: var(--oxy-warning, #ffc107); .ox-toast-summary { color: var(--oxy-warning, #ffc107); } }
+    &.ox-toast-item-error, &.ox-toast-item-danger { border-left-color: var(--oxy-danger, #dc3545); .ox-toast-summary { color: var(--oxy-danger, #dc3545); } }
+    &.ox-toast-item-secondary { border-left-color: var(--oxy-secondary, #6c757d); .ox-toast-summary { color: var(--oxy-secondary, #6c757d); } }
+  }
+
+  &.ox-toast-item-filled {
+    color: white;
+    .ox-toast-detail { color: rgba(255, 255, 255, 0.85); }
+    .ox-toast-close-button { color: rgba(255, 255, 255, 0.7); &:hover { color: white; } }
+
+    &.ox-toast-item-success { background: var(--oxy-success, #28a745); .ox-toast-summary { color: white; } }
+    &.ox-toast-item-info { background: var(--oxy-info, #0dcaf0); .ox-toast-summary { color: white; } }
+    &.ox-toast-item-warn, &.ox-toast-item-warning { background: var(--oxy-warning, #ffc107); color: #212529; .ox-toast-detail { color: rgba(0, 0, 0, 0.7); } .ox-toast-close-button { color: rgba(0, 0, 0, 0.5); &:hover { color: black; } } .ox-toast-summary { color: black; } }
+    &.ox-toast-item-error, &.ox-toast-item-danger { background: var(--oxy-danger, #dc3545); .ox-toast-summary { color: white; } }
+    &.ox-toast-item-secondary { background: var(--oxy-secondary, #6c757d); .ox-toast-summary { color: white; } }
+  }
+
+  &.ox-toast-item-outlined {
+    background: transparent;
+    border: 1px solid #ccc;
+    backdrop-filter: blur(8px);
+
+    &.ox-toast-item-success { border-color: var(--oxy-success, #28a745); background: rgba(40, 167, 69, 0.05); .ox-toast-summary { color: var(--oxy-success, #28a745); } }
+    &.ox-toast-item-info { border-color: var(--oxy-info, #0dcaf0); background: rgba(13, 202, 240, 0.05); .ox-toast-summary { color: var(--oxy-info, #0dcaf0); } }
+    &.ox-toast-item-warn, &.ox-toast-item-warning { border-color: var(--oxy-warning, #ffc107); background: rgba(255, 193, 7, 0.05); .ox-toast-summary { color: var(--oxy-warning, #ffc107); } }
+    &.ox-toast-item-error, &.ox-toast-item-danger { border-color: var(--oxy-danger, #dc3545); background: rgba(220, 53, 69, 0.05); .ox-toast-summary { color: var(--oxy-danger, #dc3545); } }
+    &.ox-toast-item-secondary { border-color: var(--oxy-secondary, #6c757d); background: rgba(108, 117, 125, 0.05); .ox-toast-summary { color: var(--oxy-secondary, #6c757d); } }
+  }
+}
+
+.ox-toast-message-text {
+  flex: 1;
+}
+
+.ox-toast-summary {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.ox-toast-detail {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.ox-toast-close-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  font-size: 1.25rem;
+  color: #94a3b8;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #475569;
+  }
+}

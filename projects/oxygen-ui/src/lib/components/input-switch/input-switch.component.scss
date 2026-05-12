@@ -1,0 +1,35 @@
+.ox-input-switch {
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  background: #cbd5e1;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  vertical-align: middle;
+
+  &-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  &-checked {
+    background: #3b82f6;
+    .ox-input-switch-slider {
+      transform: translateX(18px);
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

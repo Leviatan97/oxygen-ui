@@ -1,4 +1,5 @@
 import { Component, contentChildren, signal, computed, viewChildren, viewChild, ElementRef, effect, input, model } from '@angular/core';
+import { OxygenColor, OxygenSeverity } from '../../lib-core';
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { TabComponent } from './tab.component';
 
@@ -17,7 +18,7 @@ export class TabsComponent {
   tabButtons = viewChildren<ElementRef>('tabButton');
   headerContainer = viewChild.required<ElementRef>('headerContainer');
   
-  color = input<'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info'>('primary');
+  color = input<OxygenSeverity | OxygenColor>('primary');
   
   // Two-way binding for active index
   activeIndex = model(0);

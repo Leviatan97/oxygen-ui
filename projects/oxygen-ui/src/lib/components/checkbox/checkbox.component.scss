@@ -1,0 +1,52 @@
+.ox-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: var(--spacing-sm);
+  vertical-align: middle;
+
+  &-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: var(--radius-sm);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+
+  &-checked {
+    .ox-checkbox-box {
+      background: var(--oxy-primary);
+      border-color: var(--oxy-primary);
+    }
+    .ox-checkbox-icon {
+      color: white;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    .ox-checkbox-box {
+      background: #f1f5f9;
+    }
+  }
+
+  &-label {
+    font-size: var(--font-size-base);
+    color: #334155;
+  }
+
+  &:hover:not(.ox-checkbox-disabled) .ox-checkbox-box {
+    border-color: var(--oxy-primary-hover);
+  }
+}
+
+.ox-checkbox-icon {
+  width: 12px;
+  height: 12px;
+}

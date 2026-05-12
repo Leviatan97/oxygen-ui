@@ -11,12 +11,13 @@
   // Border logic moves to faces
   &.ox-card--bordered .ox-card__front,
   &.ox-card--bordered .ox-card__back {
-    border: 1px solid var(--ox-border-color, #e0e0e0);
+    border: 1px solid #e2e8f0;
   }
 
   // Lift logic remains on host (container moves), but we need to ensure shadows update on faces?
   // Actually, if host transforms, children transform.
   &.ox-card--lift {
+    transition: transform var(--transition);
     &:hover {
       transform: translateY(-4px);
     }
@@ -27,9 +28,6 @@
     cursor: pointer;
     &:hover .ox-card__front,
     &:hover .ox-card__back {
-       // On hover, we might want to increase the shadow.
-       // The base shadow is var(--ox-card-shadow).
-       // We can override it here or use a variable for hover state.
        box-shadow: var(--shadow-md) !important;
     }
   }
@@ -64,9 +62,6 @@
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    // position: absolute; // Front shouldn't be absolute if it dictates height? 
-    // In a flipper, typically both are absolute to overlap, OR one is static to give height.
-    // Usually Front is relative/static (default) to give size, Back is absolute.
     top: 0;
     left: 0;
     
@@ -74,15 +69,15 @@
     flex-direction: column;
     
     // Moved visuals here
-    background-color: var(--ox-bg-secondary, #ffffff);
-    border-radius: var(--ox-border-radius, 8px);
+    background-color: white;
+    border-radius: var(--radius-md);
     box-shadow: var(--ox-card-shadow);
+    transition: box-shadow var(--transition);
   }
 
   &__back {
     position: absolute;
     transform: rotateY(180deg);
-    // background already applied above
   }
 
   &__inner {
@@ -91,7 +86,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: var(--ox-border-radius, 8px);
+    border-radius: var(--radius-md);
   }
 
   &__header {
